@@ -1,0 +1,108 @@
+{
+  "question_id": "lme_eeda8a6d",
+  "question": "How many fish are there in total in both of my aquariums?",
+  "source_sessions": 2,
+  "source_messages": 24,
+  "processed_messages": 24,
+  "source_exact": true,
+  "write_complete": true,
+  "write_input_fields": [
+    "question_id",
+    "dataset",
+    "category",
+    "corpus_id",
+    "sessions"
+  ],
+  "extraction_calls": 2,
+  "extraction_model_facts": 78,
+  "quarantined_entries": 0,
+  "repaired_entries": 0,
+  "protocol_complete": true,
+  "semantic_coverage_verified": false,
+  "persisted_facts": 107,
+  "plan": {
+    "queries": [
+      "How many fish are there in total in both of my aquariums?"
+    ],
+    "keywords": [
+      "fish",
+      "total",
+      "aquariums"
+    ],
+    "time_range": null,
+    "needs_all": true,
+    "focus": "any",
+    "source": "heuristic",
+    "error": null,
+    "operation": "sum_events",
+    "qualifiers": [],
+    "trigger": "disabled_or_no_planner",
+    "operation_validation": {}
+  },
+  "coverage_supplement": {
+    "attempted": true,
+    "initial_budget": 65536,
+    "initial_selected": 60,
+    "final_budget": 121580,
+    "final_selected": 107,
+    "fact_limit": 128,
+    "complete": true
+  },
+  "selected_facts": 107,
+  "selected_original_episodes": 0,
+  "omitted_facts": 0,
+  "selected_memory_kinds": {
+    "personal": 4,
+    "event": 4,
+    "preference": 8,
+    "assistant": 91
+  },
+  "memory_utf8_bytes": 70680,
+  "input_utf8_bytes": 80044,
+  "budget_unit": "utf8_bytes",
+  "reranker": {
+    "model": "BAAI/bge-reranker-v2-m3",
+    "device": "mps",
+    "scored_candidates": 60,
+    "eligible_candidates": 107,
+    "full_candidate_set_retained": true,
+    "timings_s": {
+      "load": 5.790692457929254,
+      "tokenize_and_window": 0.06763512501493096,
+      "batch_prepare": 0.020143872825428843,
+      "model_and_readback": 12.094814624870196,
+      "finalize": 9.704101830720901e-05,
+      "total": 17.973978207912296
+    }
+  },
+  "answer_model": "gpt-6-luna",
+  "answer_model_calls": 1,
+  "answer_provider_prompt_tokens": 18487,
+  "answer_provider_completion_tokens": 333,
+  "answer_provider_latency_s": 5.781847999896854,
+  "answer_phase_elapsed_s": 26.504,
+  "finish_reason": "stop",
+  "delivered_answer": "There are **17 fish** in total: 10 neon tetras, 5 golden honey gouramis, and 1 pleco in your 20-gallon tank, plus Bubbles the betta in your other tank.",
+  "audit_status": "bindings_incomplete",
+  "answer_modified": false,
+  "delivery_policy": "diagnostic_only",
+  "deterministic_calculations": 0,
+  "grading": {
+    "question_id": "lme_eeda8a6d",
+    "dataset": "LongMemEval",
+    "category": "multi-session",
+    "reference": "17",
+    "status": "graded",
+    "correct": true,
+    "actual_model": "gpt-6-luna",
+    "attempts": [
+      {
+        "text": "yes",
+        "finish_reason": "stop",
+        "model": "gpt-6-luna"
+      }
+    ]
+  },
+  "source_run_relative": "runs/memory-regression2-task-context-20261027",
+  "scope_note": "Existing regression record; observed phases and values, no new evaluation or product changes. Historical source contents and question were already exposed; no blind/generalization claim."
+}

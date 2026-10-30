@@ -1,0 +1,284 @@
+{
+  "memsys/__init__.py": {
+    "mtime": 1791434689.5354617,
+    "seen": 1791640586.498873,
+    "ast_hash": "8a0b2cf67a1d93bb59445ed80af64c7e",
+    "semantic_hash": "8a0b2cf67a1d93bb59445ed80af64c7e"
+  },
+  "memsys/__main__.py": {
+    "mtime": 1791435834.9410427,
+    "seen": 1791640586.498879,
+    "ast_hash": "589e9da0480e0804eafb2a66e8c63183",
+    "semantic_hash": "589e9da0480e0804eafb2a66e8c63183"
+  },
+  "memsys/aggregate_batch.py": {
+    "mtime": 1791630024.5906105,
+    "seen": 1791640586.49888,
+    "ast_hash": "cad080cc7eb9c49ec9685600af26cb14",
+    "semantic_hash": "cad080cc7eb9c49ec9685600af26cb14"
+  },
+  "memsys/aggregation.py": {
+    "mtime": 1791630949.3400068,
+    "seen": 1791640586.498881,
+    "ast_hash": "adf8827d0a6f5f891c91b745facb4e29",
+    "semantic_hash": "adf8827d0a6f5f891c91b745facb4e29"
+  },
+  "memsys/anthropic_client.py": {
+    "mtime": 1791529957.881925,
+    "seen": 1791640586.498882,
+    "ast_hash": "105dc9cecb4bd8cb18a723bf8b6fe1b0",
+    "semantic_hash": "105dc9cecb4bd8cb18a723bf8b6fe1b0"
+  },
+  "memsys/bench/__init__.py": {
+    "mtime": 1791435631.741009,
+    "seen": 1791640586.498882,
+    "ast_hash": "5c43c10dc9e8df1f7869677bbf507785",
+    "semantic_hash": "5c43c10dc9e8df1f7869677bbf507785"
+  },
+  "memsys/bench/behavior.py": {
+    "mtime": 1791611447.9797633,
+    "seen": 1791640586.498883,
+    "ast_hash": "7d7639c3366ff714b7ea9585adc47a53",
+    "semantic_hash": "7d7639c3366ff714b7ea9585adc47a53"
+  },
+  "memsys/bench/jsonl.py": {
+    "mtime": 1791445089.21659,
+    "seen": 1791640586.498883,
+    "ast_hash": "f923686b768fdda715d86974585a60bb",
+    "semantic_hash": "f923686b768fdda715d86974585a60bb"
+  },
+  "memsys/bench/judge.py": {
+    "mtime": 1791615789.9552605,
+    "seen": 1791640586.4988842,
+    "ast_hash": "9a9abe4fb83c318502d1f667e59a08c1",
+    "semantic_hash": "9a9abe4fb83c318502d1f667e59a08c1"
+  },
+  "memsys/bench/leakcheck.py": {
+    "mtime": 1791619633.0920355,
+    "seen": 1791640586.4988842,
+    "ast_hash": "cedebe62eb578f2c8cf4eaac0bb975be",
+    "semantic_hash": "cedebe62eb578f2c8cf4eaac0bb975be"
+  },
+  "memsys/bench/longmemeval.py": {
+    "mtime": 1791619946.5455778,
+    "seen": 1791640586.4988852,
+    "ast_hash": "70f27834d0b6ba2b8c4a799422f9e78a",
+    "semantic_hash": "70f27834d0b6ba2b8c4a799422f9e78a"
+  },
+  "memsys/bench/mechanisms.py": {
+    "mtime": 1791600021.2583756,
+    "seen": 1791640586.4988852,
+    "ast_hash": "43bb070a72912c11f6c5f0cef1b4bc49",
+    "semantic_hash": "43bb070a72912c11f6c5f0cef1b4bc49"
+  },
+  "memsys/bench/provenance.py": {
+    "mtime": 1791652264.875411,
+    "seen": 1791655733.814226,
+    "ast_hash": "fce5323cc24b593591a69e5a8fed2b39",
+    "semantic_hash": "fce5323cc24b593591a69e5a8fed2b39"
+  },
+  "memsys/bench/report.py": {
+    "mtime": 1791654917.1054738,
+    "seen": 1791655733.8142269,
+    "ast_hash": "a986c5752dc477096e7c4ad471e2924e",
+    "semantic_hash": "a986c5752dc477096e7c4ad471e2924e"
+  },
+  "memsys/bench/runner.py": {
+    "mtime": 1791631117.7758296,
+    "seen": 1791640586.4988868,
+    "ast_hash": "cdbc0e1ec584417682333f3bdc70a3ef",
+    "semantic_hash": "cdbc0e1ec584417682333f3bdc70a3ef"
+  },
+  "memsys/bench/scale.py": {
+    "mtime": 1791603918.8663034,
+    "seen": 1791640586.498888,
+    "ast_hash": "80f1d766fd5918421a48918c9560f4a0",
+    "semantic_hash": "80f1d766fd5918421a48918c9560f4a0"
+  },
+  "memsys/budget.py": {
+    "mtime": 1791603541.9614751,
+    "seen": 1791640586.498888,
+    "ast_hash": "10fe71dac82f52a6caeb29dddfc323c1",
+    "semantic_hash": "10fe71dac82f52a6caeb29dddfc323c1"
+  },
+  "memsys/cli.py": {
+    "mtime": 1791655057.9214985,
+    "seen": 1791655733.81423,
+    "ast_hash": "c535a5f61695de19f5139f83e39c6cd7",
+    "semantic_hash": "c535a5f61695de19f5139f83e39c6cd7"
+  },
+  "memsys/config.py": {
+    "mtime": 1791655304.3569255,
+    "seen": 1791655733.81423,
+    "ast_hash": "65687dd979218c2cd740babfae0baf20",
+    "semantic_hash": "65687dd979218c2cd740babfae0baf20"
+  },
+  "memsys/core.py": {
+    "mtime": 1791652181.7662065,
+    "seen": 1791655733.8142312,
+    "ast_hash": "ebb6f48169a97358b03b4d45d9935067",
+    "semantic_hash": "ebb6f48169a97358b03b4d45d9935067"
+  },
+  "memsys/dateproof.py": {
+    "mtime": 1791619542.3010082,
+    "seen": 1791640586.49889,
+    "ast_hash": "2021b73977d06bd82ed649b973ba30a5",
+    "semantic_hash": "2021b73977d06bd82ed649b973ba30a5"
+  },
+  "memsys/discover.py": {
+    "mtime": 1791605106.2549224,
+    "seen": 1791640586.498891,
+    "ast_hash": "05c307619e52ff2d4126580d19177e32",
+    "semantic_hash": "05c307619e52ff2d4126580d19177e32"
+  },
+  "memsys/evidence_batch.py": {
+    "mtime": 1791630949.3404741,
+    "seen": 1791640586.498891,
+    "ast_hash": "85243eb7abc11504ebdb745e31a7c051",
+    "semantic_hash": "85243eb7abc11504ebdb745e31a7c051"
+  },
+  "memsys/fake.py": {
+    "mtime": 1791619200.4211576,
+    "seen": 1791640586.498892,
+    "ast_hash": "bc1ad4b3ee74642274c83b9bd943b709",
+    "semantic_hash": "bc1ad4b3ee74642274c83b9bd943b709"
+  },
+  "memsys/fallback.py": {
+    "mtime": 1791607070.0813582,
+    "seen": 1791640586.498892,
+    "ast_hash": "a6026c1b05feca7f8cddf837a66de3ed",
+    "semantic_hash": "a6026c1b05feca7f8cddf837a66de3ed"
+  },
+  "memsys/hook.py": {
+    "mtime": 1791451149.9845152,
+    "seen": 1791640586.498893,
+    "ast_hash": "9828b8378198a76b373dfed80076ab0c",
+    "semantic_hash": "9828b8378198a76b373dfed80076ab0c"
+  },
+  "memsys/indexing.py": {
+    "mtime": 1791652111.7698584,
+    "seen": 1791655733.814235,
+    "ast_hash": "2aa2ba2e13447bea1b63364892cb2e5b",
+    "semantic_hash": "2aa2ba2e13447bea1b63364892cb2e5b"
+  },
+  "memsys/lifecycle.py": {
+    "mtime": 1791455872.4983647,
+    "seen": 1791640586.498894,
+    "ast_hash": "6f6637553d1cd3a0b34ee9172b8dc1da",
+    "semantic_hash": "6f6637553d1cd3a0b34ee9172b8dc1da"
+  },
+  "memsys/llm.py": {
+    "mtime": 1791615789.9543138,
+    "seen": 1791640586.498894,
+    "ast_hash": "3fc1383f73b75ba0f43f595bbc926aba",
+    "semantic_hash": "3fc1383f73b75ba0f43f595bbc926aba"
+  },
+  "memsys/maintenance.py": {
+    "mtime": 1791652264.874974,
+    "seen": 1791655733.8142369,
+    "ast_hash": "1f78ef256d1eef57446b9b5636465a73",
+    "semantic_hash": "1f78ef256d1eef57446b9b5636465a73"
+  },
+  "memsys/mcp.py": {
+    "mtime": 1791451149.984391,
+    "seen": 1791640586.4988952,
+    "ast_hash": "23b1828dfb09377f7c9b8b0baa469c4f",
+    "semantic_hash": "23b1828dfb09377f7c9b8b0baa469c4f"
+  },
+  "memsys/model_tokens.py": {
+    "mtime": 1791652111.770617,
+    "seen": 1791655733.8142378,
+    "ast_hash": "abaf8b2a3a3df43ff37b96d190409fa8",
+    "semantic_hash": "abaf8b2a3a3df43ff37b96d190409fa8"
+  },
+  "memsys/opencode_go.py": {
+    "mtime": 1791606761.9177525,
+    "seen": 1791640586.498896,
+    "ast_hash": "d120cca41e0bb1fd41828c3d928aa594",
+    "semantic_hash": "d120cca41e0bb1fd41828c3d928aa594"
+  },
+  "memsys/prompts.py": {
+    "mtime": 1791620645.9352129,
+    "seen": 1791640586.498896,
+    "ast_hash": "e9890677ae9041a90773ed26b4cfe13f",
+    "semantic_hash": "e9890677ae9041a90773ed26b4cfe13f"
+  },
+  "memsys/protocols.py": {
+    "mtime": 1791615789.9537022,
+    "seen": 1791640586.4988968,
+    "ast_hash": "7cb45247dab74ca120140ad3c4befbcd",
+    "semantic_hash": "7cb45247dab74ca120140ad3c4befbcd"
+  },
+  "memsys/queryops.py": {
+    "mtime": 1791619724.57154,
+    "seen": 1791640586.4988968,
+    "ast_hash": "86ac47163977efdd52787ff2aa7071bb",
+    "semantic_hash": "86ac47163977efdd52787ff2aa7071bb"
+  },
+  "memsys/read.py": {
+    "mtime": 1791652181.7652473,
+    "seen": 1791655733.8142421,
+    "ast_hash": "ab3f01cdb3722649c1e6b998b5abab7c",
+    "semantic_hash": "ab3f01cdb3722649c1e6b998b5abab7c"
+  },
+  "memsys/reranking.py": {
+    "mtime": 1791655258.4840605,
+    "seen": 1791655733.8142421,
+    "ast_hash": "4f6a2b7aa751e044ffceda9a9916e01a",
+    "semantic_hash": "4f6a2b7aa751e044ffceda9a9916e01a"
+  },
+  "memsys/schema.py": {
+    "mtime": 1791652181.7656393,
+    "seen": 1791655733.814243,
+    "ast_hash": "f7867435b454f3ffd9242d42ca9cff0a",
+    "semantic_hash": "f7867435b454f3ffd9242d42ca9cff0a"
+  },
+  "memsys/semantic_review.py": {
+    "mtime": 1791620891.463663,
+    "seen": 1791640586.4989,
+    "ast_hash": "20a734dfcde5cb01361097ea74b21ac1",
+    "semantic_hash": "20a734dfcde5cb01361097ea74b21ac1"
+  },
+  "memsys/serve.py": {
+    "mtime": 1791451741.0372977,
+    "seen": 1791640586.498901,
+    "ast_hash": "d42b85969de329d5d9faa793209bc429",
+    "semantic_hash": "d42b85969de329d5d9faa793209bc429"
+  },
+  "memsys/store.py": {
+    "mtime": 1791654917.1052215,
+    "seen": 1791655733.8142452,
+    "ast_hash": "be6addafb9fc7c0373ce6f644ba12c60",
+    "semantic_hash": "be6addafb9fc7c0373ce6f644ba12c60"
+  },
+  "memsys/textutil.py": {
+    "mtime": 1791602005.5618637,
+    "seen": 1791640586.498902,
+    "ast_hash": "6261b1545b417b1e5412753b63ed2636",
+    "semantic_hash": "6261b1545b417b1e5412753b63ed2636"
+  },
+  "memsys/timeutil.py": {
+    "mtime": 1791435230.088084,
+    "seen": 1791640586.498902,
+    "ast_hash": "78eb63a90e0e9da00452a92791d2a5c7",
+    "semantic_hash": "78eb63a90e0e9da00452a92791d2a5c7"
+  },
+  "memsys/update.py": {
+    "mtime": 1791620242.1340296,
+    "seen": 1791640586.498903,
+    "ast_hash": "58d5030ca2621fc84e24a387307c666d",
+    "semantic_hash": "58d5030ca2621fc84e24a387307c666d"
+  },
+  "memsys/vecmath.py": {
+    "mtime": 1791602904.0124629,
+    "seen": 1791640586.498903,
+    "ast_hash": "f3594427dfdf6814cc289ac9c5cff4b3",
+    "semantic_hash": "f3594427dfdf6814cc289ac9c5cff4b3"
+  },
+  "memsys/write.py": {
+    "mtime": 1791654917.1048295,
+    "seen": 1791655733.8142478,
+    "ast_hash": "407d6da9d6fb68f31aac06db85001653",
+    "semantic_hash": "407d6da9d6fb68f31aac06db85001653"
+  }
+}

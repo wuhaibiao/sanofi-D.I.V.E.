@@ -1,0 +1,24 @@
+{
+  "purpose": "Pre-authored protocol and integration smoke; no public benchmark data",
+  "at": "2026-08-12T12:00:00",
+  "cross_session": {
+    "sessions": [
+      {"at": "2026-08-09T12:00:00", "user": "Prism is also known as PR. I participate in Prism."},
+      {"at": "2026-08-10T12:00:00", "user": "Dana is the coordinator of Prism."},
+      {"at": "2026-08-11T12:00:00", "user": "Dana works at the Delft office."}
+    ],
+    "question": "Which office does the coordinator of PR work at?",
+    "required_answer_literal": "Delft"
+  },
+  "window": {
+    "history": [
+      {"role": "user", "content": "I use a Cedar R4 router for remote work."},
+      {"role": "assistant", "content": "I have noted the router you use."},
+      {"role": "user", "content": "Please keep the next answer brief."},
+      {"role": "assistant", "content": "I will keep it brief."}
+    ],
+    "question": "Which router do I use?",
+    "required_answer_literal": "Cedar R4",
+    "forbidden_old_user_message": "I use a Cedar R4 router for remote work."
+  }
+}

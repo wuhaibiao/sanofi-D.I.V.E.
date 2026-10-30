@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "7600dbe2-6420-466a-99cd-db1bec4f40b7",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-fish-answer-20261027-024931/candidate.json",
+  "output": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-fish-answer-20261027-024931/fish-answer.html",
+  "specification": {
+    "sha256": "19a0bbe64e4f645c0a91faed820f3693c5b2ad0f0dca17bba357e6fd36061528",
+    "bytes": 18264
+  },
+  "artifact": {
+    "sha256": "581aedbdd1bffbac703fcd48dbe1dbeda1856997374db5459b8dab5c143186a3",
+    "bytes": 865954
+  }
+}

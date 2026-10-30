@@ -1,0 +1,77 @@
+{
+  "description": "Authored regression scenarios, not an accuracy benchmark. Only source turns and questions reach product models; expectations stay in the evaluator.",
+  "today": "2026-10-13T10:00:00",
+  "cases": [
+    {
+      "id": "historical_and_current",
+      "sessions": [
+        {"at": "2025-03-04T10:00:00", "turns": [{"role": "user", "content": "我现在住在厦门。"}, {"role": "assistant", "content": "收到。"}]},
+        {"at": "2026-09-08T10:00:00", "turns": [{"role": "user", "content": "我已经从厦门搬到扬州了，现在住在扬州。"}, {"role": "assistant", "content": "收到。"}]}
+      ],
+      "queries": [
+        {"id": "current", "question": "我现在住在哪个城市？只回答城市名。", "contains": ["扬州"], "forbidden": ["厦门"]},
+        {"id": "past", "question": "2025年3月我住在哪个城市？只回答城市名。", "contains": ["厦门"], "forbidden": ["扬州"]}
+      ]
+    },
+    {
+      "id": "tentative_move",
+      "sessions": [
+        {"at": "2026-08-02T10:00:00", "turns": [{"role": "user", "content": "我住在嘉兴。"}, {"role": "assistant", "content": "收到。"}]},
+        {"at": "2026-10-01T10:00:00", "turns": [{"role": "user", "content": "我在考虑搬去湖州，但还没决定，也还没搬，目前仍然住在嘉兴。"}, {"role": "assistant", "content": "收到。"}]}
+      ],
+      "queries": [{"id": "current", "question": "我目前住在哪个城市？只回答城市名。", "contains": ["嘉兴"], "forbidden": ["湖州"]}]
+    },
+    {
+      "id": "cumulative_progress",
+      "sessions": [
+        {"at": "2026-09-20T10:00:00", "turns": [{"role": "user", "content": "我在读《海岸信号》，全书100页，目前累计读到了28页。"}, {"role": "assistant", "content": "收到。"}]},
+        {"at": "2026-10-04T10:00:00", "turns": [{"role": "user", "content": "《海岸信号》的进度更新：现在累计读到了46页，包含之前的28页，不是新增46页。"}, {"role": "assistant", "content": "收到。"}]}
+      ],
+      "queries": [{"id": "remaining", "question": "《海岸信号》还有多少页没读？只回答页数。", "number": 54}]
+    },
+    {
+      "id": "corrected_booking",
+      "sessions": [
+        {"at": "2026-10-01T10:00:00", "turns": [{"role": "user", "content": "我的陶艺体验课预约在2026年10月18日。"}, {"role": "assistant", "content": "收到。"}]},
+        {"at": "2026-10-05T10:00:00", "turns": [{"role": "user", "content": "更正之前的预约：陶艺体验课改到2026年10月23日，10月18日的预约已经取消。"}, {"role": "assistant", "content": "收到。"}]}
+      ],
+      "queries": [{"id": "current_date", "question": "我当前的陶艺体验课预约是10月几日？只回答日号。", "number": 23}]
+    },
+    {
+      "id": "ownership_not_suggestion",
+      "sessions": [{"at": "2026-09-30T10:00:00", "turns": [{"role": "user", "content": "我只有一个雨量计，没有其他气象仪器。"}, {"role": "assistant", "content": "你可以考虑添置温度计和湿度计。"}]}],
+      "queries": [{"id": "owned", "question": "我说过自己拥有哪种气象仪器？只回答名称。", "contains": ["雨量计"], "forbidden": ["温度计", "湿度计"]}]
+    },
+    {
+      "id": "unknown_exact_date",
+      "sessions": [{"at": "2026-09-29T10:00:00", "turns": [{"role": "user", "content": "我在2026年6月买了一个墨绿水杯，但不记得具体几号。"}, {"role": "assistant", "content": "收到。"}]}],
+      "queries": [{"id": "day", "question": "我是在6月几号买墨绿水杯的？如果没有确切日期，请直接说不知道。", "unknown": true, "forbidden_regex": ["[0-9]+\\s*[日号]"]}]
+    },
+    {
+      "id": "selective_forgetting",
+      "sessions": [{"at": "2026-10-02T10:00:00", "turns": [{"role": "user", "content": "我的测试安全词是星蘑7049。我的猫叫绵豆。"}, {"role": "assistant", "content": "收到。"}]}],
+      "forget_contains": "星蘑7049",
+      "queries": [
+        {"id": "forgotten", "question": "我的测试安全词是什么？如果没有信息，请直接说不知道。", "unknown": true, "forbidden": ["星蘑7049"]},
+        {"id": "preserved", "question": "我的猫叫什么？只回答名字。", "contains": ["绵豆"]}
+      ]
+    },
+    {
+      "id": "calendar_noise",
+      "sessions": [{"at": "2026-10-13T09:00:00", "turns": [{"role": "user", "content": "今天是什么日期，星期几？"}, {"role": "assistant", "content": "今天是2026年10月13日，星期二。"}]}],
+      "max_facts": 0,
+      "queries": []
+    },
+    {
+      "id": "open_chat_window",
+      "pending": true,
+      "sessions": [{"at": "2026-10-13T09:00:00", "turns": [{"role": "user", "content": "我的工作室叫苔桥七号。"}, {"role": "assistant", "content": "收到。"}], "filler_rounds": 7}],
+      "queries": [{"id": "early_name", "same_conversation": true, "question": "我的工作室叫什么？只回答名称。", "contains": ["苔桥七号"]}]
+    },
+    {
+      "id": "tenant_isolation",
+      "sessions": [],
+      "queries": [{"id": "other_user", "question": "我的工作室叫什么？如果没有信息，请直接说不知道。", "unknown": true, "forbidden": ["苔桥七号"]}]
+    }
+  ]
+}

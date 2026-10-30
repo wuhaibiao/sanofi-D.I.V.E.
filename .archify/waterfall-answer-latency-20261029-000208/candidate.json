@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "diagram_type": "waterfall",
+  "meta": {
+    "title": "实际答题耗时：输入没少，远端请求为何更快",
+    "locale": "zh-CN",
+    "output": ".archify/waterfall-answer-latency-20261029-000208/answer-latency.html",
+    "evidence": "measured",
+    "unit": "s",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/wuhaibiao/sanofi-D.I.V.E..git",
+      "revision": "67b13488063eb61452b6c144fa26af8028dc4c16",
+      "link_mode": "local-only"
+    }
+  },
+  "layout": {
+    "width": 960
+  },
+  "spans": [
+    {
+      "id": "example-a-main",
+      "name": "实例 A · 主干",
+      "service": "主干",
+      "start": 0,
+      "end": 95.20107670174912,
+      "status": "ok",
+      "detail": "原题：What did my dad gave me as a birthday gift?\n从该轮查询向量请求开始归零。有时间戳区间 95.201 秒；完整读取＋答题 96.041 秒。另有 0.840 秒未定位开销，不画为已知子阶段。\n实际答案：I don’t have any information about a birthday gift from your dad. I do remember that your sister gave you a stand mixer for your birthday.",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 182,
+          "end_line": 196,
+          "label": "实际起点、用量与重试账本"
+        }
+      ]
+    },
+    {
+      "id": "example-a-main-local",
+      "name": "检索、重排与组装",
+      "service": "本地准备",
+      "start": 0,
+      "end": 7.700328826904297,
+      "parent": "example-a-main",
+      "status": "ok",
+      "detail": "由两个已记录请求起点作差：7.700329 秒；包括查询向量、检索、BGE 与上下文组装，不能继续精确分摊起止。\nBGE 单独记录总耗时 7.197 秒，包含加载 5.678 秒，但没有绝对起点，故没有伪造它在此区间内的定位。\n已装入 7 条事实、5763 UTF-8 字节。",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 182,
+          "end_line": 196,
+          "label": "实际起点、用量与重试账本"
+        }
+      ]
+    },
+    {
+      "id": "example-a-main-answer",
+      "name": "远端回答请求",
+      "service": "远端模型",
+      "start": 7.700328826904297,
+      "duration": 87.50074787484482,
+      "parent": "example-a-main",
+      "status": "ok",
+      "detail": "同一模型 gpt-6-luna；输入 2697 token，输出 58 token，重试 1 次。\nlatency_s 含重试等待及响应，不是纯模型推理耗时。未记录 TTFT、服务端排队、每次尝试时长或失败原因，不能把这个区间全部解释为推理或重试。\n原始账本：memsys/runs/memory-additional20-no-answer-audit-20261027/LongMemEval-read-usage.jsonl",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 364,
+          "end_line": 405,
+          "label": "请求计时覆盖重试"
+        }
+      ]
+    },
+    {
+      "id": "example-a-previous",
+      "name": "实例 A · Top-20",
+      "service": "Top-20",
+      "start": 0,
+      "end": 12.581906645791605,
+      "status": "ok",
+      "detail": "原题：What did my dad gave me as a birthday gift?\n从该轮查询向量请求开始归零。有时间戳区间 12.582 秒；完整读取＋答题 13.423 秒。另有 0.841 秒未定位开销，不画为已知子阶段。\n实际答案：I don’t have a record of what your dad gave you. I do have noted that your sister gave you a new stand mixer for your birthday.",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 182,
+          "end_line": 196,
+          "label": "实际起点、用量与重试账本"
+        }
+      ]
+    },
+    {
+      "id": "example-a-previous-local",
+      "name": "检索、重排与组装",
+      "service": "本地准备",
+      "start": 0,
+      "end": 9.344573020935059,
+      "parent": "example-a-previous",
+      "status": "ok",
+      "detail": "由两个已记录请求起点作差：9.344573 秒；包括查询向量、检索、BGE 与上下文组装，不能继续精确分摊起止。\nBGE 单独记录总耗时 8.672 秒，包含加载 6.419 秒，但没有绝对起点，故没有伪造它在此区间内的定位。\n已装入 9 条事实、5793 UTF-8 字节。",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 182,
+          "end_line": 196,
+          "label": "实际起点、用量与重试账本"
+        }
+      ]
+    },
+    {
+      "id": "example-a-previous-answer",
+      "name": "远端回答请求",
+      "service": "远端模型",
+      "start": 9.344573020935059,
+      "duration": 3.2373336248565465,
+      "parent": "example-a-previous",
+      "status": "ok",
+      "detail": "同一模型 gpt-6-luna；输入 2701 token，输出 96 token，重试 0 次。\nlatency_s 含重试等待及响应，不是纯模型推理耗时。未记录 TTFT、服务端排队、每次尝试时长或失败原因，不能把这个区间全部解释为推理或重试。\n原始账本：.worktrees/memsys-top20-refinement/runs/top20-refinement-regression20-20261028/LongMemEval-read-usage.jsonl",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 364,
+          "end_line": 405,
+          "label": "请求计时覆盖重试"
+        }
+      ]
+    },
+    {
+      "id": "example-b-main",
+      "name": "实例 B · 主干",
+      "service": "主干",
+      "start": 0,
+      "end": 61.878650455735624,
+      "status": "ok",
+      "detail": "原题：What color did I repaint my bedroom walls?\n从该轮查询向量请求开始归零。有时间戳区间 61.879 秒；完整读取＋答题 62.971 秒。另有 1.092 秒未定位开销，不画为已知子阶段。\n实际答案：You repainted them a lighter shade of gray.",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 182,
+          "end_line": 196,
+          "label": "实际起点、用量与重试账本"
+        }
+      ]
+    },
+    {
+      "id": "example-b-main-local",
+      "name": "检索、重排与组装",
+      "service": "本地准备",
+      "start": 0,
+      "end": 9.1569242477417,
+      "parent": "example-b-main",
+      "status": "ok",
+      "detail": "由两个已记录请求起点作差：9.156924 秒；包括查询向量、检索、BGE 与上下文组装，不能继续精确分摊起止。\nBGE 单独记录总耗时 8.490 秒，包含加载 5.459 秒，但没有绝对起点，故没有伪造它在此区间内的定位。\n已装入 26 条事实、21075 UTF-8 字节。",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 182,
+          "end_line": 196,
+          "label": "实际起点、用量与重试账本"
+        }
+      ]
+    },
+    {
+      "id": "example-b-main-answer",
+      "name": "远端回答请求",
+      "service": "远端模型",
+      "start": 9.1569242477417,
+      "duration": 52.721726207993925,
+      "parent": "example-b-main",
+      "status": "ok",
+      "detail": "同一模型 gpt-6-luna；输入 6306 token，输出 14 token，重试 0 次。\nlatency_s 含重试等待及响应，不是纯模型推理耗时。未记录 TTFT、服务端排队、每次尝试时长或失败原因，不能把这个区间全部解释为推理或重试。\n原始账本：memsys/runs/memory-additional20-no-answer-audit-20261027/LongMemEval-read-usage.jsonl",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 364,
+          "end_line": 405,
+          "label": "请求计时覆盖重试"
+        }
+      ]
+    },
+    {
+      "id": "example-b-previous",
+      "name": "实例 B · Top-20",
+      "service": "Top-20",
+      "start": 0,
+      "end": 15.738369449740276,
+      "status": "ok",
+      "detail": "原题：What color did I repaint my bedroom walls?\n从该轮查询向量请求开始归零。有时间戳区间 15.738 秒；完整读取＋答题 16.550 秒。另有 0.812 秒未定位开销，不画为已知子阶段。\n实际答案：You repainted your bedroom walls a lighter shade of gray.",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 182,
+          "end_line": 196,
+          "label": "实际起点、用量与重试账本"
+        }
+      ]
+    },
+    {
+      "id": "example-b-previous-local",
+      "name": "检索、重排与组装",
+      "service": "本地准备",
+      "start": 0,
+      "end": 13.050397157669067,
+      "parent": "example-b-previous",
+      "status": "ok",
+      "detail": "由两个已记录请求起点作差：13.050397 秒；包括查询向量、检索、BGE 与上下文组装，不能继续精确分摊起止。\nBGE 单独记录总耗时 12.351 秒，包含加载 5.349 秒，但没有绝对起点，故没有伪造它在此区间内的定位。\n已装入 20 条事实、21407 UTF-8 字节。",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 182,
+          "end_line": 196,
+          "label": "实际起点、用量与重试账本"
+        }
+      ]
+    },
+    {
+      "id": "example-b-previous-answer",
+      "name": "远端回答请求",
+      "service": "远端模型",
+      "start": 13.050397157669067,
+      "duration": 2.6879722920712084,
+      "parent": "example-b-previous",
+      "status": "ok",
+      "detail": "同一模型 gpt-6-luna；输入 6306 token，输出 16 token，重试 0 次。\nlatency_s 含重试等待及响应，不是纯模型推理耗时。未记录 TTFT、服务端排队、每次尝试时长或失败原因，不能把这个区间全部解释为推理或重试。\n原始账本：.worktrees/memsys-top20-refinement/runs/top20-refinement-regression20-20261028/LongMemEval-read-usage.jsonl",
+      "sources": [
+        {
+          "path": "src/memsys/llm.py",
+          "line": 364,
+          "end_line": 405,
+          "label": "请求计时覆盖重试"
+        }
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "结论：巨大提速不能全归因于 Top-20",
+      "items": [
+        "两题的输入都没有减少，远端请求仍明显变快；实例 B 两轮均无重试，说明重试也不足以解释全部差异。",
+        "20 题平均读取＋答题 50.24 → 19.37 秒，远端请求 36.44 → 4.06 秒。时间主要省在远端请求，本地 BGE 没有同步提速。",
+        "两轮是不同时间的历史调用。上下文缩减是全组可见收益，61.4% 延迟降幅尚不能当作稳定的架构收益。"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "实例 A：原顺序第 1 题",
+      "items": [
+        "What did my dad gave me as a birthday gift?",
+        "主干实际命中：The user received a new stand mixer as a birthday gift from her sister last month (April 2023).",
+        "Top-20 实际命中：The user received a new stand mixer as a birthday gift from their sister last month, in April 2023.",
+        "主干回答：I don’t have any information about a birthday gift from your dad. I do remember that your sister gave you a stand mixer for your birthday.",
+        "Top-20 回答：I don’t have a record of what your dad gave you. I do have noted that your sister gave you a new stand mixer for your birthday."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "实例 A：输入没有变短",
+      "items": [
+        "输入 token：2697 → 2701；输出：58 → 96。同 token 数也不代表提示内容完全相同。",
+        "入提示事实：7 → 9；记忆正文：5,763 → 5,793 UTF-8 字节。条数变少不保证 token 变少。",
+        "完整读取＋答题：96.04 → 13.42 秒；远端请求：87.50 → 3.24 秒。",
+        "重试：1 → 0 次；BGE：7.20 → 8.67 秒。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "实例 B：原顺序第 3 题",
+      "items": [
+        "What color did I repaint my bedroom walls?",
+        "主干实际命中：The user recently repainted the bedroom walls a lighter shade of gray, and says the room feels much brighter.",
+        "Top-20 实际命中：The user repainted their bedroom walls a lighter shade of gray, and the room feels much brighter to them.",
+        "主干回答：You repainted them a lighter shade of gray.",
+        "Top-20 回答：You repainted your bedroom walls a lighter shade of gray."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "实例 B：输入没有变短",
+      "items": [
+        "输入 token：6306 → 6306；输出：14 → 16。同 token 数也不代表提示内容完全相同。",
+        "入提示事实：26 → 20；记忆正文：21,075 → 21,407 UTF-8 字节。条数变少不保证 token 变少。",
+        "完整读取＋答题：62.97 → 16.55 秒；远端请求：52.72 → 2.69 秒。",
+        "重试：0 → 0 次；BGE：8.49 → 12.35 秒。"
+      ]
+    },
+    {
+      "dot": "orange",
+      "title": "旧轮本身有明显的时段变化",
+      "items": [
+        "主干前 10 题远端平均 66.68 秒，后 10 题 6.20 秒；平均输入反而从 5,895.2 增至 12,716.5 token。",
+        "Top-20 前／后 10 题远端平均 3.78／4.33 秒。",
+        "两轮都无重试的同一组 18 题，远端均值仍为 32.10 → 4.07 秒。不能把全部下降归结为少了两次答题重试。",
+        "这些记录提示运行时段或上游处理状态存在影响；现有日志不能区分网络、排队、失败尝试和模型处理各占多少。"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "如何读图与复核",
+      "items": [
+        "每个父条都是一轮独立调用，起点各自归零；四轮并非同时发生。所有条形使用同一秒轴。父条包含子条，不能相加。",
+        "图只画两个请求起点与请求时长能定位的区间。完整读取＋答题另有约 0.8–1.1 秒未定位开销，列在详情中。BGE 只有持续时间，没有绝对起点，故只列数字。",
+        "点击条形查看实测详情。按原顺序选择第 1 题，再选择首个输入 token 相同且两轮均无重试的后续题；没有按答对或答错选题。",
+        "同目录 evidence.json 保存全部 20 题配对数据、这两题的完整实际提示、记忆、回答及原始来源哈希；没有复跑模型或修改评测标签。"
+      ]
+    }
+  ]
+}

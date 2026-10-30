@@ -1,0 +1,33 @@
+{
+  "phase": "read",
+  "source_sha256": "cba4b4ab3ee7ba7e26dd78f9f8ec66ecfbd8a5c1883c53b868bb150ef4753e0a",
+  "corpora": 1,
+  "facts": 107,
+  "entities": 21,
+  "relations": 102,
+  "entity_types": {
+    "user": 1,
+    "other": 2,
+    "item": 15,
+    "assistant": 1,
+    "person": 1,
+    "activity": 1
+  },
+  "relation_origins": {
+    "extracted": 38,
+    "legacy_key": 64
+  },
+  "orphan_relation_fact_ids": 0,
+  "by_corpus": [
+    {
+      "corpus_id": "corpus-75748670a05ae502b3725276",
+      "facts": 107,
+      "entities": 21,
+      "relations": 102,
+      "extracted_relations": 38,
+      "legacy_associations": 64,
+      "orphan_relation_fact_ids": 0
+    }
+  ],
+  "method": "Read-only metadata aggregation over latest tenant-visible evaluation records; no model calls, questions or gold labels."
+}

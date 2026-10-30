@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>MemSys · 有记忆的对话</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 6 2 18M15 3 8 21M22 6 17 18' fill='none' stroke='%23252929' stroke-width='3.3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/assets/chat.css">
+  <script src="/assets/chat.js" defer></script>
+</head>
+<body>
+  <button class="scrim" id="scrim" aria-label="关闭侧栏" hidden></button>
+  <aside class="sidebar" id="sidebar" aria-label="对话列表">
+    <div class="brand"><span class="brand-mark" id="brand-icon" aria-hidden="true"></span><span>MemSys</span><button class="icon-button sidebar-collapse" id="collapse" aria-label="收起侧栏"></button></div>
+    <button class="new-chat" id="new-chat"><span id="new-icon" aria-hidden="true"></span>新建对话<span class="shortcut">⌘ K</span></button>
+    <label class="search-box"><span id="search-icon" aria-hidden="true"></span><input id="search" type="search" placeholder="搜索对话" aria-label="搜索对话" autocomplete="off"></label>
+    <div class="history-label">最近对话</div>
+    <nav class="history" id="history" aria-label="最近对话"></nav>
+    <div class="sidebar-bottom"><div class="local-space"><span class="online-dot"></span>本机空间</div><button class="profile" id="settings-button"><span class="avatar">本</span><span><strong id="profile-name">本机用户</strong><small>对话与记忆保存在本机</small></span><span id="settings-icon" aria-hidden="true"></span></button></div>
+  </aside>
+  <main class="main is-empty">
+    <header class="topbar"><div class="topbar-left"><button class="icon-button" id="menu" aria-label="展开侧栏"></button><div class="app-name">MemSys<span class="model-name" id="model-name">正在连接</span></div></div></header>
+    <section class="conversation-scroll" id="conversation-scroll" aria-label="聊天内容">
+      <div class="welcome" id="welcome"><div class="welcome-symbol" id="welcome-icon" aria-hidden="true"></div><h1>今天，想聊点什么？</h1></div>
+      <div class="messages" id="messages" aria-live="polite" aria-relevant="additions"></div>
+    </section>
+    <div class="composer-area"><div class="notice" id="notice" role="status" hidden></div><form class="composer" id="composer"><textarea id="message" rows="1" placeholder="发送消息给 MemSys" aria-label="消息" autofocus></textarea><div class="composer-bottom"><span class="input-hint">Enter 发送<span> · Shift + Enter 换行</span></span><button class="send-button" id="send" type="submit" aria-label="发送消息" disabled></button></div></form><p class="footer-note">对话保存在本机 · 回答由已配置的在线模型生成</p></div>
+  </main>
+  <dialog id="settings"><form method="dialog"><div class="dialog-heading"><h2>设置</h2><button class="icon-button close-dialog" aria-label="关闭设置" value="cancel"></button></div><div class="setting-row"><span>当前账户</span><strong id="settings-user">本机用户</strong></div><div class="setting-row"><span>回答模型</span><strong id="settings-model">已配置模型</strong></div><p class="setting-note">每次回答都会自动检索相关记忆。对话会保存；新建对话时，上一段会在后台整理为记忆。</p><button class="dialog-done" value="done">完成</button></form></dialog>
+  <dialog id="rename-dialog"><form id="rename-form"><div class="dialog-heading"><h2>重命名对话</h2><button type="button" class="icon-button close-dialog" id="rename-cancel" aria-label="关闭"></button></div><input id="rename-input" class="dialog-input" maxlength="100" aria-label="对话名称" required><button class="dialog-done" type="submit">保存</button></form></dialog>
+  <dialog id="connect-dialog"><form id="connect-form"><div class="dialog-heading"><h2>连接你的记忆空间</h2></div><p class="dialog-description">输入管理员为你提供的访问令牌。令牌不会保存到浏览器存储。</p><input id="connect-token" class="dialog-input" type="password" autocomplete="off" placeholder="访问令牌" aria-label="访问令牌" required><p class="connect-error" id="connect-error" role="alert"></p><button class="dialog-done" type="submit">连接</button></form></dialog>
+  <div class="toast" id="toast" role="status" hidden></div>
+</body>
+</html>

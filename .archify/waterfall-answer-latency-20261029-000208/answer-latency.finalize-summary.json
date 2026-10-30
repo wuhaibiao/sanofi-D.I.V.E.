@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "waterfall",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Users/OleniusBlanc227/Documents/sanofi/.archify/waterfall-answer-latency-20261029-000208/candidate.json",
+    "sha256": "d6fe83144b9c3204e5d2218493738520f3d6f9054a73908e6271b6ed54d1c133",
+    "bytes": 14346
+  },
+  "artifact": {
+    "path": "/Users/OleniusBlanc227/Documents/sanofi/.archify/waterfall-answer-latency-20261029-000208/answer-latency.html",
+    "sha256": "b534c40c5ac86862cad96190bbfcaab289af760dec86c2352a88477f63b6a94c",
+    "bytes": 862783
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Users/OleniusBlanc227/Documents/sanofi/.archify/waterfall-answer-latency-20261029-000208/answer-latency.finalize.json",
+    "summaryReceipt": "/Users/OleniusBlanc227/Documents/sanofi/.archify/waterfall-answer-latency-20261029-000208/answer-latency.finalize-summary.json",
+    "browserCheckReceipt": "/Users/OleniusBlanc227/Documents/sanofi/.archify/waterfall-answer-latency-20261029-000208/answer-latency.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-29T07:02:32.742Z",
+    "source": "network",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 8622,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

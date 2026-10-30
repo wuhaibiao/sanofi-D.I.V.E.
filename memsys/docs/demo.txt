@@ -1,0 +1,30 @@
+# 答辩演示脚本：memsys chat --user demo --clock sim --at "2026-10-01 09:00" --script docs/demo.txt
+# 用模拟时钟在几分钟里走完几个月，每一段对应一项能力。以 # 开头的行和空行会被跳过。
+
+# 1. 积累：随口提到的个人信息会被抽取成事实
+I just started a new job as a backend engineer at a game studio in Hangzhou. Can you suggest a good mechanical keyboard for long coding days?
+By the way, I'm allergic to peanuts, so keep that in mind if you ever suggest snacks.
+/end
+/mem
+
+# 2. 更新：情况变了，旧事实被取代但保留在版本链里
+/time +6w
+I switched jobs last month, now I work at a brokerage in Shanghai. Any tips for my commute on the metro?
+/end
+/hist job
+
+# 3. 时间与多会话：日期差在代码里算好
+/time +1w
+Where do I work now, and how long ago did I change jobs?
+/why
+
+# 4. 复用：推荐要结合记住的偏好
+Can you suggest some snacks for my desk at work?
+
+# 5. 拒答：问一个从没提过的相似信息
+What's the name of my manager at the game studio?
+/end
+
+# 6. 遗忘：半年后看保留分和归档情况
+/time +6m
+/stats

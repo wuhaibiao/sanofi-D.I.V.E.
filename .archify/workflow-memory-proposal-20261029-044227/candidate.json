@@ -1,0 +1,370 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "主干记忆写入与答题流程",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-memory-proposal-20261029-044227/memory-workflow.html",
+    "repository": {
+      "url": "https://github.com/wuhaibiao/sanofi-D.I.V.E..git",
+      "revision": "eba1116a7d2eaa268a492fbf809ce6394ff4e430",
+      "link_mode": "local-only"
+    }
+  },
+  "lanes": [
+    {
+      "id": "write",
+      "label": "历史写入与维护"
+    },
+    {
+      "id": "answer",
+      "label": "查询与回答"
+    }
+  ],
+  "mainPath": [
+    "question",
+    "recall",
+    "rank",
+    "select",
+    "render",
+    "agent"
+  ],
+  "nodes": [
+    {
+      "id": "history",
+      "lane": "write",
+      "col": 0,
+      "type": "external",
+      "label": "历史对话",
+      "sublabel": "按会话和时间进入",
+      "sources": [
+        {
+          "path": "src/memsys/core.py",
+          "line": 150,
+          "end_line": 164
+        }
+      ]
+    },
+    {
+      "id": "raw",
+      "lane": "write",
+      "col": 1,
+      "type": "database",
+      "label": "原文持久化",
+      "sublabel": "保留角色与来源轮次",
+      "sources": [
+        {
+          "path": "src/memsys/core.py",
+          "line": 154,
+          "end_line": 164
+        },
+        {
+          "path": "src/memsys/store.py",
+          "line": 441,
+          "end_line": 460
+        },
+        {
+          "path": "src/memsys/store.py",
+          "line": 167,
+          "end_line": 222
+        }
+      ]
+    },
+    {
+      "id": "extract",
+      "lane": "write",
+      "col": 2,
+      "type": "cloud",
+      "label": "模型抽取事实",
+      "sublabel": "语义事实与字面结构",
+      "sources": [
+        {
+          "path": "src/memsys/write.py",
+          "line": 433,
+          "end_line": 474
+        },
+        {
+          "path": "src/memsys/write.py",
+          "line": 503,
+          "end_line": 550
+        }
+      ]
+    },
+    {
+      "id": "insert",
+      "lane": "write",
+      "col": 3,
+      "type": "backend",
+      "label": "新增与精确去重",
+      "sublabel": "保留独立事件和来源",
+      "sources": [
+        {
+          "path": "src/memsys/update.py",
+          "line": 29,
+          "end_line": 54
+        },
+        {
+          "path": "src/memsys/write.py",
+          "line": 337,
+          "end_line": 375
+        }
+      ]
+    },
+    {
+      "id": "store",
+      "lane": "write",
+      "col": 4,
+      "type": "database",
+      "label": "Qdrant记忆库",
+      "sublabel": "事实及向量和词项索引",
+      "sources": [
+        {
+          "path": "src/memsys/store.py",
+          "line": 167,
+          "end_line": 222
+        },
+        {
+          "path": "src/memsys/write.py",
+          "line": 337,
+          "end_line": 375
+        }
+      ]
+    },
+    {
+      "id": "life",
+      "lane": "write",
+      "col": 5,
+      "type": "backend",
+      "label": "生命周期维护",
+      "sublabel": "按时效与容量逻辑归档",
+      "sources": [
+        {
+          "path": "src/memsys/core.py",
+          "line": 160,
+          "end_line": 168
+        },
+        {
+          "path": "src/memsys/lifecycle.py",
+          "line": 61,
+          "end_line": 105
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "lane": "answer",
+      "col": 0,
+      "type": "external",
+      "label": "当前问题",
+      "sublabel": "宿主调用记忆接口",
+      "sources": [
+        {
+          "path": "src/memsys/core.py",
+          "line": 188,
+          "end_line": 207
+        },
+        {
+          "path": "src/memsys/webchat.py",
+          "line": 290,
+          "end_line": 302
+        }
+      ]
+    },
+    {
+      "id": "recall",
+      "lane": "answer",
+      "col": 1,
+      "type": "backend",
+      "label": "本地规划与混合召回",
+      "sublabel": "语义向量与关键词融合",
+      "sources": [
+        {
+          "path": "src/memsys/core.py",
+          "line": 231,
+          "end_line": 244
+        },
+        {
+          "path": "src/memsys/read.py",
+          "line": 270,
+          "end_line": 335
+        }
+      ]
+    },
+    {
+      "id": "rank",
+      "lane": "answer",
+      "col": 2,
+      "type": "backend",
+      "label": "关联扩展与BGE重排",
+      "sublabel": "有界关系遍历与相关度",
+      "sources": [
+        {
+          "path": "src/memsys/read.py",
+          "line": 370,
+          "end_line": 389
+        },
+        {
+          "path": "src/memsys/read.py",
+          "line": 428,
+          "end_line": 489
+        }
+      ]
+    },
+    {
+      "id": "select",
+      "lane": "answer",
+      "col": 3,
+      "type": "backend",
+      "label": "优先级与预算装入",
+      "sublabel": "来源归属及对象覆盖",
+      "sources": [
+        {
+          "path": "src/memsys/fact_selection.py",
+          "line": 6,
+          "end_line": 41
+        },
+        {
+          "path": "src/memsys/read.py",
+          "line": 570,
+          "end_line": 635
+        },
+        {
+          "path": "src/memsys/core.py",
+          "line": 244,
+          "end_line": 283
+        }
+      ]
+    },
+    {
+      "id": "render",
+      "lane": "answer",
+      "col": 4,
+      "type": "backend",
+      "label": "返回记忆上下文",
+      "sublabel": "正文与时间状态提示",
+      "sources": [
+        {
+          "path": "src/memsys/read.py",
+          "line": 756,
+          "end_line": 821
+        },
+        {
+          "path": "src/memsys/core.py",
+          "line": 206,
+          "end_line": 229
+        },
+        {
+          "path": "src/memsys/serve.py",
+          "line": 715,
+          "end_line": 725
+        }
+      ]
+    },
+    {
+      "id": "agent",
+      "lane": "answer",
+      "col": 5,
+      "type": "cloud",
+      "label": "Agent生成回答",
+      "sublabel": "近期窗口与记忆共同输入",
+      "sources": [
+        {
+          "path": "src/memsys/webchat.py",
+          "line": 290,
+          "end_line": 314
+        },
+        {
+          "path": "src/memsys/agent_adapter.py",
+          "line": 28,
+          "end_line": 42
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "history-raw",
+      "to": "raw",
+      "from": "history"
+    },
+    {
+      "id": "raw-extract",
+      "to": "extract",
+      "from": "raw"
+    },
+    {
+      "id": "extract-insert",
+      "to": "insert",
+      "from": "extract"
+    },
+    {
+      "id": "insert-store",
+      "to": "store",
+      "from": "insert"
+    },
+    {
+      "id": "store-life",
+      "to": "life",
+      "from": "store"
+    },
+    {
+      "id": "question-recall",
+      "to": "recall",
+      "from": "question"
+    },
+    {
+      "id": "recall-rank",
+      "to": "rank",
+      "from": "recall"
+    },
+    {
+      "id": "rank-select",
+      "to": "select",
+      "from": "rank"
+    },
+    {
+      "id": "select-render",
+      "to": "render",
+      "from": "select"
+    },
+    {
+      "id": "render-agent",
+      "to": "agent",
+      "from": "render"
+    },
+    {
+      "id": "recall-store",
+      "from": "recall",
+      "to": "store",
+      "label": "查询事实",
+      "role": "branch"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "读取边界",
+      "items": [
+        "默认只装入选中事实；来源原文通过显式接口读取。",
+        "混合召回与BGE重排在本地完成，默认查询规划不调用LLM。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "当前实现与待完善项",
+      "items": [
+        "当前写入以追加和精确去重为主，自动冲突裁决尚待完善。",
+        "覆盖提示保留不确定性；日志记录用于定位问题，回答后没有审计关卡。"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "源码依据",
+      "items": [
+        "图中节点引用恢复后的main工作区快照，包含原有未提交代码。",
+        "快照仅供本地核对；评测效果和成本见技术方案，流程线不表示实测耗时。"
+      ]
+    }
+  ]
+}

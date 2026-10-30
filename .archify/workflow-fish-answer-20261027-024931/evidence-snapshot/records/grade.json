@@ -1,0 +1,16 @@
+{
+  "question_id": "lme_eeda8a6d",
+  "dataset": "LongMemEval",
+  "category": "multi-session",
+  "reference": "17",
+  "status": "graded",
+  "correct": true,
+  "actual_model": "gpt-6-luna",
+  "attempts": [
+    {
+      "text": "yes",
+      "finish_reason": "stop",
+      "model": "gpt-6-luna"
+    }
+  ]
+}

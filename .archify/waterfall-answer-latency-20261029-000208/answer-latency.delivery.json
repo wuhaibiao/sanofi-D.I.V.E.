@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "70832346-dbd3-4277-9eb0-2598c082c2b8",
+  "status": "current",
+  "command": "deliver",
+  "type": "waterfall",
+  "input": "/Users/OleniusBlanc227/Documents/sanofi/.archify/waterfall-answer-latency-20261029-000208/candidate.json",
+  "output": "/Users/OleniusBlanc227/Documents/sanofi/.archify/waterfall-answer-latency-20261029-000208/answer-latency.html",
+  "specification": {
+    "sha256": "d6fe83144b9c3204e5d2218493738520f3d6f9054a73908e6271b6ed54d1c133",
+    "bytes": 14346
+  },
+  "artifact": {
+    "sha256": "b534c40c5ac86862cad96190bbfcaab289af760dec86c2352a88477f63b6a94c",
+    "bytes": 862783
+  }
+}

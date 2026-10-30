@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-fish-answer-20261027-024931/candidate.json",
+    "sha256": "19a0bbe64e4f645c0a91faed820f3693c5b2ad0f0dca17bba357e6fd36061528",
+    "bytes": 18264
+  },
+  "artifact": {
+    "path": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-fish-answer-20261027-024931/fish-answer.html",
+    "sha256": "581aedbdd1bffbac703fcd48dbe1dbeda1856997374db5459b8dab5c143186a3",
+    "bytes": 865954
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-fish-answer-20261027-024931/fish-answer.finalize.json",
+    "summaryReceipt": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-fish-answer-20261027-024931/fish-answer.finalize-summary.json",
+    "browserCheckReceipt": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-fish-answer-20261027-024931/fish-answer.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-27T09:49:57.742Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 8441,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "f9efc648-7cae-4d28-873b-21d37a6bc712",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-memory-proposal-redesign-20261030-003722/candidate.json",
+  "output": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-memory-proposal-redesign-20261030-003722/memory-workflow.html",
+  "specification": {
+    "sha256": "fc8712f2b9a6c098d40578aafdfb54153737d8ec13a3ecdd06144a83b14dd2e6",
+    "bytes": 5045
+  },
+  "artifact": {
+    "sha256": "e06d50e00967903865df841e87a2f6a21052e1c2d90ffc1696e25c77a17ecdb9",
+    "bytes": 837715
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "originals_unchanged": true,
+  "source_files_checked": 10,
+  "candidate_sha256": "d6fe83144b9c3204e5d2218493738520f3d6f9054a73908e6271b6ed54d1c133",
+  "evidence_sha256": "1535f3855061ef9907815c3762dab4d1d467da79af42f02bd6e4e54ae516299d",
+  "retained_branch": "codex/memory-top20-previous",
+  "retained_commit": "67b13488063eb61452b6c144fa26af8028dc4c16",
+  "checkout_clean": true
+}

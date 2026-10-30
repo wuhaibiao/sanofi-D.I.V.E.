@@ -1,0 +1,93 @@
+{
+  "started_at": "2026-10-27T09:26:17.464740+00:00",
+  "mode": "question_serial",
+  "cases": [
+    {
+      "question_id": "lme_eeda8a6d",
+      "index": 1,
+      "prefix": "memsys_v7_8f7747ca0cef_q0001",
+      "outcomes": [
+        {
+          "phase": "write",
+          "exit_code": 0
+        },
+        {
+          "phase": "audit",
+          "exit_code": 0
+        },
+        {
+          "phase": "read",
+          "exit_code": 0
+        },
+        {
+          "phase": "judge",
+          "exit_code": 0
+        }
+      ],
+      "current": null,
+      "cleanup": {
+        "deleted": [
+          "memsys_v7_8f7747ca0cef_q0001_dense_1024",
+          "memsys_v7_8f7747ca0cef_q0001_jobs",
+          "memsys_v7_8f7747ca0cef_q0001_lexical",
+          "memsys_v7_8f7747ca0cef_q0001_records"
+        ],
+        "verified_empty": true,
+        "unrelated_collections_preserved": true,
+        "remaining_owned": []
+      }
+    },
+    {
+      "question_id": "lme_gpt4_a56e767c",
+      "index": 2,
+      "prefix": "memsys_v7_8f7747ca0cef_q0002",
+      "outcomes": [
+        {
+          "phase": "write",
+          "exit_code": 0
+        },
+        {
+          "phase": "audit",
+          "exit_code": 0
+        },
+        {
+          "phase": "read",
+          "exit_code": 0
+        },
+        {
+          "phase": "judge",
+          "exit_code": 0
+        }
+      ],
+      "current": null,
+      "cleanup": {
+        "deleted": [
+          "memsys_v7_8f7747ca0cef_q0002_dense_1024",
+          "memsys_v7_8f7747ca0cef_q0002_jobs",
+          "memsys_v7_8f7747ca0cef_q0002_lexical",
+          "memsys_v7_8f7747ca0cef_q0002_records"
+        ],
+        "verified_empty": true,
+        "unrelated_collections_preserved": true,
+        "remaining_owned": []
+      }
+    }
+  ],
+  "current": null,
+  "complete": true,
+  "elapsed_s": 598.952,
+  "cleanup": {
+    "deleted": [
+      "memsys_v7_8f7747ca0cef_q0001_dense_1024",
+      "memsys_v7_8f7747ca0cef_q0001_jobs",
+      "memsys_v7_8f7747ca0cef_q0001_lexical",
+      "memsys_v7_8f7747ca0cef_q0001_records",
+      "memsys_v7_8f7747ca0cef_q0002_dense_1024",
+      "memsys_v7_8f7747ca0cef_q0002_jobs",
+      "memsys_v7_8f7747ca0cef_q0002_lexical",
+      "memsys_v7_8f7747ca0cef_q0002_records"
+    ],
+    "remaining_owned": [],
+    "unrelated_collections_preserved": true
+  }
+}

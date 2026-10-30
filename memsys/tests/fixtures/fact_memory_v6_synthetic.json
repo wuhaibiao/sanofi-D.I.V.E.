@@ -1,0 +1,29 @@
+{
+  "authorship": "Self-authored functional scenarios, fixed before V6 implementation; no public benchmark inputs.",
+  "cases": [
+    {
+      "id": "fixture_calibration_steps",
+      "at": "2031-11-02T10:00:00",
+      "user": "请保存这份装置校准流程，步骤顺序很重要。",
+      "assistant": "1. Inspect the chassis.\n2. Connect the probe.\n3. Record the baseline.",
+      "question": "请按原顺序列出之前给我的三个校准步骤。",
+      "validation": "Return all three literal actions in their source order."
+    },
+    {
+      "id": "fixture_event_states",
+      "at": "2031-11-02T10:00:00",
+      "user": "我计划在2031年11月8日参加设备校准，现在还没参加。另外，我今天已经完成了一次装置耐久试验。",
+      "assistant": "已记录你的安排和进度。",
+      "question": "我已经参加设备校准了吗？目前完成了什么？",
+      "validation": "Calibration is planned, not completed; the endurance test is completed."
+    },
+    {
+      "id": "fixture_audio_constraints",
+      "at": "2031-11-02T10:00:00",
+      "user": "我做声音记录，已经有一台手持录音设备，不想购买新设备。我的工作台只有一米宽。请记住这些限制。",
+      "assistant": "可以保留现有设备，把工作流程控制在现有工作台范围内。",
+      "question": "请结合我的限制，给我一个整理声音记录的实用工作流程。",
+      "validation": "Use the existing recorder and one-metre workspace; do not suggest buying another recorder."
+    }
+  ]
+}

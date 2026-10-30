@@ -1,0 +1,15 @@
+{
+  "artifact": "answer-latency.html",
+  "original_source_files_unchanged": true,
+  "original_source_file_count": 10,
+  "product_checkout_clean": true,
+  "perceptual_review": {
+    "inspected_capture": "visual-check/answer-latency.visual-check.1440x900.light.png",
+    "findings": [
+      "Same-scale duration bars and labels are readable at 1440x900.",
+      "Per-example token counts, retries and actual recalled facts are visible in the supporting cards.",
+      "Remaining cards use normal vertical page scroll."
+    ]
+  },
+  "read_time_basis": "Every independent run begins at its own first query-embedding request; full read totals include separately reported unpositioned overhead."
+}

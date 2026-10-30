@@ -1,0 +1,63 @@
+{
+  "description": "Independently authored functional contracts, frozen before product edits. Expectations are evaluator-only, not public benchmark data.",
+  "today": "2026-09-25T12:00:00",
+  "cases": [
+    {
+      "id": "assistant_parameters",
+      "sessions": [{"at": "2026-09-20T09:00:00", "turns": [{"role": "assistant", "content": "# 苔原开放日配置\n材料：\n* 光学插片：72片\n* 印制名牌：315张\n时间：\n* 布置开始：07:45\n这些是我给这次开放日拟的配置，尚不是你实际采购的记录。"}]}],
+      "queries": [{"id": "quantity", "question": "你之前给苔原开放日拟的配置里，光学插片是多少片？只回答数量。", "number": 72}]
+    },
+    {
+      "id": "assistant_example",
+      "sessions": [{"at": "2026-09-20T10:00:00", "turns": [{"role": "user", "content": "请用一个虚构案例说明合作陶艺工作室如何分工。"}, {"role": "assistant", "content": "我举的虚构例子是陶艺师诺拉·维尔：她负责釉色试验，伙伴负责窑炉排期。这只是解释分工的假设例子，不是你认识的人，也不是对真实人物的介绍。"}]}],
+      "queries": [{"id": "example_name", "question": "上次解释合作陶艺工作室分工时，你举的虚构陶艺师叫什么？只回答名字。", "contains": ["诺拉", "维尔"]}]
+    },
+    {
+      "id": "old_is_not_disposed",
+      "sessions": [{"at": "2026-09-20T10:00:00", "turns": [{"role": "user", "content": "我有一台叫Kite的平板。上周我买了新平板Sol。我的旧Kite留在书桌上。"}, {"role": "assistant", "content": "收到。"}]}],
+      "queries": [{"id": "owned", "question": "我目前提到自己有哪两台平板？只列名字。", "contains": ["Kite", "Sol"], "forbidden": ["不再拥有", "丢弃"]}]
+    },
+    {
+      "id": "explicit_ownership_end",
+      "sessions": [
+        {"at": "2026-09-18T10:00:00", "turns": [{"role": "user", "content": "我的平板是Kite和Sol。"}, {"role": "assistant", "content": "收到。"}]},
+        {"at": "2026-09-24T10:00:00", "turns": [{"role": "user", "content": "我昨天已经把Kite平板捐出，不再拥有它了。目前只剩Sol平板。"}, {"role": "assistant", "content": "收到。"}]}
+      ],
+      "queries": [{"id": "remaining", "question": "我现在还拥有哪台平板？只回答名字。", "contains": ["Sol"], "forbidden": ["Kite"]}]
+    },
+    {
+      "id": "performer_and_companion",
+      "sessions": [{"at": "2026-09-23T20:00:00", "turns": [{"role": "user", "content": "今天我和同事Sora一起到Rivet Hall看了Delta Quartet的演出，台上的指挥是Ivo Marn。"}, {"role": "assistant", "content": "收到。"}]}],
+      "queries": [{"id": "companion", "question": "谁陪我去Rivet Hall看演出？只回答同行者名字。", "contains": ["Sora"], "forbidden": ["Ivo", "Delta"]}]
+    },
+    {
+      "id": "linked_relative_offsets",
+      "sessions": [
+        {"at": "2026-09-25T09:00:00", "turns": [{"role": "user", "content": "Larch培训研讨会是整整四个月前举行的，参加起来很顺利。"}, {"role": "assistant", "content": "收到。"}]},
+        {"at": "2026-09-25T10:00:00", "turns": [{"role": "user", "content": "说到那次Larch培训研讨会，我是在开会前两个月预订的实验设备，报告是在开会后一个月寄出的。"}, {"role": "assistant", "content": "收到。"}]}
+      ],
+      "queries": [
+        {"id": "before", "question": "我大约几个月前预订了Larch研讨会的实验设备？只回答月份数量。", "number": 6},
+        {"id": "after", "question": "我大约几个月前寄出了Larch研讨会的报告？只回答月份数量。", "number": 3}
+      ]
+    },
+    {
+      "id": "separate_event_dates",
+      "sessions": [
+        {"at": "2026-09-10T10:00:00", "turns": [{"role": "user", "content": "9月9日我和朋友Cai参加了Harbor社区读书活动。"}, {"role": "assistant", "content": "收到。"}]},
+        {"at": "2026-09-24T10:00:00", "turns": [{"role": "user", "content": "昨天9月23日，我和邻居Mira参加了Cliffside社区手工活动。之前9月9日那场Harbor读书活动我也很喜欢，朋友Cai也去了那一场。"}, {"role": "assistant", "content": "收到。"}]}
+      ],
+      "queries": [{"id": "recent_weekday", "question": "最近过去的那个周三，也就是9月23日，谁陪我参加了社区活动？只回答名字。", "contains": ["Mira"], "forbidden": ["Cai"]}]
+    },
+    {
+      "id": "unreported_companion",
+      "sessions": [{"at": "2026-09-23T10:00:00", "turns": [{"role": "user", "content": "9月22日我听了一场关于海藻养殖的讲座，学到了水温与光照的重要性。"}, {"role": "assistant", "content": "收到。"}]}],
+      "queries": [{"id": "unknown", "question": "我9月22日听海藻养殖讲座是独自去的吗？如果没有交代同行情况，请直接说不知道。", "unknown": true, "forbidden_regex": ["确实.*独自", "没有朋友同行", "你是独自"]}]
+    },
+    {
+      "id": "unrelated_months",
+      "sessions": [{"at": "2026-09-25T10:00:00", "turns": [{"role": "user", "content": "青杉工作坊是四个月前举行的。另一场叫渡口的讲座，我是在它开始前两个月准备的资料，渡口讲座具体什么时候开我没说过。"}, {"role": "assistant", "content": "收到。"}]}],
+      "queries": [{"id": "unknown", "question": "我大约几个月前为渡口讲座准备资料？如果证据不足，请直接说不知道。", "unknown": true, "forbidden_regex": ["[六6]个月前"]}]
+    }
+  ]
+}

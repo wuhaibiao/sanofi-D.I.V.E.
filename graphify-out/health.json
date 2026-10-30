@@ -1,0 +1,218 @@
+{
+  "node_count": 940,
+  "unverified_node_count": 0,
+  "raw_edge_count": 2979,
+  "non_object_edges": 0,
+  "missing_endpoint_edges": 0,
+  "dangling_endpoint_edges": 199,
+  "external_reference_edges": 0,
+  "self_loop_edges": 8,
+  "valid_candidate_edges": 2780,
+  "exact_duplicate_edges": 0,
+  "directed_unique_endpoint_pairs": 2605,
+  "directed_same_endpoint_collapsed_edges": 175,
+  "undirected_unique_endpoint_pairs": 2596,
+  "undirected_same_endpoint_collapsed_edges": 184,
+  "same_endpoint_group_count": 166,
+  "relation_variant_groups": 156,
+  "source_file_variant_groups": 0,
+  "source_location_variant_groups": 2,
+  "context_variant_groups": 8,
+  "post_build_graph_type": "Graph",
+  "post_build_node_count": 978,
+  "post_build_edge_count": 2794,
+  "post_build_error": "",
+  "producer_suppression": {
+    "path": "/Users/OleniusBlanc227/.local/share/graphify/venv/lib/python3.12/site-packages/graphify/extract.py",
+    "total_sites": 12,
+    "sites": [
+      {
+        "line": 1646,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids = {n[\"id\"] for n in nodes}"
+      },
+      {
+        "line": 2179,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids = {n[\"id\"] for n in nodes}"
+      },
+      {
+        "line": 2181,
+        "name": "seen_doc_refs",
+        "tuple_arity": 0,
+        "sample": "seen_doc_refs: set[str] = set()"
+      },
+      {
+        "line": 2551,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids: set[str] = {n[\"id\"] for n in nodes}"
+      },
+      {
+        "line": 2698,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids = {n.get(\"id\") for n in nodes}"
+      },
+      {
+        "line": 3424,
+        "name": "seen_keys",
+        "tuple_arity": 0,
+        "sample": "seen_keys: set[tuple] = set()"
+      },
+      {
+        "line": 3593,
+        "name": "seen_keys",
+        "tuple_arity": 0,
+        "sample": "seen_keys: set[tuple] = set()"
+      },
+      {
+        "line": 5669,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids: set[str] = set()"
+      },
+      {
+        "line": 5777,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids: set[str] = set()"
+      },
+      {
+        "line": 5856,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids: set[str] = set()"
+      },
+      {
+        "line": 6371,
+        "name": "seen_ids",
+        "tuple_arity": 0,
+        "sample": "seen_ids: set[str] = set()"
+      },
+      {
+        "line": 6372,
+        "name": "seen_edges",
+        "tuple_arity": 4,
+        "sample": "seen_edges: set[tuple[str, str, str, str | None]] = set()"
+      }
+    ],
+    "error": ""
+  },
+  "examples": [
+    {
+      "source": "memsys_bench_scale_build_store",
+      "target": "memsys_store_store",
+      "edge_count": 3,
+      "relations": [
+        "calls",
+        "references",
+        "uses"
+      ],
+      "source_files": [
+        "memsys/bench/scale.py"
+      ],
+      "source_locations": [
+        "L55",
+        "L58"
+      ],
+      "contexts": [
+        "",
+        "call",
+        "return_type"
+      ]
+    },
+    {
+      "source": "memsys_bench_scale_measure",
+      "target": "memsys_config_memorysettings",
+      "edge_count": 3,
+      "relations": [
+        "calls",
+        "references",
+        "uses"
+      ],
+      "source_files": [
+        "memsys/bench/scale.py"
+      ],
+      "source_locations": [
+        "L91",
+        "L92",
+        "L94"
+      ],
+      "contexts": [
+        "",
+        "call",
+        "generic_arg"
+      ]
+    },
+    {
+      "source": "memsys_cli_fake_models",
+      "target": "memsys_config_models",
+      "edge_count": 3,
+      "relations": [
+        "calls",
+        "references",
+        "uses"
+      ],
+      "source_files": [
+        "memsys/cli.py"
+      ],
+      "source_locations": [
+        "L72",
+        "L74"
+      ],
+      "contexts": [
+        "",
+        "call",
+        "return_type"
+      ]
+    },
+    {
+      "source": "memsys_discover_hash_embedder",
+      "target": "memsys_fake_hashembedder",
+      "edge_count": 3,
+      "relations": [
+        "calls",
+        "references",
+        "uses"
+      ],
+      "source_files": [
+        "memsys/discover.py"
+      ],
+      "source_locations": [
+        "L74",
+        "L75"
+      ],
+      "contexts": [
+        "",
+        "call",
+        "return_type"
+      ]
+    },
+    {
+      "source": "memsys_discover_resolve_models",
+      "target": "memsys_config_models",
+      "edge_count": 3,
+      "relations": [
+        "calls",
+        "references",
+        "uses"
+      ],
+      "source_files": [
+        "memsys/discover.py"
+      ],
+      "source_locations": [
+        "L162",
+        "L163",
+        "L232"
+      ],
+      "contexts": [
+        "",
+        "call",
+        "return_type"
+      ]
+    }
+  ]
+}

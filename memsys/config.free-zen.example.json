@@ -1,0 +1,1095 @@
+{
+  "_说明": "复制为 config.json 后修改。OpenCode Go 全型号候选池以 GPT、Claude 等海外型号优先，额度不足时依次切换。OPENCODE_API_KEY 只放 .env 或环境变量；embedding 使用本机 bge-m3。单价每百万 token，null 表示未知；远程真实单价和价格日期、来源须按官方填写。",
+  "models": {
+    "deepseek-chat": {
+      "model": "deepseek-chat",
+      "base_url": "https://api.deepseek.com/v1",
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "extra_body": {
+        "seed": 42
+      }
+    },
+    "opencode-deepseek-flash": {
+      "model": "deepseek-v4.1-flash",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-glm-flash": {
+      "model": "glm-5.3-flash",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "output_token_headroom": 8192
+    },
+    "qwen-local": {
+      "_说明": "本地 Ollama：先运行 ollama pull qwen2.5:7b-instruct",
+      "model": "qwen2.5:7b-instruct",
+      "base_url": "http://localhost:11434/v1",
+      "pricing": {
+        "input": 0,
+        "output": 0
+      }
+    },
+    "bge-m3": {
+      "_说明": "本地 Ollama 的多语言 embedding：ollama pull bge-m3。中英文都能用。",
+      "model": "bge-m3",
+      "base_url": "http://localhost:11434/v1",
+      "embed_batch_size": 32,
+      "pricing": {
+        "input": 0,
+        "output": 0
+      }
+    },
+    "claude": {
+      "_说明": "Anthropic 接口，需要 pip install anthropic。做记忆整理可以换成同系列里更便宜的型号。",
+      "model": "claude-opus-5-5",
+      "base_url": "https://api.anthropic.com",
+      "api": "anthropic",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      }
+    },
+    "gpt-4o-mini": {
+      "_说明": "本地评分用，可换成别的模型。正式成绩以官方脚本 + GPT-4o 复跑为准。",
+      "model": "gpt-4o-mini",
+      "base_url": "https://api.openai.com/v1",
+      "api_key_env": "OPENAI_API_KEY",
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      }
+    },
+    "opencode-gpt-6-luna": {
+      "model": "gpt-6-luna",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "responses",
+      "extra_body": {
+        "reasoning": {
+          "effort": "none"
+        }
+      }
+    },
+    "opencode-gpt-5.6-luna": {
+      "model": "gpt-5.6-luna",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "responses",
+      "extra_body": {
+        "reasoning": {
+          "effort": "none"
+        }
+      }
+    },
+    "opencode-claude-haiku-5-5": {
+      "model": "claude-haiku-5-5",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "anthropic",
+      "json_mode": false,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-grok-4.7": {
+      "model": "grok-4.7",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "responses",
+      "output_token_headroom": 4096
+    },
+    "opencode-grok-4.6": {
+      "model": "grok-4.6",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "responses",
+      "output_token_headroom": 4096
+    },
+    "opencode-muse-spark-1.3-contributor": {
+      "model": "muse-spark-1.3-contributor",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "responses",
+      "output_token_headroom": 4096,
+      "json_mode": false
+    },
+    "opencode-muse-spark-1.2-contributor": {
+      "model": "muse-spark-1.2-contributor",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "responses",
+      "output_token_headroom": 4096,
+      "json_mode": false
+    },
+    "opencode-deepseek-v4-pro": {
+      "model": "deepseek-v4-pro",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-deepseek-v4-flash": {
+      "model": "deepseek-v4-flash",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-deepseek-flash-alias": {
+      "model": "deepseek-flash",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-glm-5.3": {
+      "model": "glm-5.3",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "output_token_headroom": 8192
+    },
+    "opencode-glm-5.2": {
+      "model": "glm-5.2",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "output_token_headroom": 8192
+    },
+    "opencode-glm-5.1": {
+      "model": "glm-5.1",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "output_token_headroom": 8192
+    },
+    "opencode-kimi-k3": {
+      "model": "kimi-k3",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "enabled"
+        },
+        "temperature": 1,
+        "reasoning_effort": "low"
+      },
+      "output_token_headroom": 8192,
+      "json_mode": false
+    },
+    "opencode-kimi-k2.7-code": {
+      "model": "kimi-k2.7-code",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "enabled"
+        },
+        "temperature": 1,
+        "reasoning_effort": "low"
+      },
+      "output_token_headroom": 8192,
+      "json_mode": false
+    },
+    "opencode-kimi": {
+      "model": "kimi-k2.6",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-qwen3.8-max": {
+      "model": "qwen3.8-max",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "anthropic",
+      "json_mode": false,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-qwen3.8-flash": {
+      "model": "qwen3.8-flash",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "anthropic",
+      "json_mode": false,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-qwen3.7-max": {
+      "model": "qwen3.7-max",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "anthropic",
+      "json_mode": false,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-qwen3.7-plus": {
+      "model": "qwen3.7-plus",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "anthropic",
+      "json_mode": false,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-qwen3.6-plus": {
+      "model": "qwen3.6-plus",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "anthropic",
+      "json_mode": false,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-minimax-m3": {
+      "model": "minimax-m3",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "anthropic",
+      "json_mode": false,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-minimax-m2.7": {
+      "model": "minimax-m2.7",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "anthropic",
+      "json_mode": false,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-minimax-m2.5": {
+      "model": "minimax-m2.5",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "anthropic",
+      "json_mode": false,
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-mimo-v2.6-pro": {
+      "model": "mimo-v2.6-pro",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-mimo-flash": {
+      "model": "mimo-v2.6-flash",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-mimo-v2.5-pro": {
+      "model": "mimo-v2.5-pro",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-mimo-v2.5": {
+      "model": "mimo-v2.5",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-hy4-preview": {
+      "model": "hy4-preview",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-hy3": {
+      "model": "hy3",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-longcat-2.0": {
+      "model": "longcat-2.0",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-longcat-2.5-preview-free": {
+      "model": "longcat-2.5-preview-free",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-step-5-preview-free": {
+      "model": "step-5-preview-free",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-deepseek-v4-flash-vision-exp": {
+      "model": "deepseek-v4-flash-vision-exp",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-space-bunny": {
+      "model": "space-bunny",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-omen-alpha": {
+      "model": "omen-alpha",
+      "base_url": "https://opencode.ai/zen/go/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": null,
+        "output": null,
+        "cached_input": null,
+        "currency": null,
+        "as_of": null,
+        "source": null
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-zen-ling-3.0-flash-fin-free": {
+      "model": "ling-3.0-flash-fin-free",
+      "base_url": "https://opencode.ai/zen/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "cached_input": 0,
+        "currency": "USD",
+        "as_of": "2026-10-11",
+        "source": "https://opencode.ai/docs/zen/#pricing"
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-zen-ling-3.1-flash-free": {
+      "model": "ling-3.1-flash-free",
+      "base_url": "https://opencode.ai/zen/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "cached_input": 0,
+        "currency": "USD",
+        "as_of": "2026-10-11",
+        "source": "https://opencode.ai/docs/zen/#pricing"
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-zen-longcat-2.5-preview-free": {
+      "model": "longcat-2.5-preview-free",
+      "base_url": "https://opencode.ai/zen/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "cached_input": 0,
+        "currency": "USD",
+        "as_of": "2026-10-11",
+        "source": "https://opencode.ai/docs/zen/#pricing"
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-zen-mimo-v2.6-flash-free": {
+      "model": "mimo-v2.6-flash-free",
+      "base_url": "https://opencode.ai/zen/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "cached_input": 0,
+        "currency": "USD",
+        "as_of": "2026-10-11",
+        "source": "https://opencode.ai/docs/zen/#pricing"
+      },
+      "api": "openai",
+      "extra_body": {
+        "thinking": {
+          "type": "disabled"
+        }
+      }
+    },
+    "opencode-zen-muse-spark-1.3-contributor-free": {
+      "model": "muse-spark-1.3-contributor-free",
+      "base_url": "https://opencode.ai/zen/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "cached_input": 0,
+        "currency": "USD",
+        "as_of": "2026-10-11",
+        "source": "https://opencode.ai/docs/zen/#pricing"
+      },
+      "api": "responses",
+      "output_token_headroom": 4096,
+      "json_mode": false
+    },
+    "opencode-zen-nemotron-3-ultra-free": {
+      "model": "nemotron-3-ultra-free",
+      "base_url": "https://opencode.ai/zen/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "cached_input": 0,
+        "currency": "USD",
+        "as_of": "2026-10-11",
+        "source": "https://opencode.ai/docs/zen/#pricing"
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    },
+    "opencode-zen-nemotron-3.5-lightning-free": {
+      "model": "nemotron-3.5-lightning-free",
+      "base_url": "https://opencode.ai/zen/v1",
+      "api_key_env": "OPENCODE_API_KEY",
+      "timeout_s": 180,
+      "max_retries": 2,
+      "pricing": {
+        "input": 0,
+        "output": 0,
+        "cached_input": 0,
+        "currency": "USD",
+        "as_of": "2026-10-11",
+        "source": "https://opencode.ai/docs/zen/#pricing"
+      },
+      "api": "openai",
+      "json_mode": false,
+      "output_token_headroom": 4096
+    }
+  },
+  "roles": {
+    "_说明": "memory 负责新增记忆的单次抽取；embedding 负责向量；最终回答由宿主 Agent 生成。默认直接检索与 BGE 重排，不调用更新裁决、查询规划或答案复查。",
+    "chat": "opencode-zen-ling-3.1-flash-free",
+    "memory": "opencode-zen-longcat-2.5-preview-free",
+    "embedding": "bge-m3",
+    "judge": "opencode-zen-ling-3.1-flash-free",
+    "query": "opencode-zen-ling-3.1-flash-free"
+  },
+  "fallbacks": {
+    "_说明": "按候选顺序优先调用。额度不足、限流或型号明确未开放时冷却5分钟后跳过；冷却结束恢复更高优先级。普通鉴权和参数错误直接报出。候选自身的列表不递归展开，embedding不切换。",
+    "opencode-gpt-6-luna": [
+      "opencode-gpt-5.6-luna",
+      "opencode-claude-haiku-5-5",
+      "opencode-grok-4.7",
+      "opencode-grok-4.6",
+      "opencode-muse-spark-1.3-contributor",
+      "opencode-muse-spark-1.2-contributor",
+      "opencode-deepseek-flash",
+      "opencode-deepseek-v4-pro",
+      "opencode-deepseek-v4-flash",
+      "opencode-deepseek-flash-alias",
+      "opencode-glm-5.3",
+      "opencode-glm-flash",
+      "opencode-glm-5.2",
+      "opencode-glm-5.1",
+      "opencode-kimi-k3",
+      "opencode-kimi-k2.7-code",
+      "opencode-kimi",
+      "opencode-qwen3.8-max",
+      "opencode-qwen3.8-flash",
+      "opencode-qwen3.7-max",
+      "opencode-qwen3.7-plus",
+      "opencode-qwen3.6-plus",
+      "opencode-minimax-m3",
+      "opencode-minimax-m2.7",
+      "opencode-minimax-m2.5",
+      "opencode-mimo-v2.6-pro",
+      "opencode-mimo-flash",
+      "opencode-mimo-v2.5-pro",
+      "opencode-mimo-v2.5",
+      "opencode-hy4-preview",
+      "opencode-hy3",
+      "opencode-longcat-2.0",
+      "opencode-longcat-2.5-preview-free",
+      "opencode-step-5-preview-free",
+      "opencode-deepseek-v4-flash-vision-exp",
+      "opencode-space-bunny",
+      "opencode-omen-alpha"
+    ],
+    "opencode-zen-ling-3.1-flash-free": [
+      "opencode-zen-longcat-2.5-preview-free",
+      "opencode-zen-mimo-v2.6-flash-free",
+      "opencode-zen-muse-spark-1.3-contributor-free",
+      "opencode-zen-nemotron-3.5-lightning-free"
+    ],
+    "opencode-zen-longcat-2.5-preview-free": [
+      "opencode-zen-ling-3.1-flash-free",
+      "opencode-zen-mimo-v2.6-flash-free",
+      "opencode-zen-muse-spark-1.3-contributor-free",
+      "opencode-zen-nemotron-3.5-lightning-free"
+    ]
+  },
+  "memory": {
+    "_说明": "这里只列了最常调的几个参数，完整参数和默认值见 src/memsys/config.py 的 MemorySettings。",
+    "recall_mode": "facts",
+    "_召回说明": "默认长期记忆只检索、重排和返回事实，不自动附来源原文或待整理的跨会话原文。facts_and_sources 仅用于显式诊断；原文仍可通过 sources 接口查阅。",
+    "context_budget_tokens": 3500,
+    "max_active_facts": 5000,
+    "max_active_episodes": 2000,
+    "_容量说明": "活跃条目超限按保留分归档；null 可关闭相应限制。SQLite 分配页默认256MiB，超限且增长的事务回滚。WAL与备份不计入此上限；物理缩减通过 cleanup 预览、备份后执行。",
+    "_抽取说明": "参考 Mem0：整批新消息、相关旧记忆和最近消息进入一次抽取；不按输入长度切块或截断，不拆分重抽。模型拒绝、超限、输出截断或格式错误时保留原文并报告失败。Embedding 的角色分段仅用于向量索引。",
+    "query_focused_excerpts": true,
+    "_向量说明": "完整原文按角色分段编码；旧库执行 reindex 后获得分段索引。关闭 episode_chunk_vectors 并重建可对照旧前缀模式。",
+    "episode_chunk_vectors": true,
+    "embed_chunk_tokens": 384,
+    "embed_chars": 2000,
+    "_计算说明": "核对模型提交的计算凭据，失败时修正一次；没有凭据或引用/单位不明确时记录为未验证，不能证明事件选取和召回完整性。",
+    "aggregation_validation": true,
+    "semantic_validation": true,
+    "_阈值说明": "min_similarity 是检索相关性阈值；精确文本去重不使用相似度阈值，也不调用更新裁决模型。",
+    "min_similarity": 0.4,
+    "query_analysis": false,
+    "_query_expansion": "没有语义 embedding（只有本地哈希向量）时建议设为 true：查询分析多给同义词，补关键词检索的召回",
+    "query_expansion": false,
+    "budget_mode": "utf8",
+    "budget_tokenizer_path": "",
+    "answer_input_budget_tokens": 8192,
+    "memory_input_budget_tokens": 16384,
+    "_预算说明": "默认按 UTF-8 字节保守限制内容，参数名保留 tokens；tokenizer 模式需匹配模型的本地 tokenizer.json 和 strict 可选依赖。完整消息另预留每条8单位；服务端实际 token 取 usage。estimate 仅供旧估算消融。",
+    "max_storage_bytes": 268435456,
+    "aggregate_candidate_limit": 5000,
+    "aggregate_contribution_limit": 5000,
+    "aggregate_max_pages": 128,
+    "aggregate_page_items": 20,
+    "_聚合分页说明": "聚合扫描当前与归档候选，超出单块上下文后逐页核验并合并同单位求和或明确名称去重计数。扫描、页数或贡献上限、证据核验失败时拒绝完整合计；语义相关性与事件身份仍需模型判断。",
+    "_检索重构说明": "普通角色分块 + 本地 BGE 重排。安装 memsys[rerank]；固定模型与 tokenizer revision。CPU/float32 可跨设备使用，本机配置采用已验证的 MPS/float32、batch 4。rerank_strict=true 时失败直接报错；false 时记录错误并保留融合排名。",
+    "rerank_backend": "bge",
+    "rerank_model": "BAAI/bge-reranker-v2-m3",
+    "rerank_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "rerank_tokenizer_revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+    "rerank_device": "cpu",
+    "rerank_dtype": "float32",
+    "rerank_batch_size": 4,
+    "rerank_max_tokens": 512,
+    "rerank_overlap_tokens": 32,
+    "rerank_strict": false,
+    "chunk_strategy": "legacy",
+    "_分块计数说明": "按角色连续分块，原文字符区间用于追溯。embed_chunk_tokens 沿用所选 budget_mode 的计数单位；默认 utf8 表示字节保守上界。BGE 重排另按自己的 tokenizer 计算配对 token，切换重排不重抽事实。",
+    "query_policy": "off",
+    "query_low_confidence": 0.65,
+    "semantic_operation_validation": null,
+    "cross_page_semantic_validation": null,
+    "answer_review_policy": "off",
+    "_复核策略说明": "legacy 沿用 semantic_validation；显式 always/on_risk/off 只控制回答模型复核。semantic_operation_validation 和 cross_page_semantic_validation 独立控制操作语义及分页处理，null 沿用旧开关。程序计算、日期、引用校验始终由 aggregation_validation 独立控制。",
+    "embedding_model_revision": "unknown",
+    "_embedding_revision说明": "embedding_model_revision 记录服务端不可变 revision 或 digest；unknown 表示原库未记录底层 revision。改变它会使写入缓存失效，reindex 会重算事实向量以避免混用；不能用 tokenizer revision 代替权重身份。",
+    "rerank_candidates": 60,
+    "read_timeout_s": 180.0,
+    "read_retries_per_call": 1,
+    "read_retries_total": 2,
+    "read_retry_wait_s": 30.0,
+    "relations_enabled": true,
+    "relation_hops": 2,
+    "relation_seed_facts": 6,
+    "relation_max_nodes": 32,
+    "relation_max_edges": 96,
+    "relation_max_candidates": 32,
+    "answer_fact_limit": 128,
+    "chat_window_turns": 12,
+    "chat_window_tokens": 1500,
+    "min_context_tokens": 1500,
+    "extract_max_tokens": 10000
+  }
+}

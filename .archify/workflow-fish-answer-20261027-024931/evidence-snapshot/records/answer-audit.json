@@ -1,0 +1,40 @@
+{
+  "status": "bindings_incomplete",
+  "binding_verified": false,
+  "semantic_support_verified": false,
+  "binding_basis": "selected_fact_display",
+  "field_association_bindings": 0,
+  "unverified_evidence": [],
+  "errors": [
+    "invalid evidence purpose",
+    "invalid evidence purpose",
+    "calculation operand is missing from the evidence audit",
+    "calculation operand is missing from the evidence audit",
+    "answer evidence contract: operand quote is absent from selected fact"
+  ],
+  "memory_use": "used",
+  "evidence_count": 2,
+  "constraint_bindings": 0,
+  "deterministic_calculations": 0,
+  "rejected_calculations": [
+    {
+      "index": 0,
+      "error": "answer evidence contract: operand quote is absent from selected fact"
+    }
+  ],
+  "calculation_checks": [],
+  "delivery_policy": "diagnostic_only",
+  "answer_modified": false,
+  "envelope_marker_supplied": true,
+  "generation_attempts": [
+    {
+      "max_tokens": 8192,
+      "request_output_tokens": 16384,
+      "finish_reason": "stop",
+      "prompt_tokens": 18487,
+      "completion_tokens": 333,
+      "response_bytes": 764,
+      "response_sha256": "68b2db0522e3742ec775f9289b4e7161957f17f4aade32deb716fada40b1403e"
+    }
+  ]
+}

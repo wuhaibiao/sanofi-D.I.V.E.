@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "pages": 6,
+  "evaluation_rows": 21,
+  "original_scores_preserved": true,
+  "product_files_checked": 182,
+  "product_source_unchanged": true,
+  "historical_files_checked": 63,
+  "historical_files_unchanged": true,
+  "repeated_header": true,
+  "main_flow_first": true,
+  "exact_figure_embedded": true,
+  "diagram_automated_gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "docx_sha256": "ef4e760a35efc79c26ebe67a5e30daed02a340b40b74c44f29cd6a8206d34ab0"
+}

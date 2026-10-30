@@ -1,0 +1,72 @@
+[
+  {
+    "question_id": "ku_city",
+    "question_type": "knowledge-update",
+    "question": "Which city do I live in now?",
+    "answer": "Seattle",
+    "question_date": "2023/07/01 (Sat) 10:00",
+    "haystack_session_ids": ["answer_ku_b", "answer_ku_a"],
+    "haystack_dates": ["2023/06/02 (Fri) 18:30", "2023/01/10 (Tue) 09:00"],
+    "haystack_sessions": [
+      [
+        {"role": "user", "content": "I relocated to Seattle last month and the rain here is something else. Any tips for staying cheerful?", "has_answer": true},
+        {"role": "assistant", "content": "Welcome to Seattle! Try a daylight lamp, join a climbing gym, and plan weekend trips to sunnier eastern Washington."}
+      ],
+      [
+        {"role": "user", "content": "I just moved to Boston for my new job at a biotech startup. What neighborhoods are good for walking?", "has_answer": true},
+        {"role": "assistant", "content": "Congrats on the move! Back Bay, the South End and Beacon Hill are all very walkable."},
+        {"role": "user", "content": "Thanks!"},
+        {"role": "assistant", "content": "You're welcome. Enjoy Boston!"}
+      ]
+    ],
+    "answer_session_ids": ["answer_ku_b", "answer_ku_a"]
+  },
+  {
+    "question_id": "tr_cat",
+    "question_type": "temporal-reasoning",
+    "question": "How many days ago did I adopt Luna?",
+    "answer": "17 days. 18 days (including the last day) is also acceptable.",
+    "question_date": "2023/03/20 (Mon) 08:00",
+    "haystack_session_ids": ["answer_tr_a"],
+    "haystack_dates": ["2023/03/04 (Sat) 10:00"],
+    "haystack_sessions": [
+      [
+        {"role": "user", "content": "I adopted a cat named Luna yesterday. What should I buy for her first week?", "has_answer": true},
+        {"role": "assistant", "content": "A litter box, kitten food, a scratching post and a cozy hiding spot will cover the first week."}
+      ]
+    ],
+    "answer_session_ids": ["answer_tr_a"]
+  },
+  {
+    "question_id": "ssu_brother_abs",
+    "question_type": "single-session-user",
+    "question": "Which city does my brother live in?",
+    "answer": "The information provided is not enough. You only mentioned that your sister Anna lives in Berlin.",
+    "question_date": "2023/05/01 (Mon) 12:00",
+    "haystack_session_ids": ["answer_abs_a"],
+    "haystack_dates": ["2023/04/15 (Sat) 16:20"],
+    "haystack_sessions": [
+      [
+        {"role": "user", "content": "My sister Anna lives in Berlin and I want to send her a birthday gift. Any ideas?", "has_answer": true},
+        {"role": "assistant", "content": "A local gift card, a photo book of your memories, or a cooking class voucher in Berlin."}
+      ]
+    ],
+    "answer_session_ids": ["answer_abs_a"]
+  },
+  {
+    "question_id": "ssa_bakery",
+    "question_type": "single-session-assistant",
+    "question": "What was the second bakery name you suggested to me?",
+    "answer": "Crumb Club",
+    "question_date": "2023/09/10 (Sun) 09:00",
+    "haystack_session_ids": ["answer_ssa_a"],
+    "haystack_dates": ["2023/08/20 (Sun) 14:00"],
+    "haystack_sessions": [
+      [
+        {"role": "user", "content": "I'm opening a small bakery in my hometown. Can you suggest three names?"},
+        {"role": "assistant", "content": "Sure! 1. Rise & Shine 2. Crumb Club 3. Golden Crust", "has_answer": true}
+      ]
+    ],
+    "answer_session_ids": ["answer_ssa_a"]
+  }
+]

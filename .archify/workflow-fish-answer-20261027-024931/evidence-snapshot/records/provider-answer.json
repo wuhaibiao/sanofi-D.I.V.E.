@@ -1,0 +1,33 @@
+{
+  "memory_answer": true,
+  "answer": "There are **17 fish** in total: 10 neon tetras, 5 golden honey gouramis, and 1 pleco in your 20-gallon tank, plus Bubbles the betta in your other tank.",
+  "memory_use": "used",
+  "evidence": [
+    {
+      "fact_id": "F2993466238984338",
+      "quote": "10 neon tetras, 5 golden honey gouramis, and a small pleco catfish",
+      "answer_span": "10 neon tetras, 5 golden honey gouramis, and 1 pleco"
+    },
+    {
+      "fact_id": "F8785483295396362",
+      "quote": "Bubbles, a betta fish",
+      "answer_span": "Bubbles the betta"
+    }
+  ],
+  "calculations": [
+    {
+      "operation": "sum",
+      "left": {
+        "fact_id": "F2993466238984338",
+        "quote": "10 neon tetras + 5 golden honey gouramis + 1 small pleco",
+        "unit": "fish"
+      },
+      "right": {
+        "fact_id": "F8785483295396362",
+        "quote": "1 betta fish",
+        "unit": "fish"
+      },
+      "result": "10 + 5 + 1 + 1 = 17 fish"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "baseline_files_unchanged": true,
+  "checked_baseline_files": 1395,
+  "unrelated_payloads_unchanged": true,
+  "source_unchanged": true,
+  "runtime_configuration_unchanged": true,
+  "after": {
+    "memsys_compact_577e8890f9fa_dense_1024": {
+      "points": 3309,
+      "payload_sha256": "feaef7e61215dd5b675e60453a94962a7c074752cb15ceb3efbf0d3d2658a4a0"
+    },
+    "memsys_compact_577e8890f9fa_jobs": {
+      "points": 0,
+      "payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "memsys_compact_577e8890f9fa_lexical": {
+      "points": 3309,
+      "payload_sha256": "feaef7e61215dd5b675e60453a94962a7c074752cb15ceb3efbf0d3d2658a4a0"
+    },
+    "memsys_compact_577e8890f9fa_records": {
+      "points": 4513,
+      "payload_sha256": "8bdf982e53b03ac94f6551b2de60d7a48609fed30088d4849bbb1f5db27312d9"
+    },
+    "memsys_compact_ab25e027ba4e_dense_1024": {
+      "points": 3012,
+      "payload_sha256": "03812c9547e12368367c7210923b7708cde497f13fd88d076cb23482bc67aafe"
+    },
+    "memsys_compact_ab25e027ba4e_jobs": {
+      "points": 0,
+      "payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "memsys_compact_ab25e027ba4e_lexical": {
+      "points": 3012,
+      "payload_sha256": "03812c9547e12368367c7210923b7708cde497f13fd88d076cb23482bc67aafe"
+    },
+    "memsys_compact_ab25e027ba4e_records": {
+      "points": 4353,
+      "payload_sha256": "84475504f06c241c3c51ef8516fa352f14c380f7eaeb92489ca4e4da9fc46a3a"
+    },
+    "memsys_compact_b9a0e0286344_dense_1024": {
+      "points": 3330,
+      "payload_sha256": "a80c6e050a645ddf991ed42d8bafcd76cc1bab386dbd4dcbb33bcf6d2d61e008"
+    },
+    "memsys_compact_b9a0e0286344_jobs": {
+      "points": 0,
+      "payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "memsys_compact_b9a0e0286344_lexical": {
+      "points": 3330,
+      "payload_sha256": "a80c6e050a645ddf991ed42d8bafcd76cc1bab386dbd4dcbb33bcf6d2d61e008"
+    },
+    "memsys_compact_b9a0e0286344_records": {
+      "points": 4544,
+      "payload_sha256": "b879326974e0365a8e79740d99cbfb9088a37e9070a2f2fcc32a5c270da6597c"
+    },
+    "memsys_dense_1024": {
+      "points": 239,
+      "payload_sha256": "8b4ff5168d8c332c7386b376107d27f004bed5555c02d85443d5cd5d8e50de00"
+    },
+    "memsys_jobs": {
+      "points": 6,
+      "payload_sha256": "d987fec296ccd22abf10c2ae33150a009d2d637a6de14038b303d6096a91afd9"
+    },
+    "memsys_lexical": {
+      "points": 239,
+      "payload_sha256": "8b4ff5168d8c332c7386b376107d27f004bed5555c02d85443d5cd5d8e50de00"
+    },
+    "memsys_public_b59d9e3f13a1_dense_1024": {
+      "points": 4085,
+      "payload_sha256": "9f1819b07df3217cba6bd115ff754ac1f3eef2174fd2fb729922ded52bb2fbbc"
+    },
+    "memsys_public_b59d9e3f13a1_jobs": {
+      "points": 0,
+      "payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "memsys_public_b59d9e3f13a1_lexical": {
+      "points": 4085,
+      "payload_sha256": "9f1819b07df3217cba6bd115ff754ac1f3eef2174fd2fb729922ded52bb2fbbc"
+    },
+    "memsys_public_b59d9e3f13a1_records": {
+      "points": 8714,
+      "payload_sha256": "dcf6ae472db7f1f5927fdc149dbe44b2cf2c75c8df3213ca0550cb319fda4ede"
+    },
+    "memsys_records": {
+      "points": 767,
+      "payload_sha256": "bf8c257192830d164895a3992fbc371ffbc96630e75e45e9fcccd3039a6fa34f"
+    },
+    "memsys_retention_c1a68bea8772_dense_1024": {
+      "points": 6343,
+      "payload_sha256": "ee936850942557bf68a1b493d6970a4dfb631a151f3650207d556759f8234a23"
+    },
+    "memsys_retention_c1a68bea8772_jobs": {
+      "points": 0,
+      "payload_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "memsys_retention_c1a68bea8772_lexical": {
+      "points": 6343,
+      "payload_sha256": "ee936850942557bf68a1b493d6970a4dfb631a151f3650207d556759f8234a23"
+    },
+    "memsys_retention_c1a68bea8772_records": {
+      "points": 10284,
+      "payload_sha256": "f5d548ef583ead5f588af912fce828fb315ebd0506babbcf4bafe1858de8ac2d"
+    }
+  }
+}

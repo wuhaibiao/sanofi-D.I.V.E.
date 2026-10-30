@@ -1,0 +1,644 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "一条完整答题流程：两个鱼缸共有多少条鱼",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-fish-answer-20261027-024931/fish-answer.html",
+    "repository": {
+      "url": "https://github.com/wuhaibiao/sanofi-D.I.V.E..git",
+      "revision": "2d236868182a62609a0be5e9ac0701635c0a2041",
+      "link_mode": "local-only"
+    },
+    "views": [
+      {
+        "id": "all",
+        "label": "完整流程",
+        "focus": [
+          "history",
+          "archive",
+          "extract",
+          "normalize",
+          "facts",
+          "question",
+          "plan",
+          "retrieve",
+          "pack",
+          "prompt",
+          "model",
+          "decode",
+          "delivered",
+          "audit",
+          "gold",
+          "judge"
+        ],
+        "note": "上方先入库，中间完成答题，下方记录诊断并进行离线评分。"
+      },
+      {
+        "id": "ingest",
+        "label": "历史如何入库",
+        "focus": [
+          "history",
+          "archive",
+          "extract",
+          "normalize",
+          "facts"
+        ],
+        "note": "24 条原始消息在提问前处理；107 条是抽取和结构补充后的事实条目。"
+      },
+      {
+        "id": "answer",
+        "label": "回答实际读到什么",
+        "focus": [
+          "question",
+          "plan",
+          "retrieve",
+          "pack",
+          "prompt",
+          "model",
+          "decode",
+          "delivered"
+        ],
+        "note": "事实库的 107 条全部进入提示；不读取原始对话片段或参考答案。"
+      },
+      {
+        "id": "auditgrade",
+        "label": "诊断与评分",
+        "focus": [
+          "model",
+          "decode",
+          "delivered",
+          "audit",
+          "gold",
+          "judge"
+        ],
+        "note": "审计绑定不完整仍交付正文；离线评分不参与生成或改写。"
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "write",
+      "label": "提问前 · 历史入库（从左向右）"
+    },
+    {
+      "id": "search",
+      "label": "在线答题 · 接收原题并检索"
+    },
+    {
+      "id": "context",
+      "label": "在线答题 · 装配上下文并生成"
+    },
+    {
+      "id": "delivery",
+      "label": "在线答题 · 解码并交付正文"
+    },
+    {
+      "id": "diagnostics",
+      "label": "审计诊断 · 本次报错但不拦截交付",
+      "variant": "exception"
+    },
+    {
+      "id": "grading",
+      "label": "评测专用 · 两题均答完后的评分"
+    }
+  ],
+  "mainPath": [
+    "question",
+    "plan",
+    "retrieve",
+    "pack",
+    "prompt",
+    "model",
+    "decode",
+    "delivered"
+  ],
+  "nodes": [
+    {
+      "id": "history",
+      "lane": "write",
+      "col": 0,
+      "type": "external",
+      "label": "① 历史输入",
+      "sublabel": "2 会话 · 24 条消息",
+      "tag": "无题目、无参考答案",
+      "sources": [
+        {
+          "path": "records/stats.json",
+          "line": 4,
+          "label": "本次运行记录"
+        },
+        {
+          "path": "scripts/blind_eval_inputs.py",
+          "line": 24,
+          "end_line": 33,
+          "label": "阶段分离"
+        }
+      ]
+    },
+    {
+      "id": "archive",
+      "lane": "write",
+      "col": 1,
+      "type": "database",
+      "label": "② 原文存档",
+      "sublabel": "按角色和时间原样存入",
+      "tag": "24 / 24 已处理",
+      "sources": [
+        {
+          "path": "scripts/evaluate_public_types.py",
+          "line": 291,
+          "end_line": 319,
+          "label": "历史原样写入"
+        },
+        {
+          "path": "records/stats.json",
+          "line": 7,
+          "label": "本次运行记录"
+        }
+      ]
+    },
+    {
+      "id": "extract",
+      "lane": "write",
+      "col": 2,
+      "type": "cloud",
+      "label": "③ 整批抽取",
+      "sublabel": "每会话 1 次 · 共 2 次",
+      "tag": "保留来源、身份与状态",
+      "sources": [
+        {
+          "path": "src/memsys/write.py",
+          "line": 285,
+          "end_line": 313,
+          "label": "抽取调用"
+        },
+        {
+          "path": "src/memsys/write.py",
+          "line": 433,
+          "end_line": 448,
+          "label": "完整会话与已有事实"
+        },
+        {
+          "path": "records/stats.json",
+          "line": 16,
+          "label": "本次运行记录"
+        }
+      ]
+    },
+    {
+      "id": "normalize",
+      "lane": "write",
+      "col": 3,
+      "type": "backend",
+      "label": "④ 规范化与索引",
+      "sublabel": "条目校验 · 结构补充 · 向量化",
+      "tag": "本次隔离异常条目 0",
+      "sources": [
+        {
+          "path": "src/memsys/write.py",
+          "line": 509,
+          "end_line": 551,
+          "label": "校验与字面结构补充"
+        },
+        {
+          "path": "src/memsys/write.py",
+          "line": 313,
+          "end_line": 325,
+          "label": "向量化后发布"
+        },
+        {
+          "path": "records/stats.json",
+          "line": 18,
+          "label": "本次运行记录"
+        }
+      ]
+    },
+    {
+      "id": "facts",
+      "lane": "write",
+      "col": 4,
+      "type": "database",
+      "label": "⑤ 长期事实库",
+      "sublabel": "107 事实 · 21 实体 · 102 关联",
+      "tag": "保留原文来源指针",
+      "sources": [
+        {
+          "path": "src/memsys/write.py",
+          "line": 337,
+          "end_line": 375,
+          "label": "事务发布与来源记录"
+        },
+        {
+          "path": "records/storage.json",
+          "line": 4,
+          "end_line": 8,
+          "label": "实际存储数量"
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "lane": "search",
+      "col": 0,
+      "type": "external",
+      "label": "⑥ 新问题",
+      "sublabel": "两个鱼缸一共有多少条鱼？",
+      "tag": "原题英文见详情卡",
+      "sources": [
+        {
+          "path": "records/stats.json",
+          "line": 3,
+          "label": "本次运行记录"
+        },
+        {
+          "path": "scripts/blind_eval_inputs.py",
+          "line": 75,
+          "end_line": 78,
+          "label": "答题输入不含历史正文"
+        }
+      ]
+    },
+    {
+      "id": "plan",
+      "lane": "search",
+      "col": 1,
+      "type": "backend",
+      "label": "⑦ 查询规划",
+      "sublabel": "启发式 · needs_all=true",
+      "tag": "本次无规划模型调用",
+      "sources": [
+        {
+          "path": "src/memsys/read.py",
+          "line": 104,
+          "end_line": 122,
+          "label": "查询规划入口"
+        },
+        {
+          "path": "records/stats.json",
+          "line": 23,
+          "label": "本次运行记录"
+        }
+      ]
+    },
+    {
+      "id": "retrieve",
+      "lane": "search",
+      "col": 2,
+      "type": "backend",
+      "label": "⑧ 检索与重排",
+      "sublabel": "事实检索 · 全量候选补齐",
+      "tag": "BGE 重排 60 / 保留 107",
+      "sources": [
+        {
+          "path": "src/memsys/read.py",
+          "line": 251,
+          "end_line": 310,
+          "label": "向量与词法检索"
+        },
+        {
+          "path": "src/memsys/core.py",
+          "line": 234,
+          "end_line": 244,
+          "label": "本地重排后选取"
+        },
+        {
+          "path": "records/stats.json",
+          "line": 63,
+          "label": "本次运行记录"
+        }
+      ]
+    },
+    {
+      "id": "pack",
+      "lane": "context",
+      "col": 2,
+      "type": "backend",
+      "label": "⑨ 扩展记忆预算",
+      "sublabel": "60 条 → 107 条全部装入",
+      "tag": "65,536 → 121,580 字节",
+      "sources": [
+        {
+          "path": "src/memsys/core.py",
+          "line": 244,
+          "end_line": 263,
+          "label": "复用候选扩展预算"
+        },
+        {
+          "path": "records/stats.json",
+          "line": 42,
+          "label": "本次运行记录"
+        }
+      ]
+    },
+    {
+      "id": "prompt",
+      "lane": "context",
+      "col": 3,
+      "type": "backend",
+      "label": "⑩ 拼接答题提示",
+      "sublabel": "系统指令 + 107 事实 + 原题",
+      "tag": "原文片段 0 · 参考答案 0",
+      "sources": [
+        {
+          "path": "scripts/evaluate_public_types.py",
+          "line": 352,
+          "end_line": 370,
+          "label": "真实答题消息构造"
+        },
+        {
+          "path": "records/stats.json",
+          "line": 52,
+          "label": "本次运行记录"
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "lane": "context",
+      "col": 4,
+      "type": "cloud",
+      "label": "⑪ 生成回答",
+      "sublabel": "gpt-6-luna · 单次生成",
+      "tag": "模型自行综合为 17 条",
+      "sources": [
+        {
+          "path": "src/memsys/webchat.py",
+          "line": 63,
+          "end_line": 75,
+          "label": "答题入口与协议"
+        },
+        {
+          "path": "src/memsys/answer_contract.py",
+          "line": 336,
+          "end_line": 349,
+          "label": "生成与正文解码"
+        },
+        {
+          "path": "records/stats.json",
+          "line": 82,
+          "label": "本次运行记录"
+        }
+      ]
+    },
+    {
+      "id": "decode",
+      "lane": "delivery",
+      "col": 4,
+      "type": "backend",
+      "label": "⑫ 拆出回答正文",
+      "sublabel": "解析 answer；审计为诊断",
+      "tag": "正文完整 · finish=stop",
+      "sources": [
+        {
+          "path": "src/memsys/answer_contract.py",
+          "line": 202,
+          "end_line": 231,
+          "label": "正文交付不受审计阻断"
+        },
+        {
+          "path": "records/stats.json",
+          "line": 84,
+          "label": "本次运行记录"
+        }
+      ]
+    },
+    {
+      "id": "delivered",
+      "lane": "delivery",
+      "col": 5,
+      "type": "frontend",
+      "label": "⑬ 交付 17 条鱼",
+      "sublabel": "10 + 5 + 1 + 1 = 17",
+      "tag": "正文未被宿主改写",
+      "sources": [
+        {
+          "path": "records/stats.json",
+          "line": 85,
+          "label": "本次运行记录"
+        },
+        {
+          "path": "records/stats.json",
+          "line": 87,
+          "label": "本次运行记录"
+        },
+        {
+          "path": "scripts/evaluate_public_types.py",
+          "line": 369,
+          "end_line": 379,
+          "label": "答案落盘"
+        }
+      ]
+    },
+    {
+      "id": "audit",
+      "lane": "diagnostics",
+      "col": 4,
+      "type": "security",
+      "label": "诊断：绑定不完整",
+      "sublabel": "用途字段与计算引文报错",
+      "tag": "不拦截 · 已验证计算 0",
+      "sources": [
+        {
+          "path": "records/answer-audit.json",
+          "line": 1,
+          "end_line": 24,
+          "label": "原始审计结果"
+        },
+        {
+          "path": "src/memsys/answer_contract.py",
+          "line": 214,
+          "end_line": 223,
+          "label": "诊断策略"
+        }
+      ]
+    },
+    {
+      "id": "gold",
+      "lane": "grading",
+      "col": 4,
+      "type": "database",
+      "label": "离线参考答案",
+      "sublabel": "仅评分阶段可见",
+      "tag": "不回流生成与记忆",
+      "sources": [
+        {
+          "path": "scripts/blind_eval_inputs.py",
+          "line": 29,
+          "end_line": 33,
+          "label": "参考答案只写评分输入"
+        }
+      ]
+    },
+    {
+      "id": "judge",
+      "lane": "grading",
+      "col": 5,
+      "type": "cloud",
+      "label": "离线评分：通过",
+      "sublabel": "两题均答完后单独评分",
+      "tag": "同配置模型 · 非盲测证明",
+      "sources": [
+        {
+          "path": "scripts/evaluate_public_types.py",
+          "line": 386,
+          "end_line": 407,
+          "label": "独立评分阶段"
+        },
+        {
+          "path": "records/grade.json",
+          "line": 1,
+          "end_line": 16,
+          "label": "本题评分记录"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "history-archive",
+      "from": "history",
+      "to": "archive"
+    },
+    {
+      "id": "archive-extract",
+      "from": "archive",
+      "to": "extract"
+    },
+    {
+      "id": "extract-normalize",
+      "from": "extract",
+      "to": "normalize"
+    },
+    {
+      "id": "normalize-facts",
+      "from": "normalize",
+      "to": "facts"
+    },
+    {
+      "id": "question-plan",
+      "from": "question",
+      "to": "plan",
+      "variant": "emphasis"
+    },
+    {
+      "id": "plan-retrieve",
+      "from": "plan",
+      "to": "retrieve",
+      "variant": "emphasis"
+    },
+    {
+      "id": "facts-retrieve",
+      "from": "facts",
+      "to": "retrieve",
+      "label": "读取事实",
+      "role": "branch"
+    },
+    {
+      "id": "retrieve-pack",
+      "from": "retrieve",
+      "to": "pack",
+      "variant": "emphasis"
+    },
+    {
+      "id": "pack-prompt",
+      "from": "pack",
+      "to": "prompt",
+      "variant": "emphasis"
+    },
+    {
+      "id": "prompt-model",
+      "from": "prompt",
+      "to": "model",
+      "variant": "emphasis"
+    },
+    {
+      "id": "model-decode",
+      "from": "model",
+      "to": "decode",
+      "variant": "emphasis"
+    },
+    {
+      "id": "decode-delivered",
+      "from": "decode",
+      "to": "delivered",
+      "variant": "emphasis"
+    },
+    {
+      "id": "decode-audit",
+      "from": "decode",
+      "to": "audit",
+      "label": "记录诊断",
+      "role": "branch"
+    },
+    {
+      "id": "delivered-judge",
+      "from": "delivered",
+      "to": "judge",
+      "label": "固定答案",
+      "role": "branch"
+    },
+    {
+      "id": "gold-judge",
+      "from": "gold",
+      "to": "judge",
+      "label": "比对",
+      "role": "branch"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "原始问题与两段历史（保留英文原文）",
+      "items": [
+        "原题：How many fish are there in total in both of my aquariums?",
+        "会话 1，用户原话：I'm thinking of adding some live plants to my new 20-gallon tank, which currently has 10 neon tetras, 5 golden honey gouramis, and a small pleco catfish. Can you recommend some easy-to-care-for plants that would thrive in a community tank like mine?",
+        "会话 2，用户原话：I'm thinking of adding some live aquatic plants to my freshwater tank. Can you give me some tips on how to get started with that? By the way, I also upgraded my old 10-gallon tank, which has my betta fish, Bubbles."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "17 如何得出：下列两条是答案绑定的事实",
+      "items": [
+        "F2993466238984338：The user has a new 20-gallon tank containing 10 neon tetras, 5 golden honey gouramis, and a small pleco catfish.",
+        "F8785483295396362：The user owns Bubbles, a betta fish, who is kept in the user's upgraded former 10-gallon tank.",
+        "模型将 “a small pleco” 和一条名为 Bubbles 的斗鱼各按 1 条计入：10 + 5 + 1 + 1 = 17。",
+        "pleco 的结构化 quantity 仍为字符串 “small”；两个 1 由模型根据表述推断，没有通过宿主的确定性计算验证。",
+        "计划添加的 lemon tetras / zebra danios 仍以计划状态入库，本次答案未将其计入现有数量。这是观察到的生成结果。"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "实际输入体积与耗时",
+      "items": [
+        "全部 107 条已存事实均进入提示，其中用户相关个人、事件、偏好条目共 16 条，助手内容条目 91 条；上面列出的 2 条只是关键依据，并非仅召回 2 条。",
+        "初始记忆预算 65,536 UTF-8 字节，先选入 60 条；覆盖补充后可用预算为 121,580 字节，最终记忆文本 70,680 字节，完整输入 80,044 字节。",
+        "预算字段名称虽带 tokens，本轮实际计量单位是 UTF-8 字节；服务商上报答题输入 18,487 token，输出 333 token。",
+        "单题读取和答题合计 26.504 秒；其中 BGE 重排约 17.974 秒，回答模型约 5.782 秒；其余为检索、装配和本地处理，时间不可重复相加。",
+        "答案调用 1 次，finish_reason=stop；本次未触发输出扩容或截断重试。"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "审计报错为什么仍能交付",
+      "items": [
+        "审计状态 bindings_incomplete，证据用途字段缺失或不合法；计算元数据中的两段引文没有准确绑定到实际事实文字。",
+        "模型写的 “10 neon tetras + 5 golden honey gouramis + 1 small pleco” 和 “1 betta fish” 不是所选事实的原样引文，因此计算绑定检查未通过。",
+        "delivery_policy=diagnostic_only，answer_modified=false：解码器取出完整 answer 正文，记录审计问题，不因审计失败重答或改写。",
+        "已验证的确定性计算为 0；离线评分通过不代表来源覆盖、语义支持或所有计算审计都通过。"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "证据与适用范围",
+      "items": [
+        "图基于最近一次两题复测中本题的实际历史输入、调用响应、召回 trace 和冻结源码；没有为作图重新调用模型。",
+        "本次保存 107 条事实、24/24 消息处理完成、0 条隔离，只能证明处理与条目协议结果；抽取报告仍明确标记语义覆盖未经验证。",
+        "事实库与原文存档在同一隔离租户中属于不同记录类型；本图拆开表示用途，不表示两个独立数据库服务。",
+        "离线评分由同配置的 gpt-6-luna 在单独阶段完成；这是一道已暴露的开发回归题，不能据此推导总体正确率。",
+        "工作区有未提交改动（含 core.py、read.py、write.py、answer_contract.py、webchat.py）；图中代码引用固定到独立的本地证据快照，不冒充远端 HEAD。原始数据见 records/，源码见 src/ 和 scripts/。"
+      ]
+    }
+  ]
+}

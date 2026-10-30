@@ -1,0 +1,92 @@
+{
+  "purpose": "Independent prewritten functional scenarios for item-level extraction isolation and task application. No public evaluation questions or references.",
+  "passes": 2,
+  "cases": [
+    {
+      "name": "active_audio_project",
+      "history": [
+        {"role": "user", "content": "Last year I finished a photo slideshow for my family. My current project is a four-minute oral-history recording with my grandmother. I only have my Android phone, no external microphone, and about fifteen minutes each evening to work on it."},
+        {"role": "assistant", "content": "For the recording project, a short test recording, a quieter room, a simple question outline, and listening back to one section at a time are possible techniques."},
+        {"role": "user", "content": "Yes, the oral-history recording is what I want to finish now. The slideshow is already done. I want her voice to be easy to hear without buying equipment."},
+        {"role": "assistant", "content": "The intended outcome is a short, clearly audible recording made with the phone you already have."}
+      ],
+      "question": "How can I get better results with my media projects?",
+      "checks": ["Concrete suggestions advance the current oral-history recording.", "Uses phone-only and limited-time constraints rather than assuming extra equipment.", "The completed slideshow does not displace the current project."]
+    },
+    {
+      "name": "cancelled_and_current_outing",
+      "history": [
+        {"role": "user", "content": "I had planned a charity bike ride this weekend, but I cancelled it. Instead I want a thirty-minute neighborhood photo walk on wheelchair-accessible paths. I will be starting from home and have no transport."},
+        {"role": "assistant", "content": "For a short local photo walk, you could choose a nearby accessible loop, identify a few interesting subjects, and leave time to return home."},
+        {"role": "user", "content": "The bike ride is definitely cancelled. The local photo walk is my current plan."},
+        {"role": "assistant", "content": "That distinguishes the cancelled activity from the current outing."}
+      ],
+      "question": "Any suggestions for planning my weekend outing?",
+      "checks": ["Builds on the current accessible local photo walk and its thirty-minute limit.", "Does not recommend preparing for the cancelled ride or assume transport."]
+    },
+    {
+      "name": "multiple_active_projects",
+      "history": [
+        {"role": "user", "content": "I have two unrelated projects going at the same time: setting up small seedling trays on my balcony, and organizing notes for my book club. Neither one has priority yet."},
+        {"role": "assistant", "content": "Those are separate tasks. You can choose between them based on what you want to accomplish first."}
+      ],
+      "question": "What should I focus on next for my projects?",
+      "checks": ["Asks a focused choice question or offers clearly conditional alternatives.", "Does not invent a priority or combine the two projects into one task."]
+    },
+    {
+      "name": "unrelated_goal",
+      "history": [
+        {"role": "user", "content": "I want to restore an old mantel clock. I have a small screwdriver set, but have not started the restoration yet."},
+        {"role": "assistant", "content": "Keeping the parts organized and documenting their positions may help with that project."}
+      ],
+      "question": "How should I organize my email inbox?",
+      "checks": ["Gives useful email advice without forcing the unrelated restoration goal into the answer.", "Does not invent the user's email platform, job, or message volume."]
+    },
+    {
+      "name": "unchosen_assistant_options",
+      "history": [
+        {"role": "user", "content": "I want a quiet indoor activity for after work, but I haven't chosen one and don't own any hobby supplies."},
+        {"role": "assistant", "content": "Some possible options are watercolor practice, writing short stories, or learning a board game. These are suggestions, not activities you have selected."},
+        {"role": "user", "content": "I haven't picked any of those. I would like a way to try something without buying supplies first."},
+        {"role": "assistant", "content": "You can start with a no-purchase trial and decide afterward whether to continue."}
+      ],
+      "question": "What would be sensible first steps for my evenings?",
+      "checks": ["Uses quiet indoor and no-purchase constraints.", "Keeps proposed activities conditional instead of claiming the user chose one or owns supplies."]
+    },
+    {
+      "name": "handout_constraints",
+      "history": [
+        {"role": "user", "content": "I used to make colorful flyers for community events. Right now I'm preparing a large-print handout for six people at a twenty-minute phone-skills workshop. My printer is monochrome, and the handout must fit on two pages."},
+        {"role": "assistant", "content": "For this handout, short headings, clear spacing, simple examples, and a quick print check may help."},
+        {"role": "user", "content": "The two-page limit and large print matter more than decorative design. I want participants to be able to follow the steps during the workshop."},
+        {"role": "assistant", "content": "Those are the relevant outcome and format constraints for this material."}
+      ],
+      "question": "How can I make my workshop materials better?",
+      "checks": ["Recommendations concretely serve a readable two-page workshop handout.", "Respects monochrome printing and does not let old colorful-flyer experience displace the current task."]
+    },
+    {
+      "name": "mixed_protocol_entries",
+      "fault": "append_invalid_entries",
+      "history": [
+        {"role": "user", "content": "My current weekend project is a small cardboard model bridge. I have scrap cardboard, paper tape, and forty minutes to spend on it."},
+        {"role": "assistant", "content": "You could sketch a simple span, make two matching side pieces, and test how the pieces fit before using tape."},
+        {"role": "user", "content": "I want to finish a simple display model, not a structure that holds heavy loads."},
+        {"role": "assistant", "content": "The task is a small display model made from those available materials."}
+      ],
+      "question": "Can you give me a practical plan for this project?",
+      "checks": ["Valid sourced facts survive deliberately invalid neighboring entries.", "Invalid entries and the complete response are retained outside searchable facts, with explicit partial status.", "The answer uses available facts without claiming complete extraction."]
+    },
+    {
+      "name": "all_entries_quarantined",
+      "fault": "replace_with_invalid_entries",
+      "history": [
+        {"role": "user", "content": "I'm making a fabric cover for a notebook. The cloth is green, and the notebook is A5 size."},
+        {"role": "assistant", "content": "That describes the project and two of its attributes."},
+        {"role": "user", "content": "I have not started cutting the fabric yet."},
+        {"role": "assistant", "content": "The work is still a plan rather than a completed action."}
+      ],
+      "question": "What details do you remember about my current project?",
+      "checks": ["All invalid entries remain quarantined and no ungrounded fact becomes searchable.", "Original source messages and failed output remain available for diagnosis, with incomplete status.", "The answer acknowledges missing remembered details without inventing them or reading original history as a fallback."]
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "description": "Fresh-value transfer regression created after the first suite; not an accuracy estimate.",
+  "today": "2026-10-13T10:00:00",
+  "cases": [
+    {
+      "id": "historical_and_current",
+      "sessions": [
+        {
+          "at": "2025-03-04T10:00:00",
+          "turns": [
+            {
+              "role": "user",
+              "content": "我现在住在济宁。"
+            },
+            {
+              "role": "assistant",
+              "content": "收到。"
+            }
+          ]
+        },
+        {
+          "at": "2026-09-08T10:00:00",
+          "turns": [
+            {
+              "role": "user",
+              "content": "我已经从济宁搬到汕头了，现在住在汕头。"
+            },
+            {
+              "role": "assistant",
+              "content": "收到。"
+            }
+          ]
+        }
+      ],
+      "queries": [
+        {
+          "id": "current",
+          "question": "我现在住在哪个城市？只回答城市名。",
+          "contains": [
+            "汕头"
+          ],
+          "forbidden": [
+            "济宁"
+          ]
+        },
+        {
+          "id": "past",
+          "question": "2025年3月我住在哪个城市？只回答城市名。",
+          "contains": [
+            "济宁"
+          ],
+          "forbidden": [
+            "汕头"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cumulative_progress",
+      "sessions": [
+        {
+          "at": "2026-09-20T10:00:00",
+          "turns": [
+            {
+              "role": "user",
+              "content": "我在读《风的回声》，全书137页，目前累计读到了31页。"
+            },
+            {
+              "role": "assistant",
+              "content": "收到。"
+            }
+          ]
+        },
+        {
+          "at": "2026-10-04T10:00:00",
+          "turns": [
+            {
+              "role": "user",
+              "content": "《风的回声》的进度更新：现在累计读到了58页，包含之前的31页，不是新增58页。"
+            },
+            {
+              "role": "assistant",
+              "content": "收到。"
+            }
+          ]
+        }
+      ],
+      "queries": [
+        {
+          "id": "remaining",
+          "question": "《风的回声》还有多少页没读？只回答页数。",
+          "number": 79
+        }
+      ]
+    },
+    {
+      "id": "corrected_booking",
+      "sessions": [
+        {
+          "at": "2026-10-01T10:00:00",
+          "turns": [
+            {
+              "role": "user",
+              "content": "我的陶艺体验课预约在2026年11月14日。"
+            },
+            {
+              "role": "assistant",
+              "content": "收到。"
+            }
+          ]
+        },
+        {
+          "at": "2026-10-05T10:00:00",
+          "turns": [
+            {
+              "role": "user",
+              "content": "更正之前的预约：陶艺体验课改到2026年11月27日，11月14日的预约已经取消。"
+            },
+            {
+              "role": "assistant",
+              "content": "收到。"
+            }
+          ]
+        }
+      ],
+      "queries": [
+        {
+          "id": "current_date",
+          "question": "我当前的陶艺体验课预约是11月几日？只回答日号。",
+          "number": 27
+        }
+      ]
+    },
+    {
+      "id": "open_chat_window",
+      "pending": true,
+      "sessions": [
+        {
+          "at": "2026-10-13T09:00:00",
+          "turns": [
+            {
+              "role": "user",
+              "content": "我的工作室叫松岚九舍。"
+            },
+            {
+              "role": "assistant",
+              "content": "收到。"
+            }
+          ],
+          "filler_rounds": 7
+        }
+      ],
+      "queries": [
+        {
+          "id": "early_name",
+          "same_conversation": true,
+          "question": "我的工作室叫什么？只回答名称。",
+          "contains": [
+            "松岚九舍"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tenant_isolation",
+      "sessions": [],
+      "queries": [
+        {
+          "id": "other_user",
+          "question": "我的工作室叫什么？如果没有信息，请直接说不知道。",
+          "unknown": true,
+          "forbidden": [
+            "松岚九舍"
+          ]
+        }
+      ]
+    }
+  ]
+}

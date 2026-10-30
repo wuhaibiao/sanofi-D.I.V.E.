@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-memory-proposal-redesign-20261030-003722/candidate.json",
+    "sha256": "fc8712f2b9a6c098d40578aafdfb54153737d8ec13a3ecdd06144a83b14dd2e6",
+    "bytes": 5045
+  },
+  "artifact": {
+    "path": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-memory-proposal-redesign-20261030-003722/memory-workflow.html",
+    "sha256": "e06d50e00967903865df841e87a2f6a21052e1c2d90ffc1696e25c77a17ecdb9",
+    "bytes": 837715
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-memory-proposal-redesign-20261030-003722/review-2/memory-workflow.finalize.json",
+    "summaryReceipt": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-memory-proposal-redesign-20261030-003722/review-2/memory-workflow.finalize-summary.json",
+    "browserCheckReceipt": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-memory-proposal-redesign-20261030-003722/review-2/memory-workflow.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-29T07:02:32.742Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 2650,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

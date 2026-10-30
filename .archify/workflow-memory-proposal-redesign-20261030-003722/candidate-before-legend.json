@@ -1,0 +1,224 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "主方案记忆写入与答题流程",
+    "locale": "zh-CN",
+    "quality_profile": "showcase",
+    "output": ".archify/workflow-memory-proposal-redesign-20261030-003722/memory-workflow.html",
+    "repository": {
+      "url": "https://github.com/wuhaibiao/sanofi-D.I.V.E..git",
+      "revision": "eba1116a7d2eaa268a492fbf809ce6394ff4e430",
+      "link_mode": "local-only"
+    }
+  },
+  "lanes": [
+    {
+      "id": "write",
+      "label": "历史写入"
+    },
+    {
+      "id": "read",
+      "label": "提问与回答"
+    }
+  ],
+  "mainPath": [
+    "question",
+    "hybrid",
+    "rerank",
+    "context",
+    "agent"
+  ],
+  "nodes": [
+    {
+      "id": "original",
+      "lane": "write",
+      "col": 0,
+      "type": "database",
+      "icon": "messagebus",
+      "label": "保存原始对话",
+      "sublabel": "角色 时间 来源",
+      "sources": [
+        {
+          "path": "src/memsys/core.py",
+          "line": 150,
+          "end_line": 164
+        },
+        {
+          "path": "src/memsys/store.py",
+          "line": 63,
+          "end_line": 88
+        }
+      ]
+    },
+    {
+      "id": "organize",
+      "lane": "write",
+      "col": 1,
+      "type": "backend",
+      "icon": "active",
+      "label": "整理与嵌入",
+      "sublabel": "抽取事实 BGE-M3",
+      "sources": [
+        {
+          "path": "src/memsys/write.py",
+          "line": 294,
+          "end_line": 325
+        }
+      ]
+    },
+    {
+      "id": "index",
+      "lane": "write",
+      "col": 2,
+      "type": "database",
+      "icon": "database",
+      "label": "长期记忆索引",
+      "sublabel": "Qdrant 事实与向量",
+      "sources": [
+        {
+          "path": "src/memsys/write.py",
+          "line": 337,
+          "end_line": 375
+        },
+        {
+          "path": "src/memsys/store.py",
+          "line": 63,
+          "end_line": 88
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "lane": "read",
+      "col": 0,
+      "type": "external",
+      "icon": "person",
+      "label": "当前问题",
+      "sublabel": "用户提出新请求",
+      "sources": [
+        {
+          "path": "src/memsys/webchat.py",
+          "line": 290,
+          "end_line": 309
+        }
+      ]
+    },
+    {
+      "id": "hybrid",
+      "lane": "read",
+      "col": 1,
+      "type": "backend",
+      "icon": "decision",
+      "label": "混合召回",
+      "sublabel": "语义 词项 关系",
+      "sources": [
+        {
+          "path": "src/memsys/read.py",
+          "line": 295,
+          "end_line": 325
+        },
+        {
+          "path": "src/memsys/read.py",
+          "line": 370,
+          "end_line": 389
+        }
+      ]
+    },
+    {
+      "id": "rerank",
+      "lane": "read",
+      "col": 2,
+      "type": "backend",
+      "icon": "flag",
+      "label": "本地重排",
+      "sublabel": "BGE 精排候选",
+      "sources": [
+        {
+          "path": "src/memsys/read.py",
+          "line": 428,
+          "end_line": 485
+        }
+      ]
+    },
+    {
+      "id": "context",
+      "lane": "read",
+      "col": 3,
+      "type": "messagebus",
+      "icon": "messagebus",
+      "label": "返回相关记忆",
+      "sublabel": "选择正文 组织 context",
+      "sources": [
+        {
+          "path": "src/memsys/core.py",
+          "line": 237,
+          "end_line": 263
+        },
+        {
+          "path": "src/memsys/core.py",
+          "line": 206,
+          "end_line": 229
+        }
+      ]
+    },
+    {
+      "id": "agent",
+      "lane": "read",
+      "col": 4,
+      "type": "cloud",
+      "icon": "cloud",
+      "label": "宿主生成答案",
+      "sublabel": "问题 近期对话 记忆",
+      "sources": [
+        {
+          "path": "src/memsys/webchat.py",
+          "line": 290,
+          "end_line": 314
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "persist-organize",
+      "from": "original",
+      "to": "organize"
+    },
+    {
+      "id": "organize-index",
+      "from": "organize",
+      "to": "index"
+    },
+    {
+      "id": "question-search",
+      "from": "question",
+      "to": "hybrid",
+      "variant": "emphasis"
+    },
+    {
+      "id": "index-search",
+      "from": "index",
+      "to": "hybrid",
+      "label": "已存记忆"
+    },
+    {
+      "id": "search-rerank",
+      "from": "hybrid",
+      "to": "rerank",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rerank-context",
+      "from": "rerank",
+      "to": "context",
+      "variant": "emphasis"
+    },
+    {
+      "id": "context-agent",
+      "from": "context",
+      "to": "agent",
+      "variant": "emphasis"
+    }
+  ]
+}

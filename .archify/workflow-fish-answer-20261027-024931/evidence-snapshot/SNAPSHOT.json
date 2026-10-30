@@ -1,0 +1,16 @@
+{
+  "kind": "local artifact evidence snapshot",
+  "upstream_head": "cdbd6e75d5676527596d64e1f2c2ac930526dd3b",
+  "uncommitted_source": true,
+  "source_sha256": "cba4b4ab3ee7ba7e26dd78f9f8ec66ecfbd8a5c1883c53b868bb150ef4753e0a",
+  "source_run": "/Users/OleniusBlanc227/Documents/sanofi/memsys/runs/memory-regression2-task-context-20261027",
+  "copied_frozen_sources": [
+    "core.py",
+    "write.py",
+    "read.py",
+    "webchat.py",
+    "answer_contract.py",
+    "extraction_protocol.py"
+  ],
+  "note": "The snapshot is a separate local Git repository for verifiable artifact citations. Its commit is not an upstream release or a commit in the working project. No configuration files or credentials were copied."
+}

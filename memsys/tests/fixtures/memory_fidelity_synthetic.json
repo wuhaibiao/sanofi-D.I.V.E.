@@ -1,0 +1,81 @@
+{
+  "origin": "Independent functional requirements for atomic memory and grounded advice. Authored before implementation; no public evaluation questions or references.",
+  "today": "2032-04-18T12:00:00",
+  "cases": [
+    {
+      "id": "prose_handover",
+      "sessions": [
+        {
+          "at": "2032-04-16T10:00:00",
+          "turns": [
+            {"role": "user", "content": "Draft a short service handover for a demonstration rig. The rig is called Meridian G4. Its outlet faces northwest, its cover has a satin copper finish, and the vent stays open while the rig is idle. The rig belongs to the demonstration facility, not to me. Use prose, without a table or numbered list."},
+            {"role": "assistant", "content": "The demonstration facility's Meridian G4 rig has a northwest-facing outlet and a cover with a satin copper finish. Leave the vent open whenever the rig is idle. Before a handover, identify the rig by its name and check these settings. This note describes the facility's demonstration equipment, rather than equipment owned by the user."}
+          ]
+        }
+      ],
+      "question": "Which outlet orientation, cover finish and idle vent setting did the handover specify for Meridian G4?",
+      "retained_terms": ["northwest", "satin copper", "vent", "idle"],
+      "answer_terms": [["northwest", "north-west"], ["satin copper"], ["open"]],
+      "review": "All three properties belong to the named demonstration rig; do not claim user ownership."
+    },
+    {
+      "id": "announcement_practice",
+      "sessions": [
+        {
+          "at": "2032-04-17T10:00:00",
+          "turns": [
+            {"role": "user", "content": "I enjoy reading about urban design. Right now I am preparing a ninety-second bilingual Mandarin and English welcome recording for our community seed library. I only have fifteen minutes at lunchtime to practise, and I use the voice recorder on my phone. I cannot buy extra equipment. I keep reading stiffly from my notes instead of sounding welcoming."},
+            {"role": "assistant", "content": "Possible presentation exercises include watching talks, reading a passage aloud, memorising a script, rehearsing with a partner, taking a class, practising gestures, making slides and recording yourself. These are possibilities rather than activities you reported doing."},
+            {"role": "user", "content": "My immediate goal is still that short two-language welcome recording. I want to sound natural without reading every sentence. I have not signed up for a class or made slides."},
+            {"role": "assistant", "content": "Noted: the task is a spoken welcome recording, and the recording should sound natural."}
+          ]
+        }
+      ],
+      "question": "My practice still feels awkward. What should I change next?",
+      "user_terms": ["welcome", "recording", "Mandarin", "English", "lunchtime"],
+      "answer_terms": [["welcome"], ["record", "phone"], ["fifteen", "15", "lunchtime"], ["Mandarin", "bilingual", "two-language"]],
+      "review": "Advice should change the actual short recording practice within the available time and equipment. An opening mention followed only by generic presentation tips is insufficient. Do not assert that suggested classes or slides were adopted."
+    },
+    {
+      "id": "changed_project",
+      "sessions": [
+        {
+          "at": "2032-04-10T10:00:00",
+          "turns": [
+            {"role": "user", "content": "I am planning an in-person collage workshop at the community hall."},
+            {"role": "assistant", "content": "You could use a projector, arrange shared worktables and invite participants to bring materials. These are planning suggestions."}
+          ]
+        },
+        {
+          "at": "2032-04-17T10:00:00",
+          "turns": [
+            {"role": "user", "content": "I cancelled the in-person collage workshop. My new project is a self-guided collage kit sent by post. Recipients have scissors and glue but no printer. I need the kit to work without live instruction."},
+            {"role": "assistant", "content": "The mailed kit can contain printed instructions, preselected paper pieces and a small practice example. This is a suggestion for the new format."}
+          ]
+        }
+      ],
+      "question": "How should I put this together now?",
+      "user_terms": ["cancelled", "kit", "post", "scissors", "printer"],
+      "answer_terms": [["kit"], ["mail", "post", "send"], ["print", "printed", "pre-cut", "precut"]],
+      "review": "Use the explicitly changed project and recipient constraints; do not revive the cancelled live workshop or assume access to a printer."
+    },
+    {
+      "id": "unadopted_options",
+      "sessions": [
+        {
+          "at": "2032-04-17T10:00:00",
+          "turns": [
+            {"role": "user", "content": "I have not chosen a new hobby and have not bought tools. I am only comparing possibilities. Could you describe needle felting, mosaics and bookbinding?"},
+            {"role": "assistant", "content": "Needle felting uses wool and a barbed needle. Mosaics use small pieces to create a picture. Bookbinding joins pages into a book. You might try a beginner kit or a class, but these are optional ideas rather than choices you have made."},
+            {"role": "user", "content": "I am still undecided. I have not picked an activity, bought a kit or booked a class."},
+            {"role": "assistant", "content": "You are still comparing the options."}
+          ]
+        }
+      ],
+      "question": "What first step would you recommend?",
+      "user_terms": ["not", "chosen"],
+      "answer_terms": [],
+      "review": "Offer a small comparison or a focused question. Do not claim the user practises one of these hobbies, owns its tools or has booked a class."
+    }
+  ]
+}

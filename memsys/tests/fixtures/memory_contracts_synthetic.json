@@ -1,0 +1,51 @@
+{
+  "origin": "Independent functional requirements authored before implementation; no public evaluation data.",
+  "structures": [
+    {
+      "name": "workshop_options",
+      "source": "# Workshop choices\n4. Surface: teal lacquer\n5. Frame:\n   - Material: birch plywood\n   - Joint: sliding dovetail\n6. Finish: air dry\n",
+      "required": ["teal lacquer", "birch plywood", "sliding dovetail", "air dry"]
+    },
+    {
+      "name": "chinese_nested_choices",
+      "source": "# 展柜制作\n7. 外壳：磨砂陶瓷\n8. 底座：\n   - 材质：榉木\n   - 颜色：橄榄绿\n9. 包装：软木垫\n",
+      "required": ["磨砂陶瓷", "榉木", "橄榄绿", "软木垫"]
+    },
+    {
+      "name": "unambiguous_prose_boundary",
+      "source": "A general discussion of weather.\n```text\n4. hidden_item: hidden_value\n```\n",
+      "required": [],
+      "excluded": ["hidden_item", "hidden_value", "general discussion"]
+    }
+  ],
+  "states": [
+    {"source": "My older folding kayak is still in the shed. I bought a new kayak.", "object": "folding kayak", "predicate": "owns", "asserted": "ended", "expected": "unknown"},
+    {"source": "I sold my folding kayak yesterday.", "object": "folding kayak", "predicate": "owns", "asserted": "ended", "expected": "ended"},
+    {"source": "I have not sold my folding kayak.", "object": "folding kayak", "predicate": "owns", "asserted": "ended", "expected": "unknown"},
+    {"source": "I might sell my folding kayak next winter.", "object": "folding kayak", "predicate": "owns", "asserted": "ended", "expected": "unknown"},
+    {"source": "I sold my bicycle. My folding kayak is still in the shed.", "object": "folding kayak", "predicate": "owns", "asserted": "ended", "expected": "unknown"},
+    {"source": "I no longer own the folding kayak.", "object": "folding kayak", "predicate": "owns", "asserted": "ended", "expected": "ended"},
+    {"source": "那把旧小提琴还在柜子里，我买了一把新小提琴。", "object": "旧小提琴", "predicate": "owns", "asserted": "ended", "expected": "unknown"},
+    {"source": "我已经把旧小提琴送给邻居了。", "object": "旧小提琴", "predicate": "owns", "asserted": "ended", "expected": "ended"},
+    {"source": "我没有把旧小提琴送给邻居。", "object": "旧小提琴", "predicate": "owns", "asserted": "ended", "expected": "unknown"},
+    {"source": "Mira stopped leading Juniper.", "subject": "Mira", "object": "Juniper", "predicate": "leads", "asserted": "ended", "expected": "ended"},
+    {"source": "I cancelled the soldering class.", "object": "soldering class", "predicate": "attends", "asserted": "cancelled", "expected": "cancelled"}
+  ],
+  "retrieval": {
+    "question": "List all the tools I have used in chronological order.",
+    "assistant_question": "Which tools did you previously recommend?",
+    "personal_events": ["I used a hand plane during the cedar project.", "I used a spoke shave during the maple project.", "I used a cabinet scraper during the birch project."],
+    "assistant_noise": "The assistant offered an optional workshop supplier comparison.",
+    "constraints": "Only already retrieved facts may be reordered; respect byte and fact limits; preserve assistant recall."
+  },
+  "answer_contract": {
+    "time_start": "04:25",
+    "duration": "85 minutes",
+    "expected_time": "05:50",
+    "event_identity": "kiln firing rehearsal alpha",
+    "different_event_identity": "kiln firing rehearsal beta",
+    "preference": "I prefer reusable fabric wrapping for handmade gifts.",
+    "question": "Suggest a way to package my handmade gift.",
+    "constraints": ["Unknown fact IDs are rejected", "Source quotations must match selected facts", "Different events cannot be combined", "No generated code is executed", "No additional answer or review model call"]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "root": "/Users/OleniusBlanc227/Documents/sanofi",
+  "repo": "/Users/OleniusBlanc227/Documents/sanofi/memsys",
+  "backup": "/Users/OleniusBlanc227/Documents/sanofi/.worktrees/memsys-return-layer-discard-20261029-043744",
+  "snapshot": "/Users/OleniusBlanc227/Documents/sanofi/.worktrees/memsys-return-layer-discard-20261029-043744/main-source-snapshot",
+  "evidence_commit": "eba1116a7d2eaa268a492fbf809ce6394ff4e430",
+  "origin": "https://github.com/wuhaibiao/sanofi-D.I.V.E..git",
+  "artifact": "/Users/OleniusBlanc227/Documents/sanofi/.archify/workflow-memory-proposal-20261029-044227",
+  "proposal": "/Users/OleniusBlanc227/Documents/sanofi/memsys/docs/proposal-draft-20261029",
+  "source_sha256": "73d20a5fd02f6800e73b0f01a7b45a4b93d7c36573cf3302b058e935a72e55f6",
+  "main_head": "cdbd6e75d5676527596d64e1f2c2ac930526dd3b",
+  "snapshot_note": "Detached source evidence snapshot only; main commit history and index unchanged."
+}
