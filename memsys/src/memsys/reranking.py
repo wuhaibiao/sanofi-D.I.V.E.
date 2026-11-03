@@ -54,7 +54,7 @@ class BGEReranker:
             raise RerankFailure("CUDA is unavailable")
         self.tokenizer = ModelTokenizer(s.rerank_model, s.rerank_tokenizer_revision)
         model = AutoModelForSequenceClassification.from_pretrained(s.rerank_model, revision=s.rerank_revision,
-            dtype=getattr(torch, s.rerank_dtype), trust_remote_code=False, use_safetensors=True)
+            torch_dtype=getattr(torch, s.rerank_dtype), trust_remote_code=False, use_safetensors=True)
         model.to(device).eval()
         self.encodings = PairEncodingCache(self.tokenizer)
         self.device, self.torch, self.model = device, torch, model

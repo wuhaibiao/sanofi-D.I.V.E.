@@ -3,6 +3,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import plistlib
 import stat
 import tempfile
 import threading
@@ -85,6 +86,11 @@ class LocalConfigTests(unittest.TestCase):
             path.write_text("export KEY='literal $HOME `command`'\nEMPTY=\nIGNORED=hello # note\n")
             self.assertEqual(self.module.dotenv(path), {"KEY": "literal $HOME `command`", "EMPTY": "", "IGNORED": "hello"})
 
+    def test_inference_device_matches_mac_architecture(self):
+        for architecture, expected in (("x86_64", "cpu"), ("arm64", "mps")):
+            with self.subTest(architecture=architecture), patch.object(self.module.platform, "machine", return_value=architecture):
+                self.assertEqual(self.module.inference_device(), expected)
+
     def test_credentials_file_is_private_and_other_projects_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "runtime.json"
@@ -92,6 +98,40 @@ class LocalConfigTests(unittest.TestCase):
             self.assertEqual(stat.S_IMODE(path.stat().st_mode), 0o600)
             with self.assertRaises(ValueError):
                 self.module.profile(path.parent)
+
+    def test_background_runtime_and_credentials_avoid_protected_project_directory(self):
+        with tempfile.TemporaryDirectory() as directory:
+            home = Path(directory) / "home"
+            project = home / "Downloads/project"
+            project.mkdir(parents=True)
+            project.joinpath("config.json").write_text(json.dumps({
+                "models": {"test": {"model": "test", "api_key_env": "PROVIDER_TEST_KEY"}},
+                "roles": {"memory": "test"}}))
+            project.joinpath(".env").write_text("PROVIDER_TEST_KEY=synthetic-key\nUNRELATED_SECRET=do-not-copy\n")
+            state = home / "Library/Application Support/memsys"
+            state.joinpath("bin").mkdir(parents=True)
+            state.joinpath("bin/qdrant").touch()
+            python = state / ".venv/bin/python"
+            python.parent.mkdir(parents=True)
+            python.touch()
+            agents = home / "Library/LaunchAgents"
+            agents.mkdir(parents=True)
+            # Existing deployments in Downloads migrate without changing their owner.
+            for label in self.module.LABELS.values():
+                agents.joinpath(label + ".plist").write_bytes(plistlib.dumps({"WorkingDirectory": str(project)}))
+            with patch.object(self.module, "ROOT", project), patch.object(Path, "home", return_value=home):
+                self.module.prepare(state, Path("unused"))
+            credentials = state / "provider-credentials.json"
+            self.assertEqual(json.loads(credentials.read_text()), {"PROVIDER_TEST_KEY": "synthetic-key"})
+            self.assertEqual(stat.S_IMODE(credentials.stat().st_mode), 0o600)
+            self.assertTrue(state.joinpath("local-service.py").is_file())
+            for label in self.module.LABELS.values():
+                path = agents / (label + ".plist")
+                definition = plistlib.loads(path.read_bytes())
+                self.assertEqual(definition["WorkingDirectory"], str(state))
+                self.assertEqual(definition["ProgramArguments"][:2], [str(python), str(state / "local-service.py")])
+                self.assertEqual(definition["EnvironmentVariables"]["MEMSYS_SOURCE_ROOT"], str(project))
+                self.assertNotIn(b"synthetic-key", path.read_bytes())
 
     def test_stop_waits_for_unregistration_before_restart_can_proceed(self):
         completed = MagicMock(returncode=1)

@@ -33,7 +33,7 @@ class BGEEmbedding:
             raise RuntimeError("MPS is unavailable; configure CPU explicitly")
         tokenizer = AutoTokenizer.from_pretrained(str(self.model_dir), local_files_only=True, trust_remote_code=False)
         model = AutoModel.from_pretrained(str(self.model_dir), local_files_only=True, trust_remote_code=False,
-            use_safetensors=(self.model_dir / "model.safetensors").is_file(), weights_only=True, dtype=torch.float32)
+            use_safetensors=(self.model_dir / "model.safetensors").is_file(), weights_only=True, torch_dtype=torch.float32)
         model.to(self.device).eval()
         self.tokenizer, self.model, self.torch = tokenizer, model, torch
 

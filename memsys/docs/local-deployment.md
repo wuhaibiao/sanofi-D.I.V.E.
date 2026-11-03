@@ -1,5 +1,56 @@
 # 本机部署
 
+## Intel Mac 环境安装
+
+在仓库的 `memsys/` 目录执行以下命令。项目使用独立虚拟环境；Intel Mac
+使用 CPU，Apple Silicon 使用 MPS。Intel Mac 的 PyTorch 固定为最后支持
+macOS x86_64 的 2.2.2，配套 Transformers 4.51.3 和 NumPy 1.x，安装时由
+`pyproject.toml` 的平台条件自动选择。
+
+```bash
+uv python install 3.11
+uv venv --python 3.11 .venv
+uv pip install --python .venv/bin/python -e '.[strict,fast,rerank]'
+source .venv/bin/activate
+```
+
+将模型配置写入本机 `config.json`，在 `.env` 中填写 `OPENCODE_API_KEY`。
+这两个文件均被 Git 忽略；不要将密钥写入源码。首次准备需要下载固定版本的
+BGE-M3、BGE reranker 权重，以及对应架构的原生 Qdrant 1.19.2 安装包。
+两个 BGE 权重合计约 4.5 GB，另需预留依赖和运行内存。
+
+准备好权重和数据库二进制后：
+
+```bash
+.venv/bin/python deploy/local.py prepare --qdrant-binary /path/to/qdrant
+.venv/bin/python deploy/local.py start
+.venv/bin/python deploy/local.py status
+```
+
+打开 <http://127.0.0.1:8848> 使用聊天页面。服务通过 macOS LaunchAgents
+在登录时启动；`stop` 保留数据与启动项。`prepare` 不覆盖已有本机配置，
+迁移旧的 MPS 配置到 Intel Mac 时需明确改为 CPU。
+
+本机环境已安装时，也可双击 `memsys/启动本地服务.command`。它复用
+`~/Library/Application Support/memsys/bin/qdrant` 中已准备的数据库程序，
+首次启动在终端隐藏输入 OpenCode 密钥，再配置并启动三个本地服务。
+
+后台服务使用 `~/Library/Application Support/memsys/.venv` 中独立安装的
+包、该目录下的启动脚本与工作目录，避免 macOS 后台进程读取“下载”等受保护
+目录时阻塞。安装后台环境时使用普通安装，不能使用 `-e`：
+
+```bash
+uv venv --python 3.11 "$HOME/Library/Application Support/memsys/.venv"
+uv pip install --python "$HOME/Library/Application Support/memsys/.venv/bin/python" '.[strict,fast,rerank]'
+```
+
+启动入口会更新后台运行包。`prepare` 和 `start` 将已配置服务商的必要密钥
+从项目 `.env` 同步到权限为 `600` 的 `provider-credentials.json`，后台进程
+只读取这份私有副本；更换密钥后重启即可同步。源码改动后可再次双击启动入口
+更新安装，再执行 `restart` 重启运行中的进程。
+
+以下为此前部署和验证的历史记录。
+
 2026-10-27 当前无回答审计版本完成上一轮固定20题完整复测：**20/20判分正确、20/20正常交付**，上轮18/20、19/20；2题改善、0回退，拒答4/4。32段历史、364条消息重新入库，抽取32次、答题20次，全部答完后评分20次；流程失败、截断、传输重试均为0。20条正文均与提供方返回一致，没有答案审计或协议信封。内容复核仍确认慢炖锅题未应用已召回的腰果酸奶目标，因此20/20不能解释为个性化问题解决。既有数据、862个旧记录文件、源码和配置核对通过；评测期间未重载服务、改产品或按得分重答。详见[结果与限制](../runs/memory-regression20-no-answer-audit-20261027/report.md)。
 
 2026-10-27 已部署回答阶段审计移除：模型不再生成证据／计算审计JSON或目标ID，宿主直接交付正文。70项直接相关检查、两个自编真实模型请求通过；额外检查18项通过，1项旧SQLite观测器兼容错误在修改前源码同样复现。仅重载记忆API，PID 6609 → 9881，健康ready且队列／重试／失败为0；24个既有集合payload、本机记忆文件、配置与原API账本核验一致。未重跑公开评测；见[移除与核验记录](../runs/remove-answer-audit-20261027/report.md)。下列审计结果属于各次历史部署。

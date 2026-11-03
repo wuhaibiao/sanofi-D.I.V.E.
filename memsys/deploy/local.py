@@ -6,6 +6,7 @@ No Docker, model inference, provider probes, cloud changes, or shell-sourced sec
 import argparse
 import json
 import os
+import platform
 from pathlib import Path
 import plistlib
 import secrets
@@ -18,7 +19,7 @@ import time
 import urllib.error
 import urllib.request
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(os.environ.get("MEMSYS_SOURCE_ROOT", Path(__file__).resolve().parents[1]))
 STATE = Path.home() / "Library/Application Support/memsys"
 REVISION = "5617a9f61b028005a4858fdac845db406aefb181"
 PORTS = {"qdrant": 6333, "embedding": 11434, "memory": 8848}
@@ -63,6 +64,23 @@ def profile(state):
     return value
 
 
+def inference_device():
+    """Intel Macs use CPU; Apple Silicon deployments use MPS."""
+    return "mps" if platform.machine() == "arm64" else "cpu"
+
+
+def sync_credentials(state):
+    """Copy only configured provider keys for background jobs outside protected folders."""
+    config = json.loads((state / "config.json").read_text())
+    available = dict(dotenv(ROOT / ".env"), **os.environ)
+    keys = {item.get("api_key_env") for item in config["models"].values()}
+    keys -= {None, "", "EMBEDDING_API_KEY", "QDRANT_API_KEY"}
+    missing = sorted(key for key in keys if not available.get(key))
+    if missing:
+        raise ValueError("configured provider credentials are absent: " + ", ".join(missing))
+    private_json(state / "provider-credentials.json", {key: available[key] for key in keys})
+
+
 def prepare(state, qdrant_binary):
     source = json.loads((ROOT / "config.json").read_text())
     roles = {role: source["roles"][role] for role in ("memory", "extract") if source.get("roles", {}).get(role)}
@@ -94,7 +112,7 @@ def prepare(state, qdrant_binary):
     roles["embedding"] = model_key
     from memsys.config import MemorySettings
     memory = MemorySettings.from_dict({k: v for k, v in source.get("memory", {}).items() if not k.startswith("_")}).to_dict()
-    memory.update(rerank_backend="bge", rerank_url="", rerank_device="mps", rerank_dtype="float32",
+    memory.update(rerank_backend="bge", rerank_url="", rerank_device=inference_device(), rerank_dtype="float32",
         worker_count=1, embedding_model_revision=REVISION, query_analysis=False, query_policy="off",
         answer_review_policy="off", max_storage_bytes=None)
     config = dict(models=models, roles=roles, memory=memory,
@@ -102,10 +120,15 @@ def prepare(state, qdrant_binary):
     config_path = state / "config.json"
     if not config_path.exists():
         private_json(config_path, config)
-    runtime = dict(project_root=str(ROOT), python=str(ROOT / ".venv/bin/python"), tokens=tokens,
-        embedding_device=existing.get("embedding_device", "mps") if existing else "mps",
+    background_python = state / ".venv/bin/python"
+    runtime = dict(project_root=str(ROOT), python=str(background_python if background_python.exists() else ROOT / ".venv/bin/python"), tokens=tokens,
+        embedding_device=existing.get("embedding_device", inference_device()) if existing else inference_device(),
         embedding_snapshot=str(snapshot), config_path=str(config_path), qdrant_binary=str(binary))
     private_json(state / "runtime.json", runtime)
+    sync_credentials(state)
+    runner = state / "local-service.py"
+    shutil.copy2(Path(__file__).resolve(), runner)
+    runner.chmod(0o600)
     yaml = ("storage:\n  storage_path: " + json.dumps(str(state / "qdrant/storage")) +
         "\n  snapshots_path: " + json.dumps(str(state / "qdrant/snapshots")) +
         "\nservice:\n  host: 127.0.0.1\n  http_port: 6333\n  grpc_port: 6334\ntelemetry_disabled: true\n")
@@ -115,10 +138,11 @@ def prepare(state, qdrant_binary):
     directory.mkdir(parents=True, exist_ok=True)
     for role, label in LABELS.items():
         path = directory / (label + ".plist")
-        if path.exists() and plistlib.loads(path.read_bytes()).get("WorkingDirectory") != str(ROOT):
+        if path.exists() and plistlib.loads(path.read_bytes()).get("WorkingDirectory") not in (str(ROOT), str(state)):
             raise ValueError("a launch agent with this label belongs to another project")
-        definition = dict(Label=label, ProgramArguments=[runtime["python"], str(Path(__file__).resolve()),
-            "_service", role, "--state-dir", str(state)], WorkingDirectory=str(ROOT), RunAtLoad=True,
+        definition = dict(Label=label, ProgramArguments=[runtime["python"], str(runner),
+            "_service", role, "--state-dir", str(state)], WorkingDirectory=str(state), RunAtLoad=True,
+            EnvironmentVariables={"MEMSYS_SOURCE_ROOT": str(ROOT), "OMP_NUM_THREADS": "4", "TOKENIZERS_PARALLELISM": "false"},
             KeepAlive=True, ThrottleInterval=15, ProcessType="Background",
             StandardOutPath=str(state / "logs" / (role + ".log")),
             StandardErrorPath=str(state / "logs" / (role + ".error.log")))
@@ -152,7 +176,7 @@ def service(role, state):
     from memsys.llm import UsageLedger
     from memsys.serve import MemoryProxy, MemoryService
     config = AppConfig.load(settings["config_path"])
-    original = dotenv(ROOT / ".env")
+    original = json.loads((state / "provider-credentials.json").read_text())
     for item in config.models.values():
         key = item.api_key_env
         if key and key in original and not os.environ.get(key):
@@ -176,6 +200,7 @@ def service(role, state):
 
 def start(state):
     settings = profile(state)
+    sync_credentials(state)
     domain = "gui/" + str(os.getuid())
     for role, label in LABELS.items():
         target = domain + "/" + label
