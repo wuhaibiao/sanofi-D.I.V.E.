@@ -44,8 +44,15 @@ def main():
                 facts = store.records('fact')
                 entities = store.records('entity')
                 relations = store.records('relation')
+                episodes = store.records('episode')
+                chunks = store.records('episode_chunk')
+                episode_vectors = sum(bool(row.get('vector')) for row in episodes)
+                if not config.memory.index_originals and (episode_vectors or chunks):
+                    raise ValueError('Original vectors found in facts-only indexing evaluation')
                 ids = {fact['id'] for fact in facts}
                 rows.append(dict(corpus_id=corpus, facts=len(facts), entities=len(entities), relations=len(relations),
+                    fact_vectors=sum(bool(row.get('vector')) for row in facts),
+                    source_episodes=len(episodes), episode_vectors=episode_vectors, episode_chunks=len(chunks),
                     extracted_relations=sum(row.get('origin') == 'extracted' for row in relations),
                     legacy_associations=sum(row.get('origin') == 'legacy_key' for row in relations),
                     orphan_relation_fact_ids=sum(row['fact_id'] not in ids for row in relations)))
@@ -57,6 +64,9 @@ def main():
         facts=sum(row['facts'] for row in rows), entities=sum(row['entities'] for row in rows),
         relations=sum(row['relations'] for row in rows), entity_types=dict(types), relation_origins=dict(origins),
         orphan_relation_fact_ids=sum(row['orphan_relation_fact_ids'] for row in rows), by_corpus=rows,
+        fact_vectors=sum(row['fact_vectors'] for row in rows), source_episodes=sum(row['source_episodes'] for row in rows),
+        episode_vectors=sum(row['episode_vectors'] for row in rows), episode_chunks=sum(row['episode_chunks'] for row in rows),
+        index_originals=config.memory.index_originals,
         method='Read-only metadata aggregation over latest tenant-visible evaluation records; no model calls, questions or gold labels.')
     target.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
     print(json.dumps({key: result[key] for key in ('corpora', 'facts', 'entities', 'relations', 'orphan_relation_fact_ids')}, ensure_ascii=False))

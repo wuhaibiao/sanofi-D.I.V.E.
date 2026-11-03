@@ -26,6 +26,8 @@ class EpisodeIndex:
 
 def episode_index(episodes: Sequence[Tuple[str, str]], settings: MemorySettings) -> EpisodeIndex:
     plan = EpisodeIndex()
+    if not settings.index_originals:
+        return plan
     counter = budget_counter(settings)
     for number, (user, assistant) in enumerate(episodes):
         if not settings.episode_chunk_vectors:

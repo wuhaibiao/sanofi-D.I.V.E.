@@ -358,10 +358,10 @@ class Writer:
                                                for n, offset in index.representatives.items()])
             for n, chunks in index.chunks.items():
                 self.store.put_episode_chunks(episode_of[active[n].number], stored_chunks(index, n, vectors, len(facts)))
-            if index.texts:
+            if index.texts or fact_vectors or not self.settings.index_originals:
                 self.store.set_meta("index_fingerprint", self.settings.index_fingerprint(self.models.embedding_name))
                 self.store.set_meta("index_manifest", json.dumps({"fingerprint": self.settings.index_fingerprint(self.models.embedding_name),
-                    "strategy": "legacy",
+                    "strategy": "legacy", "index_originals": self.settings.index_originals,
                     "embedding_revision":self.settings.embedding_model_revision,
                     "counter": self.tokens.manifest(), "format": 2, **index_signature()}))
             new_vectors = []

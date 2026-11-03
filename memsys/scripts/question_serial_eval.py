@@ -187,6 +187,9 @@ def aggregate_outputs(out, cases):
     if audits:
         totals = {key: sum(a[key] for a in audits) for key in
                   ('corpora', 'facts', 'entities', 'relations', 'orphan_relation_fact_ids')}
+        for key in ('fact_vectors', 'source_episodes', 'episode_vectors', 'episode_chunks'):
+            if all(key in audit for audit in audits):
+                totals[key] = sum(a[key] for a in audits)
         for key in ('entity_types', 'relation_origins'):
             counts = Counter()
             for audit in audits:

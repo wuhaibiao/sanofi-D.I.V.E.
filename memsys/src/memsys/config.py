@@ -44,6 +44,7 @@ class MemorySettings:
     extract_max_tokens_limit: int = 131072  # 触顶后原输入扩大重试的上限，最多额外两次
     extract_context_memories: int = 10   # 同一次抽取提示里携带的相关旧记忆上限
     embed_chars: int = 2000              # 分段向量的单段字符上限；关闭分段时是旧前缀长度
+    index_originals: bool = True         # false: 原文只保留溯源，不建立前缀或分块向量
     episode_chunk_vectors: bool = True  # 原文按说话人分段编码，覆盖整个轮次
     embed_chunk_tokens: int = 384        # 单个原文向量输入（含角色标签）的估算 token 上限
     chunk_strategy: str = "legacy"       # 保留旧配置字段；仅支持原文按角色连续分段
@@ -144,7 +145,7 @@ class MemorySettings:
                     "gate_threshold", "archive_threshold", "superseded_weight", "tentative_threshold",
                     "confidence_weight", "max_history_share")
 
-    INDEX_FIELDS = ("embed_chars", "episode_chunk_vectors", "embed_chunk_tokens", "chunk_strategy",
+    INDEX_FIELDS = ("embed_chars", "index_originals", "episode_chunk_vectors", "embed_chunk_tokens", "chunk_strategy",
                     "embedding_model_revision")
     RETIRED_CHUNK_FIELDS = ("embedding_tokenizer_model", "embedding_tokenizer_revision", "embedding_tokenizer_path",
                            "chunk_overlap_tokens", "embed_question_tokens", "parent_max_tokens", "parent_neighbor_rounds",
@@ -244,6 +245,8 @@ class MemorySettings:
             raise ValueError("raw chunk size must be >= 64, overlap < half its size, and max_raw_chunks >= 1")
         if self.recall_mode == "raw_chunks" and not self.episode_chunk_vectors:
             raise ValueError("raw_chunks requires episode_chunk_vectors")
+        if not self.index_originals and self.recall_mode != "facts":
+            raise ValueError("index_originals=false requires facts recall")
         if self.worker_count < 1 or self.rerank_timeout_s <= 0 or not math.isfinite(self.rerank_timeout_s):
             raise ValueError("worker_count and rerank_timeout_s must be positive")
         if self.rerank_backend == "remote" and not self.rerank_url:

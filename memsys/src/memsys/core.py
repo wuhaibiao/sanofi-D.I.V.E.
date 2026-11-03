@@ -454,10 +454,11 @@ class MemorySystem:
         source = store.index_source_fingerprint()
         facts = store.facts(statuses=(FACT_CURRENT, FACT_SUPERSEDED, ARCHIVED))
         episodes = [e for e in store.episodes() if e.status not in (EPISODE_SKIPPED, EPISODE_WITHHELD, FORGOTTEN)]
+        indexed_count = len(facts) + (len(episodes) if self.settings.index_originals else 0)
         fingerprint = self.settings.index_fingerprint(self.models.embedding_name)
         if store.get_meta("index_fingerprint") == fingerprint and store.get_meta("index_source_sha256") == source:
             store.validate_index()
-            return len(facts) + len(episodes)
+            return indexed_count
         index = episode_index([(e.user_text, e.assistant_text) for e in episodes], self.settings)
         # 分块变动复用同一向量空间的事实向量；不调用事实抽取，也不重算无变化的事实。
         old_ids, old_vectors = store.vectors("fact", (FACT_CURRENT, FACT_SUPERSEDED, ARCHIVED))
@@ -479,11 +480,11 @@ class MemorySystem:
                         for n, offset in index.representatives.items()]},
             chunks={episodes[n].id: stored_chunks(index, n, vectors, len(missing)) for n in index.chunks},
             expected_source=source,
-            manifest={"fingerprint":fingerprint, "strategy":"legacy",
+            manifest={"fingerprint":fingerprint, "strategy":"legacy", "index_originals":self.settings.index_originals,
                       **signature,
                       "embedding_revision":self.settings.embedding_model_revision,
                       "counter":budget_counter(self.settings).manifest(), "format":2})
-        return len(facts) + len(episodes)
+        return indexed_count
 
     def rollback_index(self, user_id: str, generation=None) -> int:
         return self.store(user_id).rollback_index(generation)
