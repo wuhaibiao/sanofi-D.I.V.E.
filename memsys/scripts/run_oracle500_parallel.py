@@ -343,6 +343,7 @@ class ParallelRun:
                 raise ValueError('Source collections remain before judging')
             if self.publish_hook is None:
                 validate_plan(self.out)
+            serial.aggregate_outputs(self.out, self.cases)
             self.pool(self.cases, self.judge)
             if self.publish_hook is None:
                 validate_plan(self.out)
@@ -352,6 +353,7 @@ class ParallelRun:
             self.state['error'] = dict(type=type(exc).__name__, message=str(exc))
             raise
         finally:
+            serial.aggregate_outputs(self.out, self.cases)
             after = serial.collections(self.backend)
             self.state['cleanup'] = dict(remaining_owned=sorted(n for n in after if n.startswith(self.frozen['prefix']+'_')),
                 unrelated_collections_preserved=self.external <= after)
