@@ -119,6 +119,35 @@ class ParallelTests(unittest.TestCase):
             for path,data in preserved.items():self.assertEqual(path.read_bytes(),data)
             self.assertEqual(sum(phase=='write' for _,phase in events),2)
 
+    def test_four_workers_admit_four_independent_writes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            out=Path(directory);frozen=self.prepare(out);backend=Backend()
+            barrier=threading.Barrier(4);lock=threading.Lock()
+            counts={'writing':0,'peak_writes':0,'reading':0,'peak_reads':0}
+            def invoke(case,phase,runtime):
+                child=serial.read(case/'freeze.json')
+                if phase=='write':
+                    with backend.lock:backend.names.add(child['prefix']+'_records')
+                    with lock:
+                        counts['writing']+=1;counts['peak_writes']=max(counts['peak_writes'],counts['writing'])
+                    barrier.wait(timeout=3)
+                    with lock:counts['writing']-=1
+                if phase=='read':
+                    with lock:
+                        counts['reading']+=1;counts['peak_reads']=max(counts['peak_reads'],counts['reading'])
+                    time.sleep(.01)
+                    self.append(case/'LongMemEval-answers.jsonl',dict(question_id=child['question_id'],status='answered',hypothesis='blue'))
+                    with lock:counts['reading']-=1
+                return 0
+            run=parallel.ParallelRun(SimpleNamespace(out=out,runtime=Path('unused')),frozen,
+                dict(workers=4,serial_completed=0,external_collections=sorted(backend.names)),
+                backend=backend,invoke=invoke,validate=lambda:None,publish=lambda:None)
+            run.run()
+            self.assertEqual(counts['peak_writes'],4)
+            self.assertEqual(counts['peak_reads'],1)
+            self.assertTrue(run.state['complete'])
+            self.assertEqual(len(backend.deleted),4)
+
     def test_failed_process_does_not_admit_more_cases_and_still_cleans(self):
         with tempfile.TemporaryDirectory() as directory:
             out=Path(directory);frozen=self.prepare(out);backend=Backend();events=[];barrier=threading.Barrier(2)
