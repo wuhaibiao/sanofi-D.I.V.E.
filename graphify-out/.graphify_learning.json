@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-10-30T07:33:34.046477+00:00",
+  "generated_at": "2026-11-05T10:53:37.475857+00:00",
   "nodes": {
     "memsys_aggregation": {
-      "code_fingerprint": "708bbc4764da664d8796f3c98ce41e43a52cd153d81ccd7f1eabf1c0c2597abb",
+      "code_fingerprint": "",
       "label": "aggregation.py",
       "last": "2026-10-12T02:25:22.795494+00:00",
       "provenance": [
@@ -12,13 +12,13 @@
           "q": "检查最近的执行过程和结果，按照最新的计划进行修复和重新构建"
         }
       ],
-      "score": 0.656499597,
+      "score": 0.569684507,
       "source_file": "memsys/aggregation.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_aggregation_answer_with_validation": {
-      "code_fingerprint": "708bbc4764da664d8796f3c98ce41e43a52cd153d81ccd7f1eabf1c0c2597abb",
+      "code_fingerprint": "",
       "label": "answer_with_validation()",
       "last": "2026-10-12T16:58:50.494500+00:00",
       "provenance": [
@@ -43,13 +43,13 @@
           "q": "近期执行、跨会话记忆、评测正确率的代码关系在哪里？"
         }
       ],
-      "score": 2.63535602,
+      "score": 2.286858215,
       "source_file": "memsys/aggregation.py",
       "status": "preferred",
       "uses": 4
     },
     "memsys_bench_judge_grade": {
-      "code_fingerprint": "32f25d72b8789602c803acfbe74039787f62163d32e3dd6e95872b7841dff838",
+      "code_fingerprint": "",
       "label": "_grade()",
       "last": "2026-10-28T09:39:25.691371+00:00",
       "provenance": [
@@ -59,13 +59,13 @@
           "q": "如果完成了就跑一次20题左右的评测看看效果"
         }
       ],
-      "score": 0.956771802,
+      "score": 0.830248907,
       "source_file": "memsys/bench/judge.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_bench_judge_judge": {
-      "code_fingerprint": "32f25d72b8789602c803acfbe74039787f62163d32e3dd6e95872b7841dff838",
+      "code_fingerprint": "",
       "label": "judge()",
       "last": "2026-10-30T03:40:22.566384+00:00",
       "provenance": [
@@ -75,13 +75,29 @@
           "q": "另外跑一遍30题的评测"
         }
       ],
-      "score": 0.996265419,
+      "score": 0.864519913,
       "source_file": "memsys/bench/judge.py",
       "status": "tentative",
       "uses": 1
     },
+    "memsys_bench_longmemeval": {
+      "code_fingerprint": "",
+      "label": "longmemeval.py",
+      "last": "2026-11-03T08:45:33.063103+00:00",
+      "provenance": [
+        {
+          "date": "2026-11-03T08:45:33.063103+00:00",
+          "outcome": "useful",
+          "q": "准备开始跑一遍500题的评测，评测数据报告有要求吗，比如用什么格式输出报告，需要保留什么，评测集或者手册里面有说明吗"
+        }
+      ],
+      "score": 0.952881467,
+      "source_file": "memsys/bench/longmemeval.py",
+      "status": "tentative",
+      "uses": 1
+    },
     "memsys_bench_longmemeval_goldlabel": {
-      "code_fingerprint": "39ea424cfd4309a439a3befa4d08a6949e294c56442d502f997d1e8566541995",
+      "code_fingerprint": "",
       "label": "GoldLabel",
       "last": "2026-10-19T08:00:01.610812+00:00",
       "provenance": [
@@ -106,13 +122,13 @@
           "q": "像之前那样跑一轮小评测看看效果"
         }
       ],
-      "score": 2.92838451,
+      "score": 2.541136803,
       "source_file": "memsys/bench/longmemeval.py",
       "status": "preferred",
       "uses": 4
     },
     "memsys_bench_longmemeval_replayitem": {
-      "code_fingerprint": "39ea424cfd4309a439a3befa4d08a6949e294c56442d502f997d1e8566541995",
+      "code_fingerprint": "",
       "label": "ReplayItem",
       "last": "2026-10-28T04:22:27.758640+00:00",
       "provenance": [
@@ -142,13 +158,13 @@
           "q": "现在重试看看能不能答对"
         }
       ],
-      "score": 4.988687268,
+      "score": 4.328986434,
       "source_file": "memsys/bench/longmemeval.py",
       "status": "preferred",
       "uses": 6
     },
     "memsys_bench_provenance": {
-      "code_fingerprint": "910ccaaecc280d8d38ec4577a51521d601db594fbc0f7028e015e410a41d694d",
+      "code_fingerprint": "",
       "label": "provenance.py",
       "last": "2026-10-30T03:40:22.566384+00:00",
       "provenance": [
@@ -158,13 +174,13 @@
           "q": "另外跑一遍30题的评测"
         }
       ],
-      "score": 0.996265419,
+      "score": 0.864519913,
       "source_file": "memsys/bench/provenance.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_bench_provenance_source_manifest": {
-      "code_fingerprint": "910ccaaecc280d8d38ec4577a51521d601db594fbc0f7028e015e410a41d694d",
+      "code_fingerprint": "",
       "label": "source_manifest()",
       "last": "2026-10-28T09:39:25.691371+00:00",
       "provenance": [
@@ -194,13 +210,45 @@
           "q": "面试官问你的记忆系统和一些开源的有什么区别，有做过相关调研吗；评测集是通用还是领域，和开源项目相比怎么样；了解哪些评测相关系统设计"
         }
       ],
-      "score": 5.215146478,
+      "score": 4.525498822,
       "source_file": "memsys/bench/provenance.py",
       "status": "preferred",
       "uses": 6
     },
+    "memsys_bench_report": {
+      "code_fingerprint": "",
+      "label": "report.py",
+      "last": "2026-11-03T08:45:33.063103+00:00",
+      "provenance": [
+        {
+          "date": "2026-11-03T08:45:33.063103+00:00",
+          "outcome": "useful",
+          "q": "准备开始跑一遍500题的评测，评测数据报告有要求吗，比如用什么格式输出报告，需要保留什么，评测集或者手册里面有说明吗"
+        }
+      ],
+      "score": 0.952881467,
+      "source_file": "memsys/bench/report.py",
+      "status": "tentative",
+      "uses": 1
+    },
+    "memsys_bench_report_build_report": {
+      "code_fingerprint": "",
+      "label": "build_report()",
+      "last": "2026-11-03T08:45:33.063103+00:00",
+      "provenance": [
+        {
+          "date": "2026-11-03T08:45:33.063103+00:00",
+          "outcome": "useful",
+          "q": "准备开始跑一遍500题的评测，评测数据报告有要求吗，比如用什么格式输出报告，需要保留什么，评测集或者手册里面有说明吗"
+        }
+      ],
+      "score": 0.952881467,
+      "source_file": "memsys/bench/report.py",
+      "status": "tentative",
+      "uses": 1
+    },
     "memsys_bench_runner_runner": {
-      "code_fingerprint": "b6145a825815cb6c493b8acf7f45bb06c1d90bf99fd3c5026338e7b5917f48b4",
+      "code_fingerprint": "",
       "label": "Runner",
       "last": "2026-10-30T04:35:11.251512+00:00",
       "provenance": [
@@ -215,13 +263,13 @@
           "q": "另外跑一遍30题的评测"
         }
       ],
-      "score": 1.993407392,
+      "score": 1.729800465,
       "source_file": "memsys/bench/runner.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_budget_budget_counter": {
-      "code_fingerprint": "d6dce673325de07d7ca673b5f6d913c461593e7ce8b7a4f5db5190e88813df42",
+      "code_fingerprint": "",
       "label": "budget_counter()",
       "last": "2026-10-29T08:56:07.760081+00:00",
       "provenance": [
@@ -251,13 +299,13 @@
           "q": "你为什么这么设计，你这不是看答案出题吗，这不是通用方案"
         }
       ],
-      "score": 12.862427684,
+      "score": 11.161508421,
       "source_file": "memsys/budget.py",
       "status": "preferred",
       "uses": 15
     },
     "memsys_cli": {
-      "code_fingerprint": "1c94d3a99ae0328449d7fa7d1f047e7a2651588d92df8c62edbde17d796953c4",
+      "code_fingerprint": "",
       "label": "cli.py",
       "last": "2026-10-27T10:00:52.268679+00:00",
       "provenance": [
@@ -267,13 +315,13 @@
           "q": "这个记忆系统的流程是和评测什么的解耦的吗，可视化给我看"
         }
       ],
-      "score": 0.935240822,
+      "score": 0.81156517,
       "source_file": "memsys/cli.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_config": {
-      "code_fingerprint": "32cff0a3e963d056d15767367d2e8e02808fb381299e5fcb8801399fcc29c37d",
+      "code_fingerprint": "",
       "label": "config.py",
       "last": "2026-10-13T07:26:56.011239+00:00",
       "provenance": [
@@ -283,17 +331,22 @@
           "q": "清除云端的配置，之前部署的"
         }
       ],
-      "score": 0.67510311,
+      "score": 0.585827904,
       "source_file": "memsys/config.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_config_memorysettings": {
-      "code_fingerprint": "32cff0a3e963d056d15767367d2e8e02808fb381299e5fcb8801399fcc29c37d",
+      "code_fingerprint": "",
       "label": "MemorySettings",
-      "last": "2026-10-14T04:59:15.301398+00:00",
+      "last": "2026-11-03T16:53:50.986499+00:00",
       "neg": 1,
       "provenance": [
+        {
+          "date": "2026-11-03T16:53:50.986499+00:00",
+          "outcome": "useful",
+          "q": "不要为原文建立向量了，直接抽取事实，这个作为分支，然后评测这500道"
+        },
         {
           "date": "2026-10-14T04:59:15.301398+00:00",
           "outcome": "corrected",
@@ -305,14 +358,14 @@
           "q": "现在需要和我探讨为什么这样选型，对比其他方案有什么优势，最好有开源的方案去进行对比。你的选型不能围绕评测去做，现在开始不能做评测，只有我说做了才做。现在分析技术的选型，我觉得一开始就有很大问题"
         }
       ],
-      "score": -0.025318169,
+      "score": 0.938406305,
       "source_file": "memsys/config.py",
       "status": "contested",
-      "uses": 1,
-      "verdict": "dead end"
+      "uses": 2,
+      "verdict": "useful"
     },
     "memsys_config_models": {
-      "code_fingerprint": "32cff0a3e963d056d15767367d2e8e02808fb381299e5fcb8801399fcc29c37d",
+      "code_fingerprint": "",
       "label": "Models",
       "last": "2026-10-13T02:59:44.724241+00:00",
       "provenance": [
@@ -322,13 +375,13 @@
           "q": "云端 compose ps 只显示 memsys-qdrant-1，memory 和 gateway 没有日志，为什么域名不能访问？"
         }
       ],
-      "score": 0.672215102,
+      "score": 0.583321804,
       "source_file": "memsys/config.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_core": {
-      "code_fingerprint": "d71266885fc20503380663d54a0641b80e3a4f3758459830d119b447a6a1980a",
+      "code_fingerprint": "",
       "label": "core.py",
       "last": "2026-10-29T11:26:02.247306+00:00",
       "provenance": [
@@ -343,13 +396,13 @@
           "q": "打算怎么优化返回层呢，会不会增加耗时，参考一下开源项目呢，不要只局限刚才这几个开源项目"
         }
       ],
-      "score": 1.960093168,
+      "score": 1.700891693,
       "source_file": "memsys/core.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_core_memorysystem": {
-      "code_fingerprint": "d71266885fc20503380663d54a0641b80e3a4f3758459830d119b447a6a1980a",
+      "code_fingerprint": "",
       "label": "MemorySystem",
       "last": "2026-10-29T11:53:47.215679+00:00",
       "provenance": [
@@ -369,13 +422,13 @@
           "q": "打算怎么优化返回层呢，会不会增加耗时，参考一下开源项目呢，不要只局限刚才这几个开源项目"
         }
       ],
-      "score": 2.941341544,
+      "score": 2.552380407,
       "source_file": "memsys/core.py",
       "status": "preferred",
       "uses": 3
     },
     "memsys_core_memorysystem_maybe_flush": {
-      "code_fingerprint": "d71266885fc20503380663d54a0641b80e3a4f3758459830d119b447a6a1980a",
+      "code_fingerprint": "",
       "label": "._maybe_flush()",
       "last": "2026-10-28T03:40:03.984691+00:00",
       "provenance": [
@@ -385,13 +438,13 @@
           "q": "什么时候触发抽取，抽取、存入、取出、检索注入多大token，"
         }
       ],
-      "score": 0.951270943,
+      "score": 0.825475478,
       "source_file": "memsys/core.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_core_recall": {
-      "code_fingerprint": "d71266885fc20503380663d54a0641b80e3a4f3758459830d119b447a6a1980a",
+      "code_fingerprint": "",
       "label": "Recall",
       "last": "2026-10-30T05:30:11.731721+00:00",
       "provenance": [
@@ -411,13 +464,13 @@
           "q": "把这些分支都删了吧，但是之前的记录可以保留\n退回到主干，并写好一份技术方案，包括技术选型，参考来源，效果，最好用skill画一份流程图\n内容可以参考原学生手册里面的，只是方案的初稿"
         }
       ],
-      "score": 2.975667007,
+      "score": 2.582166693,
       "source_file": "memsys/core.py",
       "status": "preferred",
       "uses": 3
     },
     "memsys_dateproof_inspect_dates": {
-      "code_fingerprint": "8835c4cc680e62b8fb6a391e62612459bbe70381ed7fd6b44fb1cb813c5857d4",
+      "code_fingerprint": "",
       "label": "inspect_dates()",
       "last": "2026-10-12T08:33:19.352803+00:00",
       "provenance": [
@@ -427,13 +480,13 @@
           "q": "用自研记忆系统优化并锁定上游验证，不通过 Mem0 调用用户模型接口"
         }
       ],
-      "score": 0.660386814,
+      "score": 0.573057682,
       "source_file": "memsys/dateproof.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_dateproof_interval": {
-      "code_fingerprint": "8835c4cc680e62b8fb6a391e62612459bbe70381ed7fd6b44fb1cb813c5857d4",
+      "code_fingerprint": "",
       "label": "interval()",
       "last": "2026-10-12T08:33:19.352803+00:00",
       "provenance": [
@@ -443,13 +496,13 @@
           "q": "用自研记忆系统优化并锁定上游验证，不通过 Mem0 调用用户模型接口"
         }
       ],
-      "score": 0.660386814,
+      "score": 0.573057682,
       "source_file": "memsys/dateproof.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_evidence_batch": {
-      "code_fingerprint": "cf2618ab6597c2b2c7778fe15b72e5ac0f18de2841b18d4151b5b4480c62c9c7",
+      "code_fingerprint": "",
       "label": "evidence_batch.py",
       "last": "2026-10-12T02:25:22.795494+00:00",
       "provenance": [
@@ -464,13 +517,13 @@
           "q": "近期执行、跨会话记忆、评测正确率的代码关系在哪里？"
         }
       ],
-      "score": 1.299587385,
+      "score": 1.127730775,
       "source_file": "memsys/evidence_batch.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_fake_heuristicchat_extract": {
-      "code_fingerprint": "9004a177cf04bf44769fcacb3cbbcfde84dc489be736bee86938546069c5308a",
+      "code_fingerprint": "",
       "label": "._extract()",
       "last": "2026-10-30T03:48:33.362265+00:00",
       "provenance": [
@@ -480,13 +533,13 @@
           "q": "为什么会遗漏都反反复复修改这么多次了，而且召回的事实是top多少"
         }
       ],
-      "score": 0.996396185,
+      "score": 0.864633387,
       "source_file": "memsys/fake.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_hook": {
-      "code_fingerprint": "74617fd7c571ac999e2002ac838990cab22b08afc37154f3b99288c9bca37823",
+      "code_fingerprint": "",
       "label": "hook.py",
       "last": "2026-10-28T03:27:36.828449+00:00",
       "provenance": [
@@ -496,13 +549,13 @@
           "q": "接入agent后怎么工作的"
         }
       ],
-      "score": 0.951080896,
+      "score": 0.825310562,
       "source_file": "memsys/hook.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_indexing": {
-      "code_fingerprint": "533143575c302483dcadc888a9a5615127af6cef867052b3257e6e71ea3c8b7d",
+      "code_fingerprint": "",
       "label": "indexing.py",
       "last": "2026-10-18T15:27:19.121838+00:00",
       "provenance": [
@@ -517,13 +570,13 @@
           "q": "这里的embedding分块了吗"
         }
       ],
-      "score": 1.527060307,
+      "score": 1.325122822,
       "source_file": "memsys/indexing.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_indexing_chunkinput": {
-      "code_fingerprint": "533143575c302483dcadc888a9a5615127af6cef867052b3257e6e71ea3c8b7d",
+      "code_fingerprint": "",
       "label": "ChunkInput",
       "last": "2026-10-30T05:30:11.731721+00:00",
       "provenance": [
@@ -548,13 +601,29 @@
           "q": "为什么抽取时要结构化，直接对文本分块向量化不就行了吗"
         }
       ],
-      "score": 3.989004406,
+      "score": 3.461500998,
       "source_file": "memsys/indexing.py",
       "status": "preferred",
       "uses": 4
     },
+    "memsys_indexing_episodeindex": {
+      "code_fingerprint": "",
+      "label": "EpisodeIndex",
+      "last": "2026-11-03T16:53:50.986499+00:00",
+      "provenance": [
+        {
+          "date": "2026-11-03T16:53:50.986499+00:00",
+          "outcome": "useful",
+          "q": "不要为原文建立向量了，直接抽取事实，这个作为分支，然后评测这500道"
+        }
+      ],
+      "score": 0.960376415,
+      "source_file": "memsys/indexing.py",
+      "status": "tentative",
+      "uses": 1
+    },
     "memsys_lifecycle": {
-      "code_fingerprint": "20f7e55c6836c2c34ec10acb4a46dad9b1cf63f458dec24a5a83258625157b73",
+      "code_fingerprint": "",
       "label": "lifecycle.py",
       "last": "2026-10-29T11:53:47.215679+00:00",
       "provenance": [
@@ -564,13 +633,13 @@
           "q": "把这些分支都删了吧，但是之前的记录可以保留\n退回到主干，并写好一份技术方案，包括技术选型，参考来源，效果，最好用skill画一份流程图\n内容可以参考原学生手册里面的，只是方案的初稿"
         }
       ],
-      "score": 0.981248376,
+      "score": 0.851488714,
       "source_file": "memsys/lifecycle.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_lifecycle_retention": {
-      "code_fingerprint": "20f7e55c6836c2c34ec10acb4a46dad9b1cf63f458dec24a5a83258625157b73",
+      "code_fingerprint": "",
       "label": "retention()",
       "last": "2026-10-18T16:02:27.217917+00:00",
       "provenance": [
@@ -580,13 +649,13 @@
           "q": "记忆更新遗忘怎么做的"
         }
       ],
-      "score": 0.764071616,
+      "score": 0.663031271,
       "source_file": "memsys/lifecycle.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_lifecycle_run_lifecycle": {
-      "code_fingerprint": "20f7e55c6836c2c34ec10acb4a46dad9b1cf63f458dec24a5a83258625157b73",
+      "code_fingerprint": "",
       "label": "run_lifecycle()",
       "last": "2026-10-18T16:02:27.217917+00:00",
       "provenance": [
@@ -601,36 +670,51 @@
           "q": "那sqlite先不改动，再给我梳理一遍完整的流程，涉及到的模块、功能，以及状态的流转，其中的某些模型、技术怎么运作，简洁明了"
         }
       ],
-      "score": 1.429211099,
+      "score": 1.240213132,
       "source_file": "memsys/lifecycle.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_llm_embeddingmodel": {
-      "code_fingerprint": "694a6800d9102ca2418d3de6c089fea5930ed97175c5b518b971752740a8be0b",
+      "code_fingerprint": "",
       "label": "EmbeddingModel",
-      "last": "2026-10-15T16:48:39.955277+00:00",
+      "last": "2026-11-04T08:36:04.934622+00:00",
       "neg": 1,
       "provenance": [
+        {
+          "date": "2026-11-04T08:36:04.934622+00:00",
+          "outcome": "useful",
+          "q": "先暂停排查，修复好后继续"
+        },
+        {
+          "date": "2026-11-04T06:50:59.297706+00:00",
+          "outcome": "useful",
+          "q": "开始增加"
+        },
+        {
+          "date": "2026-11-04T06:36:01.703667+00:00",
+          "outcome": "useful",
+          "q": "四个线程是不是太少了"
+        },
+        {
+          "date": "2026-11-04T06:13:04.343949+00:00",
+          "outcome": "useful",
+          "q": "怎么加速，再检查一遍"
+        },
         {
           "date": "2026-10-15T16:48:39.955277+00:00",
           "outcome": "corrected",
           "q": "哪里用到了"
-        },
-        {
-          "date": "2026-10-15T16:41:35.141793+00:00",
-          "outcome": "useful",
-          "q": "记忆系统设计到的技术栈或者模型有哪些"
         }
       ],
-      "score": -8.1043e-05,
+      "score": 3.894199455,
       "source_file": "memsys/llm.py",
       "status": "contested",
-      "uses": 1,
-      "verdict": "dead end"
+      "uses": 5,
+      "verdict": "useful"
     },
     "memsys_llm_openaicompatclient_post": {
-      "code_fingerprint": "694a6800d9102ca2418d3de6c089fea5930ed97175c5b518b971752740a8be0b",
+      "code_fingerprint": "",
       "label": "._post()",
       "last": "2026-10-29T07:22:23.110029+00:00",
       "provenance": [
@@ -645,16 +729,21 @@
           "q": "意思是之前使用过这批题目吗；这是什么原因，系统原因还是网络问题"
         }
       ],
-      "score": 1.928986257,
+      "score": 1.67389834,
       "source_file": "memsys/llm.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_llm_usageledger": {
-      "code_fingerprint": "694a6800d9102ca2418d3de6c089fea5930ed97175c5b518b971752740a8be0b",
+      "code_fingerprint": "",
       "label": "UsageLedger",
-      "last": "2026-10-29T08:47:12.274468+00:00",
+      "last": "2026-11-04T02:57:51.585181+00:00",
       "provenance": [
+        {
+          "date": "2026-11-04T02:57:51.585181+00:00",
+          "outcome": "useful",
+          "q": "可以再开多个worker吗，两个太慢了"
+        },
         {
           "date": "2026-10-29T08:47:12.274468+00:00",
           "outcome": "useful",
@@ -674,20 +763,15 @@
           "date": "2026-10-29T07:04:16.905159+00:00",
           "outcome": "useful",
           "q": "为什么读取加答题整体和远端回答请求下降这么明显，也没有一条实例可视化一下"
-        },
-        {
-          "date": "2026-10-29T06:30:28.554030+00:00",
-          "outcome": "useful",
-          "q": "这次的最新分支可以删掉了，上一版和主干的架构有什么不同，主要区别在哪里，为什么会效率提这么高"
         }
       ],
-      "score": 11.241916688,
+      "score": 10.725021808,
       "source_file": "memsys/llm.py",
       "status": "preferred",
-      "uses": 12
+      "uses": 13
     },
     "memsys_model_tokens_modeltokenizer": {
-      "code_fingerprint": "e68b35c34057c0c346e545a67c0ee9a566ba5e15f1e56621fbf91f78c68375a6",
+      "code_fingerprint": "",
       "label": "ModelTokenizer",
       "last": "2026-10-15T16:48:39.955277+00:00",
       "neg": 1,
@@ -718,14 +802,14 @@
           "q": "有什么方法加速重排，开源的，或者GitHub上面去搜索一下"
         }
       ],
-      "score": 2.105936893,
+      "score": 1.827449137,
       "source_file": "memsys/model_tokens.py",
       "status": "contested",
       "uses": 4,
       "verdict": "useful"
     },
     "memsys_prompts": {
-      "code_fingerprint": "c62ac5da2d994e68382089d084999676bcfa42582f8e09f4fceebd326645491c",
+      "code_fingerprint": "",
       "label": "prompts.py",
       "last": "2026-10-27T07:59:14.943848+00:00",
       "provenance": [
@@ -740,13 +824,13 @@
           "q": "这是什么原因；为什么会这样"
         }
       ],
-      "score": 1.866693935,
+      "score": 1.619843515,
       "source_file": "memsys/prompts.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_read": {
-      "code_fingerprint": "e78354e536bbd3f4677edf8520c45d8982913f3cfffa93aa9ab55486fbbe41c6",
+      "code_fingerprint": "",
       "label": "read.py",
       "last": "2026-10-29T07:04:16.905159+00:00",
       "provenance": [
@@ -776,13 +860,13 @@
           "q": "检查最近的执行过程和结果，按照最新的计划进行修复和重新构建"
         }
       ],
-      "score": 4.28589719,
+      "score": 3.719132869,
       "source_file": "memsys/read.py",
       "status": "preferred",
       "uses": 5
     },
     "memsys_read_candidate": {
-      "code_fingerprint": "e78354e536bbd3f4677edf8520c45d8982913f3cfffa93aa9ab55486fbbe41c6",
+      "code_fingerprint": "",
       "label": "Candidate",
       "last": "2026-10-18T16:34:50.019087+00:00",
       "provenance": [
@@ -792,13 +876,13 @@
           "q": "RRF是什么，怎么配权重的"
         }
       ],
-      "score": 0.764468685,
+      "score": 0.663375832,
       "source_file": "memsys/read.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_read_episode_excerpt": {
-      "code_fingerprint": "e78354e536bbd3f4677edf8520c45d8982913f3cfffa93aa9ab55486fbbe41c6",
+      "code_fingerprint": "",
       "label": "episode_excerpt()",
       "last": "2026-10-10T17:52:23.440646+00:00",
       "provenance": [
@@ -813,13 +897,13 @@
           "q": "为什么父子分块会比固定分块那个方案正确率低呢"
         }
       ],
-      "score": 1.272067743,
+      "score": 1.103850313,
       "source_file": "memsys/read.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_read_episode_excerpt_render": {
-      "code_fingerprint": "e78354e536bbd3f4677edf8520c45d8982913f3cfffa93aa9ab55486fbbe41c6",
+      "code_fingerprint": "",
       "label": "render()",
       "last": "2026-10-29T11:53:47.215679+00:00",
       "provenance": [
@@ -829,13 +913,13 @@
           "q": "把这些分支都删了吧，但是之前的记录可以保留\n退回到主干，并写好一份技术方案，包括技术选型，参考来源，效果，最好用skill画一份流程图\n内容可以参考原学生手册里面的，只是方案的初稿"
         }
       ],
-      "score": 0.981248376,
+      "score": 0.851488714,
       "source_file": "memsys/read.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_read_queryplan": {
-      "code_fingerprint": "e78354e536bbd3f4677edf8520c45d8982913f3cfffa93aa9ab55486fbbe41c6",
+      "code_fingerprint": "",
       "label": "QueryPlan",
       "last": "2026-10-14T14:04:56.989107+00:00",
       "provenance": [
@@ -865,13 +949,13 @@
           "q": "所以你觉得后续如果优化超越这个mem0有哪些方向呢"
         }
       ],
-      "score": 3.370388434,
+      "score": 2.924690409,
       "source_file": "memsys/read.py",
       "status": "preferred",
       "uses": 5
     },
     "memsys_read_render_memory": {
-      "code_fingerprint": "e78354e536bbd3f4677edf8520c45d8982913f3cfffa93aa9ab55486fbbe41c6",
+      "code_fingerprint": "",
       "label": "render_memory()",
       "last": "2026-10-29T11:26:02.247306+00:00",
       "provenance": [
@@ -886,13 +970,13 @@
           "q": "打算怎么优化返回层呢，会不会增加耗时，参考一下开源项目呢，不要只局限刚才这几个开源项目"
         }
       ],
-      "score": 1.960093168,
+      "score": 1.700891693,
       "source_file": "memsys/read.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_read_retriever": {
-      "code_fingerprint": "e78354e536bbd3f4677edf8520c45d8982913f3cfffa93aa9ab55486fbbe41c6",
+      "code_fingerprint": "",
       "label": "Retriever",
       "last": "2026-10-30T05:30:11.731721+00:00",
       "provenance": [
@@ -922,13 +1006,13 @@
           "q": "把这些分支都删了吧，但是之前的记录可以保留\n退回到主干，并写好一份技术方案，包括技术选型，参考来源，效果，最好用skill画一份流程图\n内容可以参考原学生手册里面的，只是方案的初稿"
         }
       ],
-      "score": 4.970252782,
+      "score": 4.312989712,
       "source_file": "memsys/read.py",
       "status": "preferred",
       "uses": 5
     },
     "memsys_read_retriever_rerank": {
-      "code_fingerprint": "e78354e536bbd3f4677edf8520c45d8982913f3cfffa93aa9ab55486fbbe41c6",
+      "code_fingerprint": "",
       "label": ".rerank()",
       "last": "2026-10-29T09:13:39.745743+00:00",
       "provenance": [
@@ -958,16 +1042,21 @@
           "q": "可以召回top20，基于上述的分析，在主干的基础上开始开发，并最后做相同的20题评测验证"
         }
       ],
-      "score": 12.826985562,
+      "score": 11.130753142,
       "source_file": "memsys/read.py",
       "status": "preferred",
       "uses": 14
     },
     "memsys_read_selection": {
-      "code_fingerprint": "e78354e536bbd3f4677edf8520c45d8982913f3cfffa93aa9ab55486fbbe41c6",
+      "code_fingerprint": "",
       "label": "Selection",
-      "last": "2026-10-29T09:13:39.745743+00:00",
+      "last": "2026-10-30T07:49:06.372106+00:00",
       "provenance": [
+        {
+          "date": "2026-10-30T07:49:06.372106+00:00",
+          "outcome": "useful",
+          "q": "这个技术方案要重新设计一下，应该先整体介绍流程图，然后讲技术选型，为什么这么选（重要，为什么它不可或缺），不选其他的，可能参考了什么开源项目，达到了什么效果，或者做过什么评测\n整体不要过多复杂，图标可以多一点，可以把之前的评测都做成一个表格做对照"
+        },
         {
           "date": "2026-10-29T09:13:39.745743+00:00",
           "outcome": "useful",
@@ -987,20 +1076,15 @@
           "date": "2026-10-29T06:30:28.554030+00:00",
           "outcome": "useful",
           "q": "这次的最新分支可以删掉了，上一版和主干的架构有什么不同，主要区别在哪里，为什么会效率提这么高"
-        },
-        {
-          "date": "2026-10-29T05:58:38.707683+00:00",
-          "outcome": "useful",
-          "q": "在分支上继续完善，完成后在分支上跑另外一次20题评测"
         }
       ],
-      "score": 24.443028193,
+      "score": 22.078674691,
       "source_file": "memsys/read.py",
       "status": "preferred",
-      "uses": 26
+      "uses": 27
     },
     "memsys_reranking": {
-      "code_fingerprint": "2dc531d35f93a032c79d0aa7a9ff81311a6a1ba77f6460b05d71774bd895b1f6",
+      "code_fingerprint": "",
       "label": "reranking.py",
       "last": "2026-10-28T04:14:11.724653+00:00",
       "provenance": [
@@ -1030,34 +1114,65 @@
           "q": "所以从刚才到探讨中，你觉得一个合理的方案是什么"
         }
       ],
-      "score": 10.303929746,
+      "score": 8.941344625,
       "source_file": "memsys/reranking.py",
       "status": "preferred",
       "uses": 14
     },
     "memsys_reranking_bgereranker": {
-      "code_fingerprint": "2dc531d35f93a032c79d0aa7a9ff81311a6a1ba77f6460b05d71774bd895b1f6",
+      "code_fingerprint": "",
       "label": "BGEReranker",
-      "last": "2026-10-30T06:07:07.070207+00:00",
+      "last": "2026-11-04T08:36:04.934622+00:00",
       "provenance": [
         {
-          "date": "2026-10-30T06:07:07.070207+00:00",
+          "date": "2026-11-04T08:36:04.934622+00:00",
           "outcome": "useful",
-          "q": "主要看、说说为什么这么选型"
+          "q": "先暂停排查，修复好后继续"
         },
         {
-          "date": "2026-10-15T14:47:33.751313+00:00",
+          "date": "2026-11-04T06:50:59.297706+00:00",
           "outcome": "useful",
-          "q": "按照这个格式分析我的记忆系统，总结三点作为我的简历上的要点，从会话记忆抽取，入库，检索这中间的全流程，每个涉及到的模块都有可能被面试官问：为什么这么设计，有什么效果，有比较其他方案吗"
+          "q": "开始增加"
+        },
+        {
+          "date": "2026-11-04T06:36:01.703667+00:00",
+          "outcome": "useful",
+          "q": "四个线程是不是太少了"
+        },
+        {
+          "date": "2026-11-04T06:13:04.343949+00:00",
+          "outcome": "useful",
+          "q": "怎么加速，再检查一遍"
+        },
+        {
+          "date": "2026-11-04T06:03:33.863301+00:00",
+          "outcome": "useful",
+          "q": "为什么还是这么慢"
         }
       ],
-      "score": 1.710661762,
+      "score": 6.351337515,
       "source_file": "memsys/reranking.py",
       "status": "preferred",
-      "uses": 2
+      "uses": 7
+    },
+    "memsys_reranking_local_reranker": {
+      "code_fingerprint": "",
+      "label": "local_reranker()",
+      "last": "2026-11-04T06:13:04.343949+00:00",
+      "provenance": [
+        {
+          "date": "2026-11-04T06:13:04.343949+00:00",
+          "outcome": "useful",
+          "q": "怎么加速，再检查一遍"
+        }
+      ],
+      "score": 0.972771187,
+      "source_file": "memsys/reranking.py",
+      "status": "tentative",
+      "uses": 1
     },
     "memsys_schema_episode": {
-      "code_fingerprint": "379a23290265c82e7e4e290223a6d50c263aae3e81765fa4abb32de296ff84ae",
+      "code_fingerprint": "",
       "label": "Episode",
       "last": "2026-10-30T05:30:11.731721+00:00",
       "provenance": [
@@ -1082,13 +1197,13 @@
           "q": "为什么抽取时要结构化，直接对文本分块向量化不就行了吗"
         }
       ],
-      "score": 3.989004406,
+      "score": 3.461500998,
       "source_file": "memsys/schema.py",
       "status": "preferred",
       "uses": 4
     },
     "memsys_schema_fact": {
-      "code_fingerprint": "379a23290265c82e7e4e290223a6d50c263aae3e81765fa4abb32de296ff84ae",
+      "code_fingerprint": "",
       "label": "Fact",
       "last": "2026-10-30T03:54:22.326798+00:00",
       "provenance": [
@@ -1103,13 +1218,13 @@
           "q": "把这些分支都删了吧，但是之前的记录可以保留\n退回到主干，并写好一份技术方案，包括技术选型，参考来源，效果，最好用skill画一份流程图\n内容可以参考原学生手册里面的，只是方案的初稿"
         }
       ],
-      "score": 1.977737548,
+      "score": 1.716202791,
       "source_file": "memsys/schema.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_semantic_review": {
-      "code_fingerprint": "d09fbfdafa4481addcf091ad6d06c06715828f02fa928629c7bfc4bd3f5a0dda",
+      "code_fingerprint": "",
       "label": "semantic_review.py",
       "last": "2026-10-11T04:58:57.104675+00:00",
       "provenance": [
@@ -1119,13 +1234,13 @@
           "q": "近期执行、跨会话记忆、评测正确率的代码关系在哪里？"
         }
       ],
-      "score": 0.643087788,
+      "score": 0.558046268,
       "source_file": "memsys/semantic_review.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_semantic_review_review_response": {
-      "code_fingerprint": "d09fbfdafa4481addcf091ad6d06c06715828f02fa928629c7bfc4bd3f5a0dda",
+      "code_fingerprint": "",
       "label": "review_response()",
       "last": "2026-10-12T16:58:50.494500+00:00",
       "provenance": [
@@ -1140,13 +1255,13 @@
           "q": "记忆层是否负责生成和审查答案别的agent是怎么做的，这个点影响llm的回答质量吗"
         }
       ],
-      "score": 1.330725572,
+      "score": 1.154751268,
       "source_file": "memsys/semantic_review.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_serve_memoryproxy": {
-      "code_fingerprint": "93eb4b05e7b2277fc471331addfcf1237ba40105371343a2449ae9c0c202a284",
+      "code_fingerprint": "",
       "label": "MemoryProxy",
       "last": "2026-10-29T09:13:39.745743+00:00",
       "provenance": [
@@ -1176,16 +1291,21 @@
           "q": "做一个简洁的类似ChatGPT的交互式页面，提供给用户使用也在本地部署"
         }
       ],
-      "score": 5.925818773,
+      "score": 5.142192264,
       "source_file": "memsys/serve.py",
       "status": "preferred",
       "uses": 7
     },
     "memsys_serve_memoryservice": {
-      "code_fingerprint": "93eb4b05e7b2277fc471331addfcf1237ba40105371343a2449ae9c0c202a284",
+      "code_fingerprint": "",
       "label": "MemoryService",
-      "last": "2026-10-29T09:13:39.745743+00:00",
+      "last": "2026-11-04T02:57:51.585181+00:00",
       "provenance": [
+        {
+          "date": "2026-11-04T02:57:51.585181+00:00",
+          "outcome": "useful",
+          "q": "可以再开多个worker吗，两个太慢了"
+        },
         {
           "date": "2026-10-29T09:13:39.745743+00:00",
           "outcome": "useful",
@@ -1205,20 +1325,15 @@
           "date": "2026-10-27T10:10:50.829423+00:00",
           "outcome": "useful",
           "q": "去掉这个环节，根本没有用"
-        },
-        {
-          "date": "2026-10-15T14:47:33.751313+00:00",
-          "outcome": "useful",
-          "q": "按照这个格式分析我的记忆系统，总结三点作为我的简历上的要点，从会话记忆抽取，入库，检索这中间的全流程，每个涉及到的模块都有可能被面试官问：为什么这么设计，有什么效果，有比较其他方案吗"
         }
       ],
-      "score": 16.077840873,
+      "score": 14.921446452,
       "source_file": "memsys/serve.py",
       "status": "preferred",
-      "uses": 22
+      "uses": 23
     },
     "memsys_store_store": {
-      "code_fingerprint": "925e6b707d0eaecf0a9fb6bb4439f5cee08135eebcb03bc87071775927ac049c",
+      "code_fingerprint": "",
       "label": "Store",
       "last": "2026-10-30T04:35:11.251512+00:00",
       "provenance": [
@@ -1233,13 +1348,13 @@
           "q": "把这些分支都删了吧，但是之前的记录可以保留\n退回到主干，并写好一份技术方案，包括技术选型，参考来源，效果，最好用skill画一份流程图\n内容可以参考原学生手册里面的，只是方案的初稿"
         }
       ],
-      "score": 1.978390349,
+      "score": 1.716769266,
       "source_file": "memsys/store.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_update": {
-      "code_fingerprint": "51214b25b1df07fde890fc8dce78412315aafee92af626b58c7ed55e32f0a826",
+      "code_fingerprint": "",
       "label": "update.py",
       "last": "2026-10-18T16:02:27.217917+00:00",
       "provenance": [
@@ -1249,13 +1364,13 @@
           "q": "记忆更新遗忘怎么做的"
         }
       ],
-      "score": 0.764071616,
+      "score": 0.663031271,
       "source_file": "memsys/update.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_update_updater": {
-      "code_fingerprint": "51214b25b1df07fde890fc8dce78412315aafee92af626b58c7ed55e32f0a826",
+      "code_fingerprint": "",
       "label": "Updater",
       "last": "2026-10-13T04:43:14.788083+00:00",
       "provenance": [
@@ -1285,13 +1400,13 @@
           "q": "我的意思是舍弃sqlite采用qdrant"
         }
       ],
-      "score": 6.0035563,
+      "score": 5.209649831,
       "source_file": "memsys/update.py",
       "status": "preferred",
       "uses": 9
     },
     "memsys_vecmath_scores": {
-      "code_fingerprint": "15ad3ff2ea46987b38ccfd5f128f7b68c91002f009592d46d939c2e594d25f9e",
+      "code_fingerprint": "",
       "label": "scores()",
       "last": "2026-10-12T15:23:04.336786+00:00",
       "provenance": [
@@ -1301,13 +1416,13 @@
           "q": "我不想用sqlite，因为高并发和多用户是容易等待锁，但是性能方面不知道pg的效果怎么样，检索时间各方面对比一下"
         }
       ],
-      "score": 0.664742808,
+      "score": 0.576837641,
       "source_file": "memsys/vecmath.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_vecmath_vectorrows": {
-      "code_fingerprint": "15ad3ff2ea46987b38ccfd5f128f7b68c91002f009592d46d939c2e594d25f9e",
+      "code_fingerprint": "",
       "label": "VectorRows",
       "last": "2026-10-12T16:15:32.009133+00:00",
       "provenance": [
@@ -1322,13 +1437,13 @@
           "q": "我不想用sqlite，因为高并发和多用户是容易等待锁，但是性能方面不知道pg的效果怎么样，检索时间各方面对比一下"
         }
       ],
-      "score": 1.330045394,
+      "score": 1.154161036,
       "source_file": "memsys/vecmath.py",
       "status": "preferred",
       "uses": 2
     },
     "memsys_write": {
-      "code_fingerprint": "9fe73951e21d048fc6c4607420c01a0fa6e293888b822102ba81373fe2bfe594",
+      "code_fingerprint": "",
       "label": "write.py",
       "last": "2026-10-29T04:16:19.487929+00:00",
       "provenance": [
@@ -1358,13 +1473,13 @@
           "q": "用这个新的架构跑一遍20题的评测"
         }
       ],
-      "score": 4.792175485,
+      "score": 4.158461244,
       "source_file": "memsys/write.py",
       "status": "preferred",
       "uses": 5
     },
     "memsys_write_writer": {
-      "code_fingerprint": "9fe73951e21d048fc6c4607420c01a0fa6e293888b822102ba81373fe2bfe594",
+      "code_fingerprint": "",
       "label": "Writer",
       "last": "2026-10-30T04:35:11.251512+00:00",
       "provenance": [
@@ -1389,13 +1504,13 @@
           "q": "把这些分支都删了吧，但是之前的记录可以保留\n退回到主干，并写好一份技术方案，包括技术选型，参考来源，效果，最好用skill画一份流程图\n内容可以参考原学生手册里面的，只是方案的初稿"
         }
       ],
-      "score": 3.971275706,
+      "score": 3.44611673,
       "source_file": "memsys/write.py",
       "status": "preferred",
       "uses": 4
     },
     "memsys_write_writer_embed": {
-      "code_fingerprint": "9fe73951e21d048fc6c4607420c01a0fa6e293888b822102ba81373fe2bfe594",
+      "code_fingerprint": "",
       "label": "._embed()",
       "last": "2026-10-15T02:45:34.124220+00:00",
       "provenance": [
@@ -1405,13 +1520,13 @@
           "q": "这种问题可以扩大抽取范围吗，怎么才能保证抽取完全，怎么减少这些开销"
         }
       ],
-      "score": 0.703846807,
+      "score": 0.610770552,
       "source_file": "memsys/write.py",
       "status": "tentative",
       "uses": 1
     },
     "memsys_write_writer_extract": {
-      "code_fingerprint": "9fe73951e21d048fc6c4607420c01a0fa6e293888b822102ba81373fe2bfe594",
+      "code_fingerprint": "",
       "label": "._extract()",
       "last": "2026-10-30T03:48:33.362265+00:00",
       "provenance": [
@@ -1421,7 +1536,7 @@
           "q": "为什么会遗漏都反反复复修改这么多次了，而且召回的事实是top多少"
         }
       ],
-      "score": 0.996396185,
+      "score": 0.864633387,
       "source_file": "memsys/write.py",
       "status": "tentative",
       "uses": 1
@@ -1447,7 +1562,7 @@
           "q": "每次评测都会清空向量库吗，清空之前的数据，回答与裁判是同一个模型会不会有“自己给自己打分的风险”还是这两次调用是信息隔离的，我怎么看模型的回答和标准答案"
         }
       ],
-      "score": 2.123371026,
+      "score": 1.842577791,
       "source_file": "",
       "status": "preferred",
       "uses": 3
